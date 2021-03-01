@@ -14,32 +14,36 @@ public class Aereo {
 		String Modello = "Nome Modello";
 		Compagnia compagnia = new Compagnia();
 	}
-	
+
 	//Metodi
+	public Aereo getAereoInfo() { //TO-DO
+		getIDAereo();
+		getModello();
+		compagnia.getCompagniaInfo();
+	}
+	
 	public String getIDAereo() {
 		return IDAereo;
 	}
-	
+
 	public void setIDAereo(String iDAereo) {
 		IDAereo = iDAereo;
 	}
-	
+
 	public String getModello() {
 		return Modello;
 	}
-	
+
 	public void setModello(String modello) {
 		Modello = modello;
 	}
 
-	public String getCompagniaNome() {
-		return compagnia.getNomeCompagnia();
+	public Compagnia getCompagnia() {
+		return compagnia;
 	}
 
-	public void setCompagnia(String nomeCompagnia, String CallCenter, String Website) {
-		compagnia.setNomeCompagnia(nomeCompagnia);
-		compagnia.setCallCenter(CallCenter);
-		compagnia.setWebsite(Website);
+	public void setCompagnia(Compagnia compagnia) {
+		this.compagnia = compagnia;
 	}
 	
 }

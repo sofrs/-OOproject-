@@ -13,28 +13,34 @@ public class Compagnia {
 		String CallCenter="000-000-0000";
 		String website="www.website.com";
 	}
-	
+
 	//Metodi
+	public Compagnia getCompagniaInfo() { //TO-DO
+		getNomeCompagnia();
+		getCallCenter();
+		getWebsite();
+	}
+	
 	public String getNomeCompagnia() {
 		return nomeCompagnia;
 	}
-	
+
 	public void setNomeCompagnia(String nomeCompagnia) {
 		this.nomeCompagnia = nomeCompagnia;
 	}
-	
+
 	public String getCallCenter() {
 		return CallCenter;
 	}
-	
+
 	public void setCallCenter(String callCenter) {
 		CallCenter = callCenter;
 	}
-	
+
 	public String getWebsite() {
 		return Website;
 	}
-	
+
 	public void setWebsite(String website) {
 		Website = website;
 	}

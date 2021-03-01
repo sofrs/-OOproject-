@@ -2,7 +2,6 @@ package apViews;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +16,7 @@ import javax.swing.JLayeredPane;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 import java.awt.CardLayout;
@@ -69,7 +69,8 @@ public class AMain extends JFrame {
 	private JLabel TerminalUno_4;
 	private JLabel TerminalUno_5;
 	private JLabel lblNewLabel;
-
+	
+	ArrayList<Tratta> tratte = new ArrayList<Tratta>();
 	
 
 	 //Launch the application
@@ -92,15 +93,19 @@ public class AMain extends JFrame {
 	}
 
 	
-	//Create the frame.
 	public AMain() {
 		
+		initVariables();
 		initComponents();
 		createEvents();
 		
 	}
 	
 	
+	private void initVariables() {
+		tratte.add(new Tratta());	
+	}
+		
 	//Questo metodo contiene il codice per creare e inizializzare componenti 
 	private void initComponents() {
 		
