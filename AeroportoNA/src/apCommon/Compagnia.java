@@ -15,12 +15,6 @@ public class Compagnia {
 	}
 
 	//Metodi
-	public Compagnia getCompagniaInfo() { //TO-DO
-		getNomeCompagnia();
-		getCallCenter();
-		getWebsite();
-	}
-	
 	public String getNomeCompagnia() {
 		return nomeCompagnia;
 	}
@@ -44,5 +38,6 @@ public class Compagnia {
 	public void setWebsite(String website) {
 		Website = website;
 	}
+	
 	
 }

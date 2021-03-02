@@ -1,8 +1,7 @@
 package apViews;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -16,7 +15,7 @@ import javax.swing.JLayeredPane;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 import java.awt.CardLayout;
@@ -29,6 +28,12 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 import apCommon.*;
+import apCommon.Tratta.città;
+import javax.swing.JList;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class AMain extends JFrame {
 
@@ -49,9 +54,6 @@ public class AMain extends JFrame {
 	private JLayeredPane BodyInfo;
 	private JLayeredPane BodyMappa;
 	private JLayeredPane BodyCompagnie;
-	private JButton PulsanteHome;
-	private JLabel OmbraHeaderVolo;
-	private JLabel Biglietto;
 	private JLabel OmbraHeaderGate;
 	private JPanel panel;
 	private JPanel panel_1;
@@ -69,8 +71,22 @@ public class AMain extends JFrame {
 	private JLabel TerminalUno_4;
 	private JLabel TerminalUno_5;
 	private JLabel lblNewLabel;
-	
-	ArrayList<Tratta> tratte = new ArrayList<Tratta>();
+	private JButton PulsanteHome;
+	private JLabel ImmAtene;
+	private JLabel ImmBarcellona;
+	private JLabel ImmBerlino;
+	private JLabel ImmBruxelles;
+	private JLabel ImmCagliari;
+	private JLabel ImmCatania;
+	private JLabel ImmCracovia;
+	private JLabel ImmDubai;
+	private JLabel ImmGenova;
+	private JLabel ImmLiverpool;
+	private JLabel ImmLondra;
+	private JLabel ImmTorino;
+	private JLabel ImmTrieste;
+	private JLabel ImmVenezia;
+	private JLabel ImmVerona;
 	
 
 	 //Launch the application
@@ -101,9 +117,9 @@ public class AMain extends JFrame {
 		
 	}
 	
-	
+	//Questo metodo contiene il codice per creare e inizializzare variabili provenienti da altre classi
 	private void initVariables() {
-		tratte.add(new Tratta());	
+		
 	}
 		
 	//Questo metodo contiene il codice per creare e inizializzare componenti 
@@ -230,43 +246,122 @@ public class AMain extends JFrame {
 		BodyContainer.add(BodyVolo, "VoloPage");
 		
 		
-		PulsanteHome = new JButton("");
-		PulsanteHome.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
-		PulsanteHome.setOpaque(false);
-		PulsanteHome.setFocusable(false);
-		PulsanteHome.setContentAreaFilled(false);
-		PulsanteHome.setBorderPainted(false);
-		PulsanteHome.setBounds(0, 0, 60, 61);
-		BodyVolo.add(PulsanteHome);
-		
-		
-		OmbraHeaderVolo = new JLabel("");
-		OmbraHeaderVolo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
-		OmbraHeaderVolo.setBounds(0, -15, 1199, 63);
-		BodyVolo.add(OmbraHeaderVolo);
-		
-		
-		Biglietto = new JLabel("New label");
-		Biglietto.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BaseBiglietto.png")));
-		Biglietto.setBounds(0, 64, 274, 471);
-		Biglietto.setHorizontalAlignment(SwingConstants.CENTER);
-		BodyVolo.add(Biglietto);
-		
-		
 		JPanel BackgroundVolo = new JPanel();
 		BackgroundVolo.setBackground(new Color(208, 215, 232));
 		BackgroundVolo.setBounds(0, 0, 1193, 535);
 		BodyVolo.add(BackgroundVolo);
-		GroupLayout gl_BackgroundVolo = new GroupLayout(BackgroundVolo);
-		gl_BackgroundVolo.setHorizontalGroup(
-			gl_BackgroundVolo.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 1193, Short.MAX_VALUE)
-		);
-		gl_BackgroundVolo.setVerticalGroup(
-			gl_BackgroundVolo.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 535, Short.MAX_VALUE)
-		);
-		BackgroundVolo.setLayout(gl_BackgroundVolo);
+		BackgroundVolo.setLayout(null);
+		
+		JPanel ImmCittà = new JPanel();
+		ImmCittà.setBounds(37, 378, 183, 109);
+		BackgroundVolo.add(ImmCittà);
+		ImmCittà.setLayout(new CardLayout());
+		
+		JLabel ImmAmsterdam = new JLabel("");
+		ImmAmsterdam.setIcon(new ImageIcon(AMain.class.getResource("/apResources/AMSTERDAM.png")));
+		ImmCittà.add(ImmAmsterdam, "name_64600111307300");
+		
+		JLabel ImmAtene = new JLabel("");
+		ImmAtene.setIcon(new ImageIcon(AMain.class.getResource("/apResources/ATENE.png")));
+		ImmCittà.add(ImmAtene, "name_66678706197299");
+		
+		JLabel ImmBarcellona = new JLabel("");
+		ImmBarcellona.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BARCELLONA.png")));
+		ImmCittà.add(ImmBarcellona, "name_74484523905000");
+		
+		JLabel ImmBerlino = new JLabel("");
+		ImmBerlino.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BERLINO.png")));
+		ImmCittà.add(ImmBerlino, "name_75781517183700");
+		
+		JLabel ImmBruxelles = new JLabel("");
+		ImmBruxelles.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BRUXELLES.png")));
+		ImmCittà.add(ImmBruxelles, "name_75801613420800");
+		
+		JLabel ImmCagliari = new JLabel("");
+		ImmCagliari.setIcon(new ImageIcon(AMain.class.getResource("/apResources/CAGLIARI.png")));
+		ImmCittà.add(ImmCagliari, "name_75842106571600");
+		
+		JLabel ImmCatania = new JLabel("");
+		ImmCatania.setIcon(new ImageIcon(AMain.class.getResource("/apResources/CATANIA.png")));
+		ImmCittà.add(ImmCatania, "name_75844892107500");
+		
+		JLabel ImmCracovia = new JLabel("");
+		ImmCracovia.setIcon(new ImageIcon(AMain.class.getResource("/apResources/CRACOVIA.png")));
+		ImmCittà.add(ImmCracovia, "name_75847747628600");
+		
+		JLabel ImmDubai = new JLabel("");
+		ImmDubai.setIcon(new ImageIcon(AMain.class.getResource("/apResources/DUBAI.png")));
+		ImmCittà.add(ImmDubai, "name_75850569204100");
+		
+		JLabel ImmGenova = new JLabel("");
+		ImmGenova.setIcon(new ImageIcon(AMain.class.getResource("/apResources/GENOVA.png")));
+		ImmCittà.add(ImmGenova, "name_75852796515600");
+		
+		JLabel ImmLiverpool = new JLabel("");
+		ImmLiverpool.setIcon(new ImageIcon(AMain.class.getResource("/apResources/LIVERPOOL.png")));
+		ImmCittà.add(ImmLiverpool, "name_76098096080700");
+		
+		JLabel ImmLondra = new JLabel("");
+		ImmLondra.setIcon(new ImageIcon(AMain.class.getResource("/apResources/LONDRA.png")));
+		ImmCittà.add(ImmLondra, "name_76102998781000");
+		
+		JLabel ImmTorino = new JLabel("");
+		ImmTorino.setIcon(new ImageIcon(AMain.class.getResource("/apResources/TORINO.png")));
+		ImmCittà.add(ImmTorino, "name_76107874176400");
+		
+		JLabel ImmTrieste = new JLabel("");
+		ImmTrieste.setIcon(new ImageIcon(AMain.class.getResource("/apResources/TRIESTE.png")));
+		ImmCittà.add(ImmTrieste, "name_76143457471200");
+		
+		JLabel ImmVenezia = new JLabel("");
+		ImmVenezia.setIcon(new ImageIcon(AMain.class.getResource("/apResources/VENEZIA.png")));
+		ImmCittà.add(ImmVenezia, "name_76189533517200");
+		
+		JLabel ImmVerona = new JLabel("");
+		ImmVerona.setIcon(new ImageIcon(AMain.class.getResource("/apResources/VERONA.png")));
+		ImmCittà.add(ImmVerona, "name_76194273968700");
+		
+		JLabel[] labelsCittà=new JLabel[]{ImmAmsterdam, ImmAtene, ImmBarcellona, ImmBerlino, ImmBruxelles, ImmCagliari, ImmCatania, ImmCracovia,
+											ImmDubai, ImmGenova, ImmLiverpool, ImmLondra, ImmTorino, ImmTrieste, ImmVenezia, ImmVerona};
+		
+		JComboBox<Tratta.città> SelectCittà = new JComboBox<Tratta.città>();
+		SelectCittà.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int selection = SelectCittà.getSelectedIndex();
+				int index=0;
+				for (JLabel label : labelsCittà) {
+					if(index==selection)
+			           label.setVisible(true);
+					else label.setVisible(false);
+					index++;
+				}
+			}
+		});
+		SelectCittà.setBounds(37, 320, 183, 21);
+		SelectCittà.setModel(new DefaultComboBoxModel<città>(città.values()));
+		BackgroundVolo.add(SelectCittà);
+		
+		
+		
+		JLabel OmbraHeaderVolo = new JLabel("");
+		OmbraHeaderVolo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+		OmbraHeaderVolo.setBounds(0, 0, 1193, 34);
+		BackgroundVolo.add(OmbraHeaderVolo);
+		
+		PulsanteHome = new JButton("");
+		PulsanteHome.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
+		PulsanteHome.setBounds(10, 10, 63, 51);
+		PulsanteHome.setOpaque(false);
+		PulsanteHome.setFocusable(false);
+		PulsanteHome.setContentAreaFilled(false);
+		PulsanteHome.setBorderPainted(false);
+		BackgroundVolo.add(PulsanteHome);
+		
+		JLabel Biglietto = new JLabel("New label");
+		Biglietto.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BaseBiglietto.png")));
+		Biglietto.setHorizontalAlignment(SwingConstants.CENTER);
+		Biglietto.setBounds(0, 59, 274, 486);
+		BackgroundVolo.add(Biglietto);
 		
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -302,7 +397,6 @@ public class AMain extends JFrame {
 		
 		BodyGate = new JLayeredPane();
 		BodyContainer.add(BodyGate, "name_7197058332500");
-		OmbraHeaderVolo.setBounds(0, -15, 1199, 63);
 		
 		JPanel BackgroundBodyGate = new JPanel();
 		BackgroundBodyGate.setBorder(null);
@@ -457,12 +551,14 @@ public class AMain extends JFrame {
 			}
 		});
 		
-		//Eventi all'interno del BodyVolo
 		PulsanteHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BodyMain.setVisible(true);
 				BodyVolo.setVisible(false);
+				
 			}
 		});
+		
+		
 	}
 }

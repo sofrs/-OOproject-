@@ -51,16 +51,6 @@ public class Volo {
 		this.dataArrivo=dataArrivo;
 	}
 
-	public void getVoloInfo() {	//TO-DO
-		getOrarioPartenza();
-		getOrarioArrivo();
-		getDataPartenza();
-		getDataArrivo();
-		getNumPrenotazioni();
-		aereo.getAereoInfo();
-		gate.getGateInfo(); //TO-DO
-	}
-	
 	public Time getOrarioPartenza() {
 		return orarioPartenza;
 	}
@@ -125,6 +115,7 @@ public class Volo {
 		this.gate = gate;
 	}
 
+	
 
 	
 	

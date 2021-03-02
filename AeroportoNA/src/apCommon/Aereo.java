@@ -15,13 +15,9 @@ public class Aereo {
 		Compagnia compagnia = new Compagnia();
 	}
 
-	//Metodi
-	public Aereo getAereoInfo() { //TO-DO
-		getIDAereo();
-		getModello();
-		compagnia.getCompagniaInfo();
-	}
 	
+
+	//Metodi
 	public String getIDAereo() {
 		return IDAereo;
 	}

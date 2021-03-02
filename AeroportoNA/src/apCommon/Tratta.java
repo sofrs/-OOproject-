@@ -1,32 +1,38 @@
 package apCommon;
 
-import java.sql.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 public class Tratta {
 	
 	//Attributi
-	private String città;
+	public enum città{
+		Amsterdam,
+		Atene,
+		Barcellona,
+		Berlino,
+		Bruxelles,
+		Cagliari,
+		Catania,
+		Cracovia,
+		Dubai,
+		Genova,
+		Liverpool,
+		Londra,
+		Torino,
+		Trieste,
+		Venezia,
+		Verona;
+	};
 	private Volo volo;
 	
 	//Costruttori
 	
 	
 	//Metodi
-	public String getCittà() {
-		return città;
+	public Volo getVolo() {
+		return volo;
 	}
 	
-	public void setCittà(String città) {
-		this.città = città;
-	}
-	
-	public Volo getVolo() { //TO-DO
-		return volo.getVoloInfo();
-	}
-	
-	public void setVolo(Volo volo){
+	public void setVolo(Volo volo) {
 		this.volo = volo;
 	}
+	
 }
