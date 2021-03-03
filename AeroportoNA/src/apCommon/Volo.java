@@ -2,15 +2,16 @@ package apCommon;
 
 import java.sql.Time;
 import java.util.Calendar;
+import java.util.EnumSet;
 import java.util.GregorianCalendar;
 
 public class Volo {
 	
 	//Attributi
-	private Time orarioPartenza;
-	private Time orarioArrivo;
-	private Calendar dataPartenza;
-	private Calendar dataArrivo;
+	private String orarioPartenza;
+	private String orarioArrivo;
+	private String dataPartenza;
+	private String dataArrivo;
 	private String IDVolo;
 	private int numPrenotazioni;
 	private Aereo aereo;
@@ -18,7 +19,6 @@ public class Volo {
 	
 	//Costruttori
 	public Volo(){
-		Time orarioPartenza = new Time(0);
 		Time orarioArrivo = new Time(0);
 		Calendar dataPartenza = new GregorianCalendar(2021,1,1);
 		Calendar dataArrivo = new GregorianCalendar(2021,1,1);
@@ -27,15 +27,14 @@ public class Volo {
 		Gate gate = new Gate();
 	}
 
-	public Volo(Time orarioPartenza, Time orarioArrivo, Calendar dataPartenza, Calendar dataArrivo,
-				int numPrenotazioni, Aereo aereo, Gate gate){
-			this.orarioPartenza=orarioPartenza;
-			this.orarioArrivo=orarioArrivo;
-			this.dataPartenza=dataPartenza;
-			this.dataArrivo=dataArrivo;
-			this.numPrenotazioni=numPrenotazioni;
-			this.aereo=aereo;
-			this.gate=gate;
+	//DA RIFARE!
+	public Volo(Time orarioArrivo, Calendar dataPartenza, Calendar dataArrivo,int numPrenotazioni, Aereo aereo, Gate gate){
+			//this.orarioArrivo=orarioArrivo;
+			//this.dataPartenza=dataPartenza;
+			//this.dataArrivo=dataArrivo;
+			//this.numPrenotazioni=numPrenotazioni;
+			//this.aereo=aereo;
+			//this.gate=gate;
 	}
 	
 	/**Metodo che permette di rischedulare un volo attraverso la modifica dell'aereo, del'orario e della data della partenza/arrivo
@@ -44,22 +43,13 @@ public class Volo {
 	 * @param dataPartenza
 	 * @param dataArrivo
 	 */
-	public void rischedula(Time orarioPartenza, Time orarioArrivo, Calendar dataPartenza, Calendar dataArrivo) {
-		this.orarioPartenza=orarioPartenza;
-		this.orarioArrivo=orarioArrivo;
-		this.dataPartenza=dataPartenza;
-		this.dataArrivo=dataArrivo;
+	public void rischedula(Time orarioArrivo, Calendar dataPartenza, Calendar dataArrivo) {
+		//this.orarioArrivo=orarioArrivo;
+		//this.dataPartenza=dataPartenza;
+		//this.dataArrivo=dataArrivo;
 	}
 
-	public Time getOrarioPartenza() {
-		return orarioPartenza;
-	}
-
-	public void setOrarioPartenza(Time orarioPartenza) {
-		this.orarioPartenza = orarioPartenza;
-	}
-
-	public Time getOrarioArrivo() {
+	/**public Time getOrarioArrivo() {
 		return orarioArrivo;
 	}
 
@@ -81,7 +71,7 @@ public class Volo {
 
 	public void setDataArrivo(Calendar dataArrivo) {
 		this.dataArrivo = dataArrivo;
-	}
+	}**/
 
 	public String getIDVolo() {
 		return IDVolo;
