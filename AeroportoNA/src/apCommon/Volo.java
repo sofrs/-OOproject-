@@ -2,8 +2,6 @@ package apCommon;
 
 import java.sql.Time;
 import java.util.Calendar;
-import java.util.EnumSet;
-import java.util.GregorianCalendar;
 
 public class Volo {
 	
@@ -12,31 +10,25 @@ public class Volo {
 	private String orarioArrivo;
 	private String dataPartenza;
 	private String dataArrivo;
-	private String IDVolo;
 	private int numPrenotazioni;
 	private Aereo aereo;
-	private Gate gate;
 	
-	//Costruttori
+	//Costruttore vuoto
 	public Volo(){
-		Time orarioArrivo = new Time(0);
-		Calendar dataPartenza = new GregorianCalendar(2021,1,1);
-		Calendar dataArrivo = new GregorianCalendar(2021,1,1);
-		int numPrenotazioni  = 0;
-		Aereo aereo = new Aereo();
-		Gate gate = new Gate();
+		
 	}
 
-	//DA RIFARE!
-	public Volo(Time orarioArrivo, Calendar dataPartenza, Calendar dataArrivo,int numPrenotazioni, Aereo aereo, Gate gate){
-			//this.orarioArrivo=orarioArrivo;
-			//this.dataPartenza=dataPartenza;
-			//this.dataArrivo=dataArrivo;
-			//this.numPrenotazioni=numPrenotazioni;
-			//this.aereo=aereo;
-			//this.gate=gate;
+	//Costruttore con parametri
+	public Volo(String orarioPartenza, String orarioArrivo, String dataPartenza, String dataArrivo, int numPrenotazioni, Aereo aereo){
+		this.orarioPartenza = orarioPartenza;
+		this.orarioArrivo = orarioArrivo;
+		this.dataPartenza = dataPartenza;
+		this.dataArrivo = dataArrivo;
+		this.numPrenotazioni = numPrenotazioni;
+		this.aereo = aereo;
 	}
 	
+	//Metodi
 	/**Metodo che permette di rischedulare un volo attraverso la modifica dell'aereo, del'orario e della data della partenza/arrivo
 	 * @param orarioPartenza
 	 * @param orarioArrivo
@@ -49,36 +41,36 @@ public class Volo {
 		//this.dataArrivo=dataArrivo;
 	}
 
-	/**public Time getOrarioArrivo() {
+	public String getOrarioPartenza() {
+		return orarioPartenza;
+	}
+
+	public void setOrarioPartenza(String orarioPartenza) {
+		this.orarioPartenza = orarioPartenza;
+	}
+
+	public String getOrarioArrivo() {
 		return orarioArrivo;
 	}
 
-	public void setOrarioArrivo(Time orarioArrivo) {
+	public void setOrarioArrivo(String orarioArrivo) {
 		this.orarioArrivo = orarioArrivo;
 	}
 
-	public Calendar getDataPartenza() {
+	public String getDataPartenza() {
 		return dataPartenza;
 	}
 
-	public void setDataPartenza(Calendar dataPartenza) {
+	public void setDataPartenza(String dataPartenza) {
 		this.dataPartenza = dataPartenza;
 	}
 
-	public Calendar getDataArrivo() {
+	public String getDataArrivo() {
 		return dataArrivo;
 	}
 
-	public void setDataArrivo(Calendar dataArrivo) {
+	public void setDataArrivo(String dataArrivo) {
 		this.dataArrivo = dataArrivo;
-	}**/
-
-	public String getIDVolo() {
-		return IDVolo;
-	}
-
-	public void setIDVolo(String iDVolo) {
-		IDVolo = iDVolo;
 	}
 
 	public int getNumPrenotazioni() {
@@ -97,16 +89,5 @@ public class Volo {
 		this.aereo = aereo;
 	}
 
-	public Gate getGate() {
-		return gate;
-	}
-
-	public void setGate(Gate gate) {
-		this.gate = gate;
-	}
-
-	
-
-	
 	
 }

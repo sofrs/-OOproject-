@@ -1,37 +1,42 @@
 package apCommon;
 
+import apViews.AMain.IDAereo;
+import apViews.AMain.Modello;
 
 public class Aereo {
 	
 	//Attributi
-	private String IDAereo;
-	private String Modello;
+	IDAereo IDaereo;
+	Modello modello;
 	private Compagnia compagnia;
 	
-	//Costruttore
+	//Costruttore vuoto
 	public Aereo(){
-		String IDAereo = "I-AAAA";
-		String Modello = "Nome Modello";
-		Compagnia compagnia = new Compagnia();
+		
 	}
 
-	
+	//Costruttore con parametri
+	public Aereo(IDAereo IDaereo, Modello modello, Compagnia compagnia) {
+		this.IDaereo = IDaereo;
+		this.modello = modello;
+		this.compagnia = compagnia;
+	}
 
 	//Metodi
-	public String getIDAereo() {
-		return IDAereo;
+	public IDAereo getIDaereo() {
+		return IDaereo;
 	}
 
-	public void setIDAereo(String iDAereo) {
-		IDAereo = iDAereo;
+	public void setIDaereo(IDAereo iDaereo) {
+		IDaereo = iDaereo;
 	}
 
-	public String getModello() {
-		return Modello;
+	public Modello getModello() {
+		return modello;
 	}
 
-	public void setModello(String modello) {
-		Modello = modello;
+	public void setModello(Modello modello) {
+		this.modello = modello;
 	}
 
 	public Compagnia getCompagnia() {

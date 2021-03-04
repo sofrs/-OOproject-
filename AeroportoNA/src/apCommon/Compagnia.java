@@ -4,16 +4,18 @@ public class Compagnia {
 	
 	//Attributi
 	private String nomeCompagnia;
-	private String CallCenter;
-	private String Website;
+	private String website;
 	
-	//Costruttore
+	//Costruttore vuoto
 	public Compagnia(){
-		String nomeCompagnia="Nome Compagnia";
-		String CallCenter="000-000-0000";
-		String website="www.website.com";
 	}
-
+	
+	//Costruttore con parametri
+	public Compagnia(String nomeCompagnia, String website) {
+		this.nomeCompagnia = nomeCompagnia;
+		this.website = website;
+	}
+	
 	//Metodi
 	public String getNomeCompagnia() {
 		return nomeCompagnia;
@@ -23,20 +25,12 @@ public class Compagnia {
 		this.nomeCompagnia = nomeCompagnia;
 	}
 
-	public String getCallCenter() {
-		return CallCenter;
-	}
-
-	public void setCallCenter(String callCenter) {
-		CallCenter = callCenter;
-	}
-
 	public String getWebsite() {
-		return Website;
+		return website;
 	}
 
 	public void setWebsite(String website) {
-		Website = website;
+		website = website;
 	}
 	
 	

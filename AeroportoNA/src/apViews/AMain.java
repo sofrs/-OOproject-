@@ -21,10 +21,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
 import apCommon.*;
-import apCommon.Tratta.città;
-
 import java.awt.event.ItemListener;
 import java.io.FileInputStream;
 import java.text.DateFormat;
@@ -85,6 +82,133 @@ public class AMain extends JFrame {
 	private JPanel PannelloRimuovi;
 	private JPanel PannelloRischedula;
 	private JButton PulsanteHomeGate;
+	private JButton PulsanteAvanti;
+	private JLayeredPane MarzoGiorni;
+	private JLayeredPane AprileGiorni;
+	private JLayeredPane AprileHeader;
+	private JLayeredPane MarzoHeader;
+	private JButton PulsanteIndietro;
+	private JTextField FieldData;
+	private JInternalFrame Calendario;
+	private JButton SelectData;
+	private JComboBox<città> SelectCittà;
+	private JLabel ImmAmsterdam;
+	private JLabel[] labelsCittà;
+	private JButton unoM;
+	private JButton dueM;
+	private JButton treM;
+	private JButton quattroM;
+	private JButton cinqueM;
+	private JButton seiM;
+	private JButton setteM;
+	private JButton ottoM;
+	private JButton ventidueM;
+	private JButton ventinoveM;
+	private JButton noveM;
+	private JButton dieciM;
+	private JButton undiciM;
+	private JButton dodiciM;
+	private JButton trediciM;
+	private JButton quattordiciM;
+	private JButton sediciM;
+	private JButton diciassetteM;
+	private JButton diciottoM;
+	private JButton diciannoveM;
+	private JButton ventiM;
+	private JButton ventunoM;
+	private JButton ventitreM;
+	private JButton ventiquattroM;
+	private JButton venticinqueM;
+	private JButton ventiseiM;
+	private JButton ventisetteM;
+	private JButton ventottoM;
+	private JButton trentaM;
+	private JButton trentunoM;
+	private JButton quindiciM;
+	private JLabel LabelIDAereo;
+	private JComboBox comboBox;
+	private JLayeredPane PannelloVoliAmsterdam;
+	private JButton PulsanteReverse;
+	private JComboBox<String> BoxPartenza;
+	private JComboBox<String> BoxDestinazione;
+	private Tratta[] Tratte;
+	
+	//Enums
+	public enum città{
+		Amsterdam,
+		Atene,
+		Barcellona,
+		Berlino,
+		Bruxelles,
+		Cagliari,
+		Catania,
+		Cracovia,
+		Dubai,
+		Genova,
+		Liverpool,
+		Londra,
+		Torino,
+		Trieste,
+		Venezia,
+		Verona;
+	};
+	
+	public enum IDTratta{
+		NAMS01,
+		NATE02,
+		NBAR03,
+		NBER04,
+		NBRU05,
+		NCAG06,
+		NCAT07,
+		NCRA08,
+		NDUB09,
+		NGEN10,
+		NLIV11,
+		NLON12,
+		NTOR13,
+		NTRI14,
+		NVEN15,
+		NVER16;
+	};
+	
+	public enum IDAereo{
+		A300F, //Airbus
+		A310F,
+		A320,
+		A330F,
+		A380F,
+		A300_600ST,
+		An_124, //Antonov
+		An_225,
+		B727F, //Boeing
+		B737,
+		B757PF,
+		B767F,
+		B47F,
+		B747, 
+		B777F,
+		DC_3, //Douglas
+		DC_8F,
+		DC_9F,
+		Il_18T, //Ilyushin
+		Il_76,
+		Il_96T,
+		DC_10F, //McDonnell
+		MD_11F,
+		Tu_204F, //Tupolev
+		Tu_204C;
+	};
+	
+	public enum Modello{
+		Airbus,
+		Antonov,
+		Boeing,
+		Douglas,
+		Ilyushin,
+		McDonnell,
+		Tupolev;
+	};
 	
 	//Launch the application
 	public static void main(String[] args) {
@@ -107,11 +231,29 @@ public class AMain extends JFrame {
 
 	public AMain() {
 		
+		initValues();
 		initComponents();
 		createEvents();
 		
 	}
+	
+	//Questo metodo contiene il codice per inizializzare variabili
+	private void initValues() {
+		Compagnia[] compagnie = new Compagnia[5];
+		compagnie[0] = new Compagnia("EasyJet", "www.easyjet.com");
+		compagnie[1] = new Compagnia("Ryanair", "www.ryanair.com");
+		compagnie[2] = new Compagnia("Eurowings", "www.eurowings.com");
+		compagnie[3] = new Compagnia("Delta airlines", "www.delta.com");
+		compagnie[4] = new Compagnia("Alitalia", "www.alitalia.com");
+		Aereo[] aerei = new Aereo[100];
+		aerei[0] = new Aereo(IDAereo.A300F, Modello.Airbus, compagnie[0]);
+		Volo[] voli = new Volo[100];
+		voli[0] = new Volo();
+		Tratte = new Tratta[100];
+		//Tratte[0] = new Tratta();
 		
+	}
+	
 	//Questo metodo contiene il codice per creare e inizializzare componenti 
 	private void initComponents() {
 		
@@ -137,12 +279,10 @@ public class AMain extends JFrame {
 		Main = new JLayeredPane();
 		BodyContainer.add(Main, "MainPage");
 		
-  
-        
-
+		
 		PulsanteInfo = new JButton("");
 		PulsanteInfo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconInfo.png")));
-		PulsanteInfo.setBounds(659, 57, 85, 90);
+		PulsanteInfo.setBounds(659, 176, 85, 90);
 		PulsanteInfo.setOpaque(false);
 		PulsanteInfo.setFocusable(false);
 		PulsanteInfo.setContentAreaFilled(false);
@@ -152,7 +292,7 @@ public class AMain extends JFrame {
 		
 		PulsanteGate = new JButton("");
 		PulsanteGate.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconGate.png")));
-		PulsanteGate.setBounds(439, 57, 85, 90);
+		PulsanteGate.setBounds(439, 176, 85, 90);
 		PulsanteGate.setOpaque(false);
 		PulsanteGate.setFocusable(false);
 		PulsanteGate.setContentAreaFilled(false);
@@ -166,21 +306,15 @@ public class AMain extends JFrame {
 		PulsanteAereo.setFocusable(false);
 		PulsanteAereo.setContentAreaFilled(false);
 		PulsanteAereo.setBorderPainted(false);
-		PulsanteAereo.setBounds(543, 57, 92, 103);
+		PulsanteAereo.setBounds(543, 176, 92, 103);
 		Main.add(PulsanteAereo);
 		
 		
 		JLabel MainMenù = new JLabel("");
 		MainMenù.setIcon(new ImageIcon(AMain.class.getResource("/apResources/Men\u00F9Sfere.png")));
 		MainMenù.setHorizontalAlignment(SwingConstants.CENTER);
-		MainMenù.setBounds(233, 10, 719, 179);
+		MainMenù.setBounds(233, 129, 719, 179);
 		Main.add(MainMenù);
-		
-		
-		JLabel BarraRicerca = new JLabel("");
-		BarraRicerca.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BarraRicerca.png")));
-		BarraRicerca.setBounds(215, 199, 759, 74);
-		Main.add(BarraRicerca);
 		
 		
 		ScrittaCompagnie = new JLabel("Compagnie Aeree");
@@ -244,12 +378,458 @@ public class AMain extends JFrame {
 		Volo.add(PanelVolo);
 		PanelVolo.setLayout(null);
 		
+		Calendario = new JInternalFrame("Calendario");
+		Calendario.setClosable(true);
+		Calendario.setBounds(-82, 171, 393, 326);
+		PanelVolo.add(Calendario);
+		
+		Panel HeaderCalendario = new Panel();
+		HeaderCalendario.setBackground(new Color(13, 62, 117));
+		
+		JPanel BodyCalendario = new JPanel();
+		
+		JPanel GiorniSettimana = new JPanel();
+		GroupLayout groupLayout_1 = new GroupLayout(Calendario.getContentPane());
+		groupLayout_1.setHorizontalGroup(
+			groupLayout_1.createParallelGroup(Alignment.LEADING)
+				.addComponent(BodyCalendario, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addGroup(groupLayout_1.createSequentialGroup()
+					.addComponent(GiorniSettimana, GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+					.addContainerGap())
+				.addComponent(HeaderCalendario, GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+		);
+		groupLayout_1.setVerticalGroup(
+			groupLayout_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout_1.createSequentialGroup()
+					.addComponent(HeaderCalendario, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(GiorniSettimana, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(BodyCalendario, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
+		);
+		
+		JLabel Lunedì = new JLabel("Lu");
+		Lunedì.setHorizontalAlignment(SwingConstants.CENTER);
+		Lunedì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		
+		JLabel Martedì = new JLabel("Ma");
+		Martedì.setHorizontalAlignment(SwingConstants.CENTER);
+		Martedì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		
+		JLabel Mercoledì = new JLabel("Me");
+		Mercoledì.setHorizontalAlignment(SwingConstants.CENTER);
+		Mercoledì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		
+		JLabel Giovedì = new JLabel("Gi");
+		Giovedì.setHorizontalAlignment(SwingConstants.CENTER);
+		Giovedì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		
+		JLabel Venerdì = new JLabel("Ve");
+		Venerdì.setHorizontalAlignment(SwingConstants.CENTER);
+		Venerdì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		
+		JLabel Sabato = new JLabel("Sa");
+		Sabato.setHorizontalAlignment(SwingConstants.CENTER);
+		Sabato.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		
+		JLabel Domenica = new JLabel("Do");
+		Domenica.setHorizontalAlignment(SwingConstants.CENTER);
+		Domenica.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+		GroupLayout gl_GiorniSettimana = new GroupLayout(GiorniSettimana);
+		gl_GiorniSettimana.setHorizontalGroup(
+			gl_GiorniSettimana.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_GiorniSettimana.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(Lunedì, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(Martedì, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(Mercoledì, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(Giovedì, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(Venerdì, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(Sabato, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(Domenica, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_GiorniSettimana.setVerticalGroup(
+			gl_GiorniSettimana.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_GiorniSettimana.createSequentialGroup()
+					.addGroup(gl_GiorniSettimana.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_GiorniSettimana.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(Giovedì, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(Lunedì, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(Alignment.LEADING, gl_GiorniSettimana.createParallelGroup(Alignment.BASELINE)
+								.addComponent(Martedì, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+								.addComponent(Mercoledì, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(Domenica, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Sabato, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Venerdì, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		GiorniSettimana.setLayout(gl_GiorniSettimana);
+		HeaderCalendario.setLayout(new CardLayout(0, 0));
+		
+		MarzoHeader = new JLayeredPane();
+		HeaderCalendario.add(MarzoHeader, "name_80105300536100");
+		
+		PulsanteAvanti = new JButton("");
+		PulsanteAvanti.setIcon(new ImageIcon(AMain.class.getResource("/apResources/FrecciaDestra.png")));
+		PulsanteAvanti.setBounds(334, 0, 47, 39);
+		PulsanteAvanti.setOpaque(false);
+		PulsanteAvanti.setFocusable(false);
+		PulsanteAvanti.setContentAreaFilled(false);
+		PulsanteAvanti.setBorderPainted(false);
+		MarzoHeader.add(PulsanteAvanti);
+		
+		JLabel LabelMarzo = new JLabel("MARZO");
+		LabelMarzo.setFont(new Font("Lucida Bright", Font.BOLD, 20));
+		LabelMarzo.setForeground(Color.WHITE);
+		LabelMarzo.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelMarzo.setBounds(0, 0, 381, 39);
+		MarzoHeader.add(LabelMarzo);
+		
+		AprileHeader = new JLayeredPane();
+		HeaderCalendario.add(AprileHeader, "name_81101437069600");
+		
+		PulsanteIndietro = new JButton("");
+		PulsanteIndietro.setIcon(new ImageIcon(AMain.class.getResource("/apResources/FrecciaSinistra.png")));
+		PulsanteIndietro.setOpaque(false);
+		PulsanteIndietro.setFocusable(false);
+		PulsanteIndietro.setContentAreaFilled(false);
+		PulsanteIndietro.setBorderPainted(false);
+		PulsanteIndietro.setBounds(0, 0, 47, 39);
+		AprileHeader.add(PulsanteIndietro);
+		
+		JLabel LabelAprile = new JLabel("APRILE");
+		LabelAprile.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelAprile.setForeground(Color.WHITE);
+		LabelAprile.setFont(new Font("Lucida Bright", Font.BOLD, 20));
+		LabelAprile.setBounds(0, 0, 381, 39);
+		AprileHeader.add(LabelAprile);
+		BodyCalendario.setLayout(new CardLayout(0, 0));
+		
+		MarzoGiorni = new JLayeredPane();
+		
+		unoM = new JButton("1");
+		unoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		unoM.setBounds(10, 0, 43, 30);
+		MarzoGiorni.add(unoM);
+		
+		dueM = new JButton("2");
+		dueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		dueM.setBounds(63, 0, 43, 30);
+		MarzoGiorni.add(dueM);
+		
+		treM = new JButton("3");
+		treM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		treM.setBounds(116, 0, 43, 30);
+		MarzoGiorni.add(treM);
+		
+		quattroM = new JButton("4");
+		quattroM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		quattroM.setBounds(169, 0, 43, 30);
+		MarzoGiorni.add(quattroM);
+		
+		cinqueM = new JButton("5");
+		cinqueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		cinqueM.setBounds(222, 0, 43, 30);
+		MarzoGiorni.add(cinqueM);
+		
+		seiM = new JButton("6");
+		seiM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		seiM.setBounds(275, 0, 43, 30);
+		MarzoGiorni.add(seiM);
+		
+		setteM = new JButton("7");
+		setteM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		setteM.setBounds(327, 0, 43, 30);
+		MarzoGiorni.add(setteM);
+		
+		ottoM = new JButton("8");
+		ottoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ottoM.setBounds(10, 40, 43, 30);
+		MarzoGiorni.add(ottoM);
+		
+		quindiciM = new JButton("15");
+		quindiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		quindiciM.setBounds(10, 80, 43, 30);
+		MarzoGiorni.add(quindiciM);
+		
+		ventidueM = new JButton("22");
+		ventidueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventidueM.setBounds(10, 120, 43, 30);
+		MarzoGiorni.add(ventidueM);
+		
+		ventinoveM = new JButton("29");
+		ventinoveM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventinoveM.setBounds(10, 157, 43, 30);
+		MarzoGiorni.add(ventinoveM);
+		
+		noveM = new JButton("9");
+		noveM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		noveM.setBounds(63, 40, 43, 30);
+		MarzoGiorni.add(noveM);
+		
+		dieciM = new JButton("10");
+		dieciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		dieciM.setBounds(116, 40, 43, 30);
+		MarzoGiorni.add(dieciM);
+		
+		undiciM = new JButton("11");
+		undiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		undiciM.setBounds(169, 40, 43, 30);
+		MarzoGiorni.add(undiciM);
+		
+		dodiciM = new JButton("12");
+		dodiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		dodiciM.setBounds(222, 40, 43, 30);
+		MarzoGiorni.add(dodiciM);
+		
+		trediciM = new JButton("13");
+		trediciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trediciM.setBounds(275, 40, 43, 30);
+		MarzoGiorni.add(trediciM);
+		
+		quattordiciM = new JButton("14");
+		quattordiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		quattordiciM.setBounds(327, 40, 43, 30);
+		MarzoGiorni.add(quattordiciM);
+		
+		sediciM = new JButton("16");
+		sediciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		sediciM.setBounds(63, 80, 43, 30);
+		MarzoGiorni.add(sediciM);
+		
+		diciassetteM = new JButton("17");
+		diciassetteM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		diciassetteM.setBounds(116, 80, 43, 30);
+		MarzoGiorni.add(diciassetteM);
+		
+		diciottoM = new JButton("18");
+		diciottoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		diciottoM.setBounds(169, 80, 43, 30);
+		MarzoGiorni.add(diciottoM);
+		
+		diciannoveM = new JButton("19");
+		diciannoveM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		diciannoveM.setBounds(222, 80, 43, 30);
+		MarzoGiorni.add(diciannoveM);
+		
+		ventiM = new JButton("20");
+		ventiM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventiM.setBounds(275, 80, 43, 30);
+		MarzoGiorni.add(ventiM);
+		
+		ventunoM = new JButton("21");
+		ventunoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventunoM.setBounds(327, 80, 43, 30);
+		MarzoGiorni.add(ventunoM);
+		
+		ventitreM = new JButton("23");
+		ventitreM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventitreM.setBounds(63, 120, 43, 30);
+		MarzoGiorni.add(ventitreM);
+		
+		ventiquattroM = new JButton("24");
+		ventiquattroM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventiquattroM.setBounds(116, 120, 43, 30);
+		MarzoGiorni.add(ventiquattroM);
+		
+		venticinqueM = new JButton("25");
+		venticinqueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		venticinqueM.setBounds(169, 120, 43, 30);
+		MarzoGiorni.add(venticinqueM);
+		
+		ventiseiM = new JButton("26");
+		ventiseiM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventiseiM.setBounds(222, 120, 43, 30);
+		MarzoGiorni.add(ventiseiM);
+		
+		ventisetteM = new JButton("27");
+		ventisetteM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventisetteM.setBounds(275, 120, 43, 30);
+		MarzoGiorni.add(ventisetteM);
+		
+		ventottoM = new JButton("28");
+		ventottoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventottoM.setBounds(327, 120, 43, 30);
+		MarzoGiorni.add(ventottoM);
+		
+		trentaM = new JButton("30");
+		trentaM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trentaM.setBounds(63, 157, 43, 30);
+		MarzoGiorni.add(trentaM);
+		
+		trentunoM = new JButton("31");
+		trentunoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trentunoM.setBounds(116, 157, 43, 30);
+		MarzoGiorni.add(trentunoM);
+		BodyCalendario.add(MarzoGiorni, "name_81540142032100");
+		
+		AprileGiorni = new JLayeredPane();
+		BodyCalendario.add(AprileGiorni, "name_81540177227900");
+		
+		JButton quattro_1 = new JButton("4");
+		quattro_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		quattro_1.setBounds(169, 0, 43, 30);
+		AprileGiorni.add(quattro_1);
+		
+		JButton cinque_1 = new JButton("5");
+		cinque_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		cinque_1.setBounds(222, 0, 43, 30);
+		AprileGiorni.add(cinque_1);
+		
+		JButton sei_1 = new JButton("6");
+		sei_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		sei_1.setBounds(275, 0, 43, 30);
+		AprileGiorni.add(sei_1);
+		
+		JButton sette_1 = new JButton("7");
+		sette_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		sette_1.setBounds(327, 0, 43, 30);
+		AprileGiorni.add(sette_1);
+		
+		JButton otto_1 = new JButton("8");
+		otto_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		otto_1.setBounds(10, 40, 43, 30);
+		AprileGiorni.add(otto_1);
+		
+		JButton quindici_1 = new JButton("15");
+		quindici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		quindici_1.setBounds(10, 80, 43, 30);
+		AprileGiorni.add(quindici_1);
+		
+		JButton ventidue_1 = new JButton("22");
+		ventidue_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventidue_1.setBounds(10, 120, 43, 30);
+		AprileGiorni.add(ventidue_1);
+		
+		JButton ventinove_1 = new JButton("29");
+		ventinove_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventinove_1.setBounds(10, 157, 43, 30);
+		AprileGiorni.add(ventinove_1);
+		
+		JButton nove_1 = new JButton("9");
+		nove_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		nove_1.setBounds(63, 40, 43, 30);
+		AprileGiorni.add(nove_1);
+		
+		JButton dieci_1 = new JButton("10");
+		dieci_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		dieci_1.setBounds(116, 40, 43, 30);
+		AprileGiorni.add(dieci_1);
+		
+		JButton undici_1 = new JButton("11");
+		undici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		undici_1.setBounds(169, 40, 43, 30);
+		AprileGiorni.add(undici_1);
+		
+		JButton dodici_1 = new JButton("12");
+		dodici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		dodici_1.setBounds(222, 40, 43, 30);
+		AprileGiorni.add(dodici_1);
+		
+		JButton tredici_1 = new JButton("13");
+		tredici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		tredici_1.setBounds(275, 40, 43, 30);
+		AprileGiorni.add(tredici_1);
+		
+		JButton quattordci_1 = new JButton("14");
+		quattordci_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		quattordci_1.setBounds(327, 40, 43, 30);
+		AprileGiorni.add(quattordci_1);
+		
+		JButton sedici_1 = new JButton("16");
+		sedici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		sedici_1.setBounds(63, 80, 43, 30);
+		AprileGiorni.add(sedici_1);
+		
+		JButton diciassette_1 = new JButton("17");
+		diciassette_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		diciassette_1.setBounds(116, 80, 43, 30);
+		AprileGiorni.add(diciassette_1);
+		
+		JButton diciotto_1 = new JButton("18");
+		diciotto_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		diciotto_1.setBounds(169, 80, 43, 30);
+		AprileGiorni.add(diciotto_1);
+		
+		JButton diciannove_1 = new JButton("19");
+		diciannove_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		diciannove_1.setBounds(222, 80, 43, 30);
+		AprileGiorni.add(diciannove_1);
+		
+		JButton venti_1 = new JButton("20");
+		venti_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		venti_1.setBounds(275, 80, 43, 30);
+		AprileGiorni.add(venti_1);
+		
+		JButton ventuno_1 = new JButton("21");
+		ventuno_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventuno_1.setBounds(327, 80, 43, 30);
+		AprileGiorni.add(ventuno_1);
+		
+		JButton ventitre_1 = new JButton("23");
+		ventitre_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventitre_1.setBounds(63, 120, 43, 30);
+		AprileGiorni.add(ventitre_1);
+		
+		JButton ventiquattro_1 = new JButton("24");
+		ventiquattro_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventiquattro_1.setBounds(116, 120, 43, 30);
+		AprileGiorni.add(ventiquattro_1);
+		
+		JButton venticinque_1 = new JButton("25");
+		venticinque_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		venticinque_1.setBounds(169, 120, 43, 30);
+		AprileGiorni.add(venticinque_1);
+		
+		JButton ventisei_1 = new JButton("26");
+		ventisei_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventisei_1.setBounds(222, 120, 43, 30);
+		AprileGiorni.add(ventisei_1);
+		
+		JButton ventisette_1 = new JButton("27");
+		ventisette_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventisette_1.setBounds(275, 120, 43, 30);
+		AprileGiorni.add(ventisette_1);
+		
+		JButton ventotto_1 = new JButton("28");
+		ventotto_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		ventotto_1.setBounds(327, 120, 43, 30);
+		AprileGiorni.add(ventotto_1);
+		
+		JButton trenta_1 = new JButton("30");
+		trenta_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trenta_1.setBounds(63, 157, 43, 30);
+		AprileGiorni.add(trenta_1);
+		
+		JButton trentuno_1 = new JButton("31");
+		trentuno_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trentuno_1.setBounds(116, 157, 43, 30);
+		AprileGiorni.add(trentuno_1);
+		
+		JButton trentuno_1_1 = new JButton("31");
+		trentuno_1_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trentuno_1_1.setBounds(169, 157, 43, 30);
+		AprileGiorni.add(trentuno_1_1);
+		
+		JButton trentuno_1_2 = new JButton("31");
+		trentuno_1_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		trentuno_1_2.setBounds(222, 157, 43, 30);
+		AprileGiorni.add(trentuno_1_2);
+		Calendario.getContentPane().setLayout(groupLayout_1);
+		
 		JPanel ImmCittà = new JPanel();
 		ImmCittà.setBounds(37, 378, 183, 109);
 		PanelVolo.add(ImmCittà);
 		ImmCittà.setLayout(new CardLayout());
 		
-		JLabel ImmAmsterdam = new JLabel("");
+		ImmAmsterdam = new JLabel("");
 		ImmAmsterdam.setIcon(new ImageIcon(AMain.class.getResource("/apResources/AMSTERDAM.png")));
 		ImmCittà.add(ImmAmsterdam, "name_64600111307300");
 		
@@ -313,27 +893,14 @@ public class AMain extends JFrame {
 		ImmVerona.setIcon(new ImageIcon(AMain.class.getResource("/apResources/VERONA.png")));
 		ImmCittà.add(ImmVerona, "name_76194273968700");
 		
-		JLabel[] labelsCittà=new JLabel[]{ImmAmsterdam, ImmAtene, ImmBarcellona, ImmBerlino, ImmBruxelles, ImmCagliari, ImmCatania, ImmCracovia,
+		labelsCittà = new JLabel[]{ImmAmsterdam, ImmAtene, ImmBarcellona, ImmBerlino, ImmBruxelles, ImmCagliari, ImmCatania, ImmCracovia,
 											ImmDubai, ImmGenova, ImmLiverpool, ImmLondra, ImmTorino, ImmTrieste, ImmVenezia, ImmVerona};
 		
-		JComboBox<Tratta.città> SelectCittà = new JComboBox<Tratta.città>();
+		SelectCittà = new JComboBox<città>();
 		SelectCittà.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		SelectCittà.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				int selection = SelectCittà.getSelectedIndex();
-				int index=0;
-				for (JLabel label : labelsCittà) {
-					if(index==selection)
-			           label.setVisible(true);
-					else label.setVisible(false);
-					index++;
-				}
-			}
-		});
 		SelectCittà.setBounds(37, 320, 183, 21);
 		SelectCittà.setModel(new DefaultComboBoxModel<città>(città.values()));
 		PanelVolo.add(SelectCittà);
-		
 		
 		
 		JLabel OmbraHeaderVolo = new JLabel("");
@@ -358,331 +925,118 @@ public class AMain extends JFrame {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		tabbedPane.setBounds(317, 72, 836, 117);
+		tabbedPane.setBounds(317, 44, 836, 145);
 		PanelVolo.add(tabbedPane);
 		
 		JPanel PannelloAggiungi = new JPanel();
 		tabbedPane.addTab("Aggiungi", null, PannelloAggiungi, null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Data e ora di ingresso");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(10, 10, 195, 16);
-		lblNewLabel_1.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		JLabel LabelArrivo = new JLabel("Data e ora d'imbarco");
+		LabelArrivo.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelArrivo.setBounds(10, 10, 195, 16);
+		LabelArrivo.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(116, 32, 89, 19);
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
+		JComboBox<String> BoxOrari = new JComboBox<String>();
+		BoxOrari.setBounds(116, 32, 89, 19);
+		BoxOrari.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
 		
-		JButton SelectData = new JButton("Sleziona Data");
-		SelectData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		SelectData = new JButton("Sleziona Data");
 		SelectData.setBounds(10, 57, 96, 21);
 		
-		JInternalFrame Calendario = new JInternalFrame("Calendario");
-		Calendario.setClosable(true);
-		Calendario.setBounds(315, 208, 393, 317);
-		PanelVolo.add(Calendario);
-		
-		Panel HeaderCalendario = new Panel();
-		HeaderCalendario.setBackground(new Color(13, 62, 117));
-		
-		JPanel BodyCalendario = new JPanel();
-		GroupLayout groupLayout_1 = new GroupLayout(Calendario.getContentPane());
-		groupLayout_1.setHorizontalGroup(
-			groupLayout_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(HeaderCalendario, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				.addComponent(BodyCalendario, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-		);
-		groupLayout_1.setVerticalGroup(
-			groupLayout_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout_1.createSequentialGroup()
-					.addComponent(HeaderCalendario, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(BodyCalendario, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
-		);
-		
-		JLayeredPane layeredPane_1 = new JLayeredPane();
-		GroupLayout gl_HeaderCalendario = new GroupLayout(HeaderCalendario);
-		gl_HeaderCalendario.setHorizontalGroup(
-			gl_HeaderCalendario.createParallelGroup(Alignment.LEADING)
-				.addComponent(layeredPane_1, GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
-		);
-		gl_HeaderCalendario.setVerticalGroup(
-			gl_HeaderCalendario.createParallelGroup(Alignment.LEADING)
-				.addComponent(layeredPane_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-		);
-		
-		Label Marzo = new Label("Marzo");
-		Marzo.setForeground(Color.WHITE);
-		Marzo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 22));
-		Marzo.setAlignment(Label.CENTER);
-		Marzo.setBounds(0, 0, 381, 44);
-		layeredPane_1.add(Marzo);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBounds(0, 46, 381, 30);
-		layeredPane_1.add(panel_6);
-		
-		JLabel Lunedì = new JLabel("Lu");
-		Lunedì.setHorizontalAlignment(SwingConstants.CENTER);
-		Lunedì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		
-		JLabel Martedì = new JLabel("Ma");
-		Martedì.setHorizontalAlignment(SwingConstants.CENTER);
-		Martedì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		
-		JLabel Mercoledì = new JLabel("Me");
-		Mercoledì.setHorizontalAlignment(SwingConstants.CENTER);
-		Mercoledì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		
-		JLabel Giovedì = new JLabel("Gi");
-		Giovedì.setHorizontalAlignment(SwingConstants.CENTER);
-		Giovedì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		
-		JLabel Venerdì = new JLabel("Ve");
-		Venerdì.setHorizontalAlignment(SwingConstants.CENTER);
-		Venerdì.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		
-		JLabel Sabato = new JLabel("Sa");
-		Sabato.setHorizontalAlignment(SwingConstants.CENTER);
-		Sabato.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		
-		JLabel Domenica = new JLabel("Do");
-		Domenica.setHorizontalAlignment(SwingConstants.CENTER);
-		Domenica.setFont(new Font("Lucida Bright", Font.BOLD, 14));
-		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
-		gl_panel_6.setHorizontalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 381, Short.MAX_VALUE)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Lunedì, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(Martedì, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(Mercoledì, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(Giovedì, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(Venerdì, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(Sabato, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(Domenica, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		gl_panel_6.setVerticalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 30, Short.MAX_VALUE)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-						.addComponent(Lunedì, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-						.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
-							.addComponent(Sabato, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addComponent(Domenica, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-						.addComponent(Venerdì, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Giovedì, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Mercoledì, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Martedì, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		panel_6.setLayout(gl_panel_6);
-		HeaderCalendario.setLayout(gl_HeaderCalendario);
-		
-		JLayeredPane MarzoGiorni = new JLayeredPane();
-		
-		JButton uno = new JButton("1");
-		uno.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno.setBounds(10, 0, 43, 30);
-		MarzoGiorni.add(uno);
-		
-		JButton due = new JButton("2");
-		due.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		due.setBounds(63, 0, 43, 30);
-		MarzoGiorni.add(due);
-		
-		JButton tre = new JButton("3");
-		tre.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		tre.setBounds(116, 0, 43, 30);
-		MarzoGiorni.add(tre);
-		
-		JButton dieci_31_2 = new JButton("4");
-		dieci_31_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dieci_31_2.setBounds(169, 0, 43, 30);
-		MarzoGiorni.add(dieci_31_2);
-		
-		JButton dieci_31_3 = new JButton("5");
-		dieci_31_3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dieci_31_3.setBounds(222, 0, 43, 30);
-		MarzoGiorni.add(dieci_31_3);
-		
-		JButton dieci_31_4 = new JButton("6");
-		dieci_31_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dieci_31_4.setBounds(275, 0, 43, 30);
-		MarzoGiorni.add(dieci_31_4);
-		
-		JButton dieci_31_5 = new JButton("7");
-		dieci_31_5.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dieci_31_5.setBounds(327, 0, 43, 30);
-		MarzoGiorni.add(dieci_31_5);
-		
-		JButton uno_1 = new JButton("8");
-		uno_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_1.setBounds(10, 40, 43, 30);
-		MarzoGiorni.add(uno_1);
-		
-		JButton uno_2 = new JButton("15");
-		uno_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_2.setBounds(10, 80, 43, 30);
-		MarzoGiorni.add(uno_2);
-		
-		JButton uno_3 = new JButton("22");
-		uno_3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_3.setBounds(10, 120, 43, 30);
-		MarzoGiorni.add(uno_3);
-		
-		JButton uno_4 = new JButton("29");
-		uno_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_4.setBounds(10, 157, 43, 30);
-		MarzoGiorni.add(uno_4);
-		
-		JButton uno_5 = new JButton("9");
-		uno_5.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_5.setBounds(63, 40, 43, 30);
-		MarzoGiorni.add(uno_5);
-		
-		JButton uno_6 = new JButton("10");
-		uno_6.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_6.setBounds(116, 40, 43, 30);
-		MarzoGiorni.add(uno_6);
-		
-		JButton uno_7 = new JButton("11");
-		uno_7.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_7.setBounds(169, 40, 43, 30);
-		MarzoGiorni.add(uno_7);
-		
-		JButton uno_8 = new JButton("12");
-		uno_8.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_8.setBounds(222, 40, 43, 30);
-		MarzoGiorni.add(uno_8);
-		
-		JButton uno_9 = new JButton("13");
-		uno_9.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_9.setBounds(275, 40, 43, 30);
-		MarzoGiorni.add(uno_9);
-		
-		JButton uno_10 = new JButton("14");
-		uno_10.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_10.setBounds(327, 40, 43, 30);
-		MarzoGiorni.add(uno_10);
-		
-		JButton uno_11 = new JButton("16");
-		uno_11.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_11.setBounds(63, 80, 43, 30);
-		MarzoGiorni.add(uno_11);
-		
-		JButton uno_12 = new JButton("17");
-		uno_12.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_12.setBounds(116, 80, 43, 30);
-		MarzoGiorni.add(uno_12);
-		
-		JButton uno_13 = new JButton("18");
-		uno_13.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_13.setBounds(169, 80, 43, 30);
-		MarzoGiorni.add(uno_13);
-		
-		JButton uno_14 = new JButton("19");
-		uno_14.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_14.setBounds(222, 80, 43, 30);
-		MarzoGiorni.add(uno_14);
-		
-		JButton uno_15 = new JButton("20");
-		uno_15.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_15.setBounds(275, 80, 43, 30);
-		MarzoGiorni.add(uno_15);
-		
-		JButton uno_16 = new JButton("21");
-		uno_16.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_16.setBounds(327, 80, 43, 30);
-		MarzoGiorni.add(uno_16);
-		
-		JButton uno_17 = new JButton("23");
-		uno_17.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_17.setBounds(63, 120, 43, 30);
-		MarzoGiorni.add(uno_17);
-		
-		JButton uno_18 = new JButton("24");
-		uno_18.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_18.setBounds(116, 120, 43, 30);
-		MarzoGiorni.add(uno_18);
-		
-		JButton uno_19 = new JButton("25");
-		uno_19.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_19.setBounds(169, 120, 43, 30);
-		MarzoGiorni.add(uno_19);
-		
-		JButton uno_20 = new JButton("26");
-		uno_20.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_20.setBounds(222, 120, 43, 30);
-		MarzoGiorni.add(uno_20);
-		
-		JButton uno_21 = new JButton("27");
-		uno_21.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_21.setBounds(275, 120, 43, 30);
-		MarzoGiorni.add(uno_21);
-		
-		JButton uno_22 = new JButton("28");
-		uno_22.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_22.setBounds(327, 120, 43, 30);
-		MarzoGiorni.add(uno_22);
-		
-		JButton uno_23 = new JButton("30");
-		uno_23.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_23.setBounds(63, 157, 43, 30);
-		MarzoGiorni.add(uno_23);
-		
-		JButton uno_24 = new JButton("31");
-		uno_24.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		uno_24.setBounds(116, 157, 43, 30);
-		MarzoGiorni.add(uno_24);
-		GroupLayout gl_BodyCalendario = new GroupLayout(BodyCalendario);
-		gl_BodyCalendario.setHorizontalGroup(
-			gl_BodyCalendario.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_BodyCalendario.createSequentialGroup()
-					.addComponent(MarzoGiorni, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_BodyCalendario.setVerticalGroup(
-			gl_BodyCalendario.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_BodyCalendario.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(MarzoGiorni, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		BodyCalendario.setLayout(gl_BodyCalendario);
-		Calendario.getContentPane().setLayout(groupLayout_1);
-		Calendario.setVisible(true);
-		Calendario.moveToFront();
-		
-		JTextField FieldData = new JTextField();
-		FieldData.setBounds(10, 32, 96, 19);
+		FieldData = new JTextField();
+		FieldData.setHorizontalAlignment(SwingConstants.CENTER);
 		FieldData.setEditable(false);
+		FieldData.setBounds(10, 32, 96, 19);
 		FieldData.setColumns(10);
 		
 		PannelloAggiungi.setLayout(null);
-		PannelloAggiungi.add(lblNewLabel_1);
+		PannelloAggiungi.add(LabelArrivo);
 		PannelloAggiungi.add(SelectData);
 		PannelloAggiungi.add(FieldData);
-		PannelloAggiungi.add(comboBox);
+		PannelloAggiungi.add(BoxOrari);
+		
+		JLabel LabelPartenza = new JLabel("Partenza:");
+		LabelPartenza.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelPartenza.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		LabelPartenza.setBounds(274, 13, 152, 16);
+		PannelloAggiungi.add(LabelPartenza);
+		
+		JLabel LabelDestinazione = new JLabel("Destinazione:");
+		LabelDestinazione.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelDestinazione.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		LabelDestinazione.setBounds(550, 13, 152, 16);
+		PannelloAggiungi.add(LabelDestinazione);
+		
+		BoxPartenza = new JComboBox<String>();
+		BoxPartenza.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
+		BoxPartenza.setBounds(274, 28, 152, 26);
+		PannelloAggiungi.add(BoxPartenza);
+		
+		BoxDestinazione = new JComboBox<String>();
+		BoxDestinazione.setModel(new DefaultComboBoxModel(città.values()));
+		BoxDestinazione.setBounds(550, 28, 152, 26);
+		PannelloAggiungi.add(BoxDestinazione);
+		
+		JButton PulsanteConferma = new JButton("Ok");
+		PulsanteConferma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Tratta nuovaTratta = new Tratta();
+			}
+		});
+		PulsanteConferma.setBounds(768, 66, 53, 40);
+		PannelloAggiungi.add(PulsanteConferma);
+		
+		PulsanteReverse = new JButton("");
+		PulsanteReverse.setOpaque(false);
+		PulsanteReverse.setFocusable(false);
+		PulsanteReverse.setContentAreaFilled(false);
+		PulsanteReverse.setBorderPainted(false);
+		PulsanteReverse.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconReverse.png")));
+		PulsanteReverse.setBounds(460, 10, 66, 68);
+		PannelloAggiungi.add(PulsanteReverse);
+		
+		LabelIDAereo = new JLabel("ID Aereo:");
+		LabelIDAereo.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		LabelIDAereo.setBounds(275, 77, 81, 16);
+		PannelloAggiungi.add(LabelIDAereo);
+		
+		JComboBox<String>BoxIDAereo = new JComboBox<String>();
+		BoxIDAereo.setModel(new DefaultComboBoxModel(IDAereo.values()));
+		BoxIDAereo.setBounds(345, 76, 81, 17);
+		PannelloAggiungi.add(BoxIDAereo);
 		
 		PannelloRimuovi = new JPanel();
 		tabbedPane.addTab("Rimuovi", null, PannelloRimuovi, null);
 		
 		PannelloRischedula = new JPanel();
 		tabbedPane.addTab("Rischedula", null, PannelloRischedula, null);
+		
+		Panel AreaVoli = new Panel();
+		AreaVoli.setBackground(Color.WHITE);
+		AreaVoli.setBounds(317, 215, 836, 282);
+		PanelVolo.add(AreaVoli);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		
+		JLayeredPane PannelliVoli = new JLayeredPane();
+		GroupLayout gl_AreaVoli = new GroupLayout(AreaVoli);
+		gl_AreaVoli.setHorizontalGroup(
+			gl_AreaVoli.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_AreaVoli.createSequentialGroup()
+					.addComponent(PannelliVoli, GroupLayout.PREFERRED_SIZE, 814, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_AreaVoli.setVerticalGroup(
+			gl_AreaVoli.createParallelGroup(Alignment.LEADING)
+				.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, 282, GroupLayout.PREFERRED_SIZE)
+				.addComponent(PannelliVoli, GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+		);
+		PannelliVoli.setLayout(new CardLayout(0, 0));
+		
+		PannelloVoliAmsterdam = new JLayeredPane();
+		PannelliVoli.add(PannelloVoliAmsterdam, "name_91597616460700");
+		AreaVoli.setLayout(gl_AreaVoli);
 		
 		
 		
@@ -889,7 +1243,39 @@ public class AMain extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Main.setVisible(true);
 				Volo.setVisible(false);
-				
+				Calendario.setVisible(false);
+			}
+		});
+		
+		SelectCittà.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int selection = SelectCittà.getSelectedIndex();
+				int index=0;
+				for (JLabel label : labelsCittà) {
+					if(index==selection)
+			           label.setVisible(true);
+					else label.setVisible(false);
+					index++;
+				}
+			}
+		});
+		
+		SelectData.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Calendario.setVisible(true);
+			}
+		});
+		
+		PulsanteReverse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if ("Napoli".equals(BoxPartenza.getSelectedItem())){
+					BoxDestinazione.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
+					BoxPartenza.setModel(new DefaultComboBoxModel(città.values()));
+				}
+				else {
+					BoxPartenza.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
+					BoxDestinazione.setModel(new DefaultComboBoxModel(città.values()));
+				}
 			}
 		});
 		
@@ -901,5 +1287,242 @@ public class AMain extends JFrame {
 			}
 		});
 		
+	
+		//Eventi nel calendario
+		PulsanteAvanti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AprileGiorni.setVisible(true);
+				AprileHeader.setVisible(true);
+				MarzoHeader.setVisible(false);
+				MarzoGiorni.setVisible(false);
+			}
+		});
+	
+		PulsanteIndietro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MarzoHeader.setVisible(true);
+				MarzoGiorni.setVisible(true);
+				AprileGiorni.setVisible(false);
+				AprileHeader.setVisible(false);		
+			}
+		});
+	
+		//Giorni Marzo
+		unoM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("01/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		dueM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("02/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		treM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("03/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		quattroM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("04/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		cinqueM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("05/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		seiM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("06/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		setteM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("07/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ottoM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("08/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		noveM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("09/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		dieciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("10/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		undiciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("11/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		dodiciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("12/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		trediciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("13/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		quattordiciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("14/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		quindiciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("15/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		sediciM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("16/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		diciassetteM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("17/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		diciottoM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("18/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		diciannoveM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("19/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventiM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("20/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventunoM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("21/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventidueM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("22/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventitreM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("23/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventiquattroM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("24/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		venticinqueM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("25/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventiseiM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("26/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventisetteM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("27/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventottoM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("28/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		ventinoveM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("29/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		trentaM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("30/03/21");
+				Calendario.setVisible(false);
+			}
+		});
+	
+		trentunoM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FieldData.setText("31/03/21");
+				Calendario.setVisible(false);
+			}
+		});
 	}
 }
