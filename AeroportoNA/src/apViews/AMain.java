@@ -82,12 +82,8 @@ public class AMain extends JFrame {
 	private JPanel PannelloRimuovi;
 	private JPanel PannelloRischedula;
 	private JButton PulsanteHomeGate;
-	private JButton PulsanteAvanti;
 	private JLayeredPane MarzoGiorni;
-	private JLayeredPane AprileGiorni;
-	private JLayeredPane AprileHeader;
 	private JLayeredPane MarzoHeader;
-	private JButton PulsanteIndietro;
 	private JTextField FieldData;
 	private JInternalFrame Calendario;
 	private JButton SelectData;
@@ -210,54 +206,23 @@ public class AMain extends JFrame {
 		Tupolev;
 	};
 	
-	//Launch the application
-	public static void main(String[] args) {
+	Controller theController;
+	
+	public AMain(Controller c) {
+		theController = c;
+		
 		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Throwable e) {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AMain frame = new AMain();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public AMain() {
 		
-		initValues();
-		initComponents();
-		createEvents();
-		
-	}
-	
-	//Questo metodo contiene il codice per inizializzare variabili
-	private void initValues() {
-		Compagnia[] compagnie = new Compagnia[5];
-		compagnie[0] = new Compagnia("EasyJet", "www.easyjet.com");
-		compagnie[1] = new Compagnia("Ryanair", "www.ryanair.com");
-		compagnie[2] = new Compagnia("Eurowings", "www.eurowings.com");
-		compagnie[3] = new Compagnia("Delta airlines", "www.delta.com");
-		compagnie[4] = new Compagnia("Alitalia", "www.alitalia.com");
-		Aereo[] aerei = new Aereo[100];
-		aerei[0] = new Aereo(IDAereo.A300F, Modello.Airbus, compagnie[0]);
-		Volo[] voli = new Volo[100];
-		voli[0] = new Volo();
-		Tratte = new Tratta[100];
-		//Tratte[0] = new Tratta();
-		
-	}
-	
-	//Questo metodo contiene il codice per creare e inizializzare componenti 
-	private void initComponents() {
-		
-
 		setTitle("Aeroporto di Napoli - Federico II");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -287,6 +252,11 @@ public class AMain extends JFrame {
 		PulsanteInfo.setFocusable(false);
 		PulsanteInfo.setContentAreaFilled(false);
 		PulsanteInfo.setBorderPainted(false);
+		PulsanteInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Main, Info);
+			}
+		});
 		Main.add(PulsanteInfo);
 		
 		
@@ -297,6 +267,11 @@ public class AMain extends JFrame {
 		PulsanteGate.setFocusable(false);
 		PulsanteGate.setContentAreaFilled(false);
 		PulsanteGate.setBorderPainted(false);
+		PulsanteGate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Main, Gate);
+			}
+		});
 		Main.add(PulsanteGate);
 		
 		
@@ -307,6 +282,11 @@ public class AMain extends JFrame {
 		PulsanteAereo.setContentAreaFilled(false);
 		PulsanteAereo.setBorderPainted(false);
 		PulsanteAereo.setBounds(543, 176, 92, 103);
+		PulsanteAereo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Main, Volo);
+			}
+		});
 		Main.add(PulsanteAereo);
 		
 		
@@ -351,6 +331,12 @@ public class AMain extends JFrame {
 		ShowMappa.setFocusable(false);
 		ShowMappa.setContentAreaFilled(false);
 		ShowMappa.setBorderPainted(false);
+		ShowMappa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Main, Mappa);
+			}
+		});		
+
 		Main.add(ShowMappa);
 		
 		
@@ -380,7 +366,7 @@ public class AMain extends JFrame {
 		
 		Calendario = new JInternalFrame("Calendario");
 		Calendario.setClosable(true);
-		Calendario.setBounds(-82, 171, 393, 326);
+		Calendario.setBounds(317, 199, 393, 326);
 		PanelVolo.add(Calendario);
 		
 		Panel HeaderCalendario = new Panel();
@@ -476,15 +462,6 @@ public class AMain extends JFrame {
 		MarzoHeader = new JLayeredPane();
 		HeaderCalendario.add(MarzoHeader, "name_80105300536100");
 		
-		PulsanteAvanti = new JButton("");
-		PulsanteAvanti.setIcon(new ImageIcon(AMain.class.getResource("/apResources/FrecciaDestra.png")));
-		PulsanteAvanti.setBounds(334, 0, 47, 39);
-		PulsanteAvanti.setOpaque(false);
-		PulsanteAvanti.setFocusable(false);
-		PulsanteAvanti.setContentAreaFilled(false);
-		PulsanteAvanti.setBorderPainted(false);
-		MarzoHeader.add(PulsanteAvanti);
-		
 		JLabel LabelMarzo = new JLabel("MARZO");
 		LabelMarzo.setFont(new Font("Lucida Bright", Font.BOLD, 20));
 		LabelMarzo.setForeground(Color.WHITE);
@@ -492,336 +469,19 @@ public class AMain extends JFrame {
 		LabelMarzo.setBounds(0, 0, 381, 39);
 		MarzoHeader.add(LabelMarzo);
 		
-		AprileHeader = new JLayeredPane();
-		HeaderCalendario.add(AprileHeader, "name_81101437069600");
-		
-		PulsanteIndietro = new JButton("");
-		PulsanteIndietro.setIcon(new ImageIcon(AMain.class.getResource("/apResources/FrecciaSinistra.png")));
-		PulsanteIndietro.setOpaque(false);
-		PulsanteIndietro.setFocusable(false);
-		PulsanteIndietro.setContentAreaFilled(false);
-		PulsanteIndietro.setBorderPainted(false);
-		PulsanteIndietro.setBounds(0, 0, 47, 39);
-		AprileHeader.add(PulsanteIndietro);
-		
-		JLabel LabelAprile = new JLabel("APRILE");
-		LabelAprile.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelAprile.setForeground(Color.WHITE);
-		LabelAprile.setFont(new Font("Lucida Bright", Font.BOLD, 20));
-		LabelAprile.setBounds(0, 0, 381, 39);
-		AprileHeader.add(LabelAprile);
+		FieldData = new JTextField();
+		FieldData.setHorizontalAlignment(SwingConstants.CENTER);
+		FieldData.setEditable(false);
+		FieldData.setBounds(10, 32, 96, 19);
+		FieldData.setColumns(10);
 		BodyCalendario.setLayout(new CardLayout(0, 0));
 		
 		MarzoGiorni = new JLayeredPane();
 		
-		unoM = new JButton("1");
-		unoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		unoM.setBounds(10, 0, 43, 30);
-		MarzoGiorni.add(unoM);
-		
-		dueM = new JButton("2");
-		dueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dueM.setBounds(63, 0, 43, 30);
-		MarzoGiorni.add(dueM);
-		
-		treM = new JButton("3");
-		treM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		treM.setBounds(116, 0, 43, 30);
-		MarzoGiorni.add(treM);
-		
-		quattroM = new JButton("4");
-		quattroM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		quattroM.setBounds(169, 0, 43, 30);
-		MarzoGiorni.add(quattroM);
-		
-		cinqueM = new JButton("5");
-		cinqueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		cinqueM.setBounds(222, 0, 43, 30);
-		MarzoGiorni.add(cinqueM);
-		
-		seiM = new JButton("6");
-		seiM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		seiM.setBounds(275, 0, 43, 30);
-		MarzoGiorni.add(seiM);
-		
-		setteM = new JButton("7");
-		setteM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		setteM.setBounds(327, 0, 43, 30);
-		MarzoGiorni.add(setteM);
-		
-		ottoM = new JButton("8");
-		ottoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ottoM.setBounds(10, 40, 43, 30);
-		MarzoGiorni.add(ottoM);
-		
-		quindiciM = new JButton("15");
-		quindiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		quindiciM.setBounds(10, 80, 43, 30);
-		MarzoGiorni.add(quindiciM);
-		
-		ventidueM = new JButton("22");
-		ventidueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventidueM.setBounds(10, 120, 43, 30);
-		MarzoGiorni.add(ventidueM);
-		
-		ventinoveM = new JButton("29");
-		ventinoveM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventinoveM.setBounds(10, 157, 43, 30);
-		MarzoGiorni.add(ventinoveM);
-		
-		noveM = new JButton("9");
-		noveM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		noveM.setBounds(63, 40, 43, 30);
-		MarzoGiorni.add(noveM);
-		
-		dieciM = new JButton("10");
-		dieciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dieciM.setBounds(116, 40, 43, 30);
-		MarzoGiorni.add(dieciM);
-		
-		undiciM = new JButton("11");
-		undiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		undiciM.setBounds(169, 40, 43, 30);
-		MarzoGiorni.add(undiciM);
-		
-		dodiciM = new JButton("12");
-		dodiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dodiciM.setBounds(222, 40, 43, 30);
-		MarzoGiorni.add(dodiciM);
-		
-		trediciM = new JButton("13");
-		trediciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trediciM.setBounds(275, 40, 43, 30);
-		MarzoGiorni.add(trediciM);
-		
-		quattordiciM = new JButton("14");
-		quattordiciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		quattordiciM.setBounds(327, 40, 43, 30);
-		MarzoGiorni.add(quattordiciM);
-		
-		sediciM = new JButton("16");
-		sediciM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		sediciM.setBounds(63, 80, 43, 30);
-		MarzoGiorni.add(sediciM);
-		
-		diciassetteM = new JButton("17");
-		diciassetteM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		diciassetteM.setBounds(116, 80, 43, 30);
-		MarzoGiorni.add(diciassetteM);
-		
-		diciottoM = new JButton("18");
-		diciottoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		diciottoM.setBounds(169, 80, 43, 30);
-		MarzoGiorni.add(diciottoM);
-		
-		diciannoveM = new JButton("19");
-		diciannoveM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		diciannoveM.setBounds(222, 80, 43, 30);
-		MarzoGiorni.add(diciannoveM);
-		
-		ventiM = new JButton("20");
-		ventiM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventiM.setBounds(275, 80, 43, 30);
-		MarzoGiorni.add(ventiM);
-		
-		ventunoM = new JButton("21");
-		ventunoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventunoM.setBounds(327, 80, 43, 30);
-		MarzoGiorni.add(ventunoM);
-		
-		ventitreM = new JButton("23");
-		ventitreM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventitreM.setBounds(63, 120, 43, 30);
-		MarzoGiorni.add(ventitreM);
-		
-		ventiquattroM = new JButton("24");
-		ventiquattroM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventiquattroM.setBounds(116, 120, 43, 30);
-		MarzoGiorni.add(ventiquattroM);
-		
-		venticinqueM = new JButton("25");
-		venticinqueM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		venticinqueM.setBounds(169, 120, 43, 30);
-		MarzoGiorni.add(venticinqueM);
-		
-		ventiseiM = new JButton("26");
-		ventiseiM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventiseiM.setBounds(222, 120, 43, 30);
-		MarzoGiorni.add(ventiseiM);
-		
-		ventisetteM = new JButton("27");
-		ventisetteM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventisetteM.setBounds(275, 120, 43, 30);
-		MarzoGiorni.add(ventisetteM);
-		
-		ventottoM = new JButton("28");
-		ventottoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventottoM.setBounds(327, 120, 43, 30);
-		MarzoGiorni.add(ventottoM);
-		
-		trentaM = new JButton("30");
-		trentaM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trentaM.setBounds(63, 157, 43, 30);
-		MarzoGiorni.add(trentaM);
-		
-		trentunoM = new JButton("31");
-		trentunoM.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trentunoM.setBounds(116, 157, 43, 30);
-		MarzoGiorni.add(trentunoM);
 		BodyCalendario.add(MarzoGiorni, "name_81540142032100");
 		
-		AprileGiorni = new JLayeredPane();
-		BodyCalendario.add(AprileGiorni, "name_81540177227900");
-		
-		JButton quattro_1 = new JButton("4");
-		quattro_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		quattro_1.setBounds(169, 0, 43, 30);
-		AprileGiorni.add(quattro_1);
-		
-		JButton cinque_1 = new JButton("5");
-		cinque_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		cinque_1.setBounds(222, 0, 43, 30);
-		AprileGiorni.add(cinque_1);
-		
-		JButton sei_1 = new JButton("6");
-		sei_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		sei_1.setBounds(275, 0, 43, 30);
-		AprileGiorni.add(sei_1);
-		
-		JButton sette_1 = new JButton("7");
-		sette_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		sette_1.setBounds(327, 0, 43, 30);
-		AprileGiorni.add(sette_1);
-		
-		JButton otto_1 = new JButton("8");
-		otto_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		otto_1.setBounds(10, 40, 43, 30);
-		AprileGiorni.add(otto_1);
-		
-		JButton quindici_1 = new JButton("15");
-		quindici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		quindici_1.setBounds(10, 80, 43, 30);
-		AprileGiorni.add(quindici_1);
-		
-		JButton ventidue_1 = new JButton("22");
-		ventidue_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventidue_1.setBounds(10, 120, 43, 30);
-		AprileGiorni.add(ventidue_1);
-		
-		JButton ventinove_1 = new JButton("29");
-		ventinove_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventinove_1.setBounds(10, 157, 43, 30);
-		AprileGiorni.add(ventinove_1);
-		
-		JButton nove_1 = new JButton("9");
-		nove_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		nove_1.setBounds(63, 40, 43, 30);
-		AprileGiorni.add(nove_1);
-		
-		JButton dieci_1 = new JButton("10");
-		dieci_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dieci_1.setBounds(116, 40, 43, 30);
-		AprileGiorni.add(dieci_1);
-		
-		JButton undici_1 = new JButton("11");
-		undici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		undici_1.setBounds(169, 40, 43, 30);
-		AprileGiorni.add(undici_1);
-		
-		JButton dodici_1 = new JButton("12");
-		dodici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		dodici_1.setBounds(222, 40, 43, 30);
-		AprileGiorni.add(dodici_1);
-		
-		JButton tredici_1 = new JButton("13");
-		tredici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		tredici_1.setBounds(275, 40, 43, 30);
-		AprileGiorni.add(tredici_1);
-		
-		JButton quattordci_1 = new JButton("14");
-		quattordci_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		quattordci_1.setBounds(327, 40, 43, 30);
-		AprileGiorni.add(quattordci_1);
-		
-		JButton sedici_1 = new JButton("16");
-		sedici_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		sedici_1.setBounds(63, 80, 43, 30);
-		AprileGiorni.add(sedici_1);
-		
-		JButton diciassette_1 = new JButton("17");
-		diciassette_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		diciassette_1.setBounds(116, 80, 43, 30);
-		AprileGiorni.add(diciassette_1);
-		
-		JButton diciotto_1 = new JButton("18");
-		diciotto_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		diciotto_1.setBounds(169, 80, 43, 30);
-		AprileGiorni.add(diciotto_1);
-		
-		JButton diciannove_1 = new JButton("19");
-		diciannove_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		diciannove_1.setBounds(222, 80, 43, 30);
-		AprileGiorni.add(diciannove_1);
-		
-		JButton venti_1 = new JButton("20");
-		venti_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		venti_1.setBounds(275, 80, 43, 30);
-		AprileGiorni.add(venti_1);
-		
-		JButton ventuno_1 = new JButton("21");
-		ventuno_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventuno_1.setBounds(327, 80, 43, 30);
-		AprileGiorni.add(ventuno_1);
-		
-		JButton ventitre_1 = new JButton("23");
-		ventitre_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventitre_1.setBounds(63, 120, 43, 30);
-		AprileGiorni.add(ventitre_1);
-		
-		JButton ventiquattro_1 = new JButton("24");
-		ventiquattro_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventiquattro_1.setBounds(116, 120, 43, 30);
-		AprileGiorni.add(ventiquattro_1);
-		
-		JButton venticinque_1 = new JButton("25");
-		venticinque_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		venticinque_1.setBounds(169, 120, 43, 30);
-		AprileGiorni.add(venticinque_1);
-		
-		JButton ventisei_1 = new JButton("26");
-		ventisei_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventisei_1.setBounds(222, 120, 43, 30);
-		AprileGiorni.add(ventisei_1);
-		
-		JButton ventisette_1 = new JButton("27");
-		ventisette_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventisette_1.setBounds(275, 120, 43, 30);
-		AprileGiorni.add(ventisette_1);
-		
-		JButton ventotto_1 = new JButton("28");
-		ventotto_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		ventotto_1.setBounds(327, 120, 43, 30);
-		AprileGiorni.add(ventotto_1);
-		
-		JButton trenta_1 = new JButton("30");
-		trenta_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trenta_1.setBounds(63, 157, 43, 30);
-		AprileGiorni.add(trenta_1);
-		
-		JButton trentuno_1 = new JButton("31");
-		trentuno_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trentuno_1.setBounds(116, 157, 43, 30);
-		AprileGiorni.add(trentuno_1);
-		
-		JButton trentuno_1_1 = new JButton("31");
-		trentuno_1_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trentuno_1_1.setBounds(169, 157, 43, 30);
-		AprileGiorni.add(trentuno_1_1);
-		
-		JButton trentuno_1_2 = new JButton("31");
-		trentuno_1_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		trentuno_1_2.setBounds(222, 157, 43, 30);
-		AprileGiorni.add(trentuno_1_2);
+		JButton[] pulsantiMesi = new JButton[32];
+		theController.creaPulsantiCalendarioMarzo(pulsantiMesi, MarzoGiorni, FieldData, Calendario);
 		Calendario.getContentPane().setLayout(groupLayout_1);
 		
 		JPanel ImmCittà = new JPanel();
@@ -900,6 +560,18 @@ public class AMain extends JFrame {
 		SelectCittà.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 		SelectCittà.setBounds(37, 320, 183, 21);
 		SelectCittà.setModel(new DefaultComboBoxModel<città>(città.values()));
+		SelectCittà.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int selection = SelectCittà.getSelectedIndex();
+				int index=0;
+				for (JLabel label : labelsCittà) {
+					if(index==selection)
+			           label.setVisible(true);
+					else label.setVisible(false);
+					index++;
+				}
+			}
+		});
 		PanelVolo.add(SelectCittà);
 		
 		
@@ -915,6 +587,12 @@ public class AMain extends JFrame {
 		PulsanteHomeVolo.setFocusable(false);
 		PulsanteHomeVolo.setContentAreaFilled(false);
 		PulsanteHomeVolo.setBorderPainted(false);
+		PulsanteHomeVolo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Volo, Main);
+				Calendario.setVisible(false);
+			}
+		});
 		PanelVolo.add(PulsanteHomeVolo); 
         
 		JLabel Biglietto = new JLabel("New label");
@@ -942,12 +620,13 @@ public class AMain extends JFrame {
 		
 		SelectData = new JButton("Sleziona Data");
 		SelectData.setBounds(10, 57, 96, 21);
+		SelectData.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Calendario.setVisible(true);
+			}
+		});
 		
-		FieldData = new JTextField();
-		FieldData.setHorizontalAlignment(SwingConstants.CENTER);
-		FieldData.setEditable(false);
-		FieldData.setBounds(10, 32, 96, 19);
-		FieldData.setColumns(10);
+		
 		
 		PannelloAggiungi.setLayout(null);
 		PannelloAggiungi.add(LabelArrivo);
@@ -993,6 +672,18 @@ public class AMain extends JFrame {
 		PulsanteReverse.setBorderPainted(false);
 		PulsanteReverse.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconReverse.png")));
 		PulsanteReverse.setBounds(460, 10, 66, 68);
+		PulsanteReverse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if ("Napoli".equals(BoxPartenza.getSelectedItem())){
+					BoxDestinazione.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
+					BoxPartenza.setModel(new DefaultComboBoxModel(città.values()));
+				}
+				else {
+					BoxPartenza.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
+					BoxDestinazione.setModel(new DefaultComboBoxModel(città.values()));
+				}
+			}
+		});
 		PannelloAggiungi.add(PulsanteReverse);
 		
 		LabelIDAereo = new JLabel("ID Aereo:");
@@ -1193,336 +884,478 @@ public class AMain extends JFrame {
 		PulsanteHomeGate.setContentAreaFilled(false);
 		PulsanteHomeGate.setBorderPainted(false);
 		PulsanteHomeGate.setBounds(10, 10, 63, 51);
-		PanelGate.add(PulsanteHomeGate);
-		
-		
-		Info = new JLayeredPane();
-		BodyContainer.add(Info, "name_7222503502800");
-		
-		
-		Mappa = new JLayeredPane();
-		BodyContainer.add(Mappa, "name_7278817582900");
-		
-		
-		Compagnie = new JLayeredPane();
-		BodyContainer.add(Compagnie, "name_7308097032100");
-		getContentPane().setLayout(groupLayout);
-		
-		
-	}
-	
-	
-	// Questo metodo contiene il codice per creare eventi 
-	private void createEvents() {
-		
-		
-		//Eventi all'interno del Main
-		PulsanteAereo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Volo.setVisible(true);
-				Main.setVisible(false);
-			}
-		});
-		
-		PulsanteGate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Gate.setVisible(true);
-				Main.setVisible(false);
-			}
-		});
-		
-		PulsanteInfo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Info.setVisible(true);
-				Main.setVisible(false);
-			}
-		});
-		
-		//Eventi all'interno del Volo
-		PulsanteHomeVolo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Main.setVisible(true);
-				Volo.setVisible(false);
-				Calendario.setVisible(false);
-			}
-		});
-		
-		SelectCittà.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				int selection = SelectCittà.getSelectedIndex();
-				int index=0;
-				for (JLabel label : labelsCittà) {
-					if(index==selection)
-			           label.setVisible(true);
-					else label.setVisible(false);
-					index++;
-				}
-			}
-		});
-		
-		SelectData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Calendario.setVisible(true);
-			}
-		});
-		
-		PulsanteReverse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if ("Napoli".equals(BoxPartenza.getSelectedItem())){
-					BoxDestinazione.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
-					BoxPartenza.setModel(new DefaultComboBoxModel(città.values()));
-				}
-				else {
-					BoxPartenza.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
-					BoxDestinazione.setModel(new DefaultComboBoxModel(città.values()));
-				}
-			}
-		});
-		
-		//Eventi all'interno del Gate
 		PulsanteHomeGate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main.setVisible(true);
-				Gate.setVisible(false);
+				theController.switchPanel(Gate, Main);
 			}
 		});
+		PanelGate.add(PulsanteHomeGate);
+		getContentPane().setLayout(groupLayout);
 		
-	
-		//Eventi nel calendario
-		PulsanteAvanti.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AprileGiorni.setVisible(true);
-				AprileHeader.setVisible(true);
-				MarzoHeader.setVisible(false);
-				MarzoGiorni.setVisible(false);
-			}
-		});
-	
-		PulsanteIndietro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MarzoHeader.setVisible(true);
-				MarzoGiorni.setVisible(true);
-				AprileGiorni.setVisible(false);
-				AprileHeader.setVisible(false);		
-			}
-		});
-	
-		//Giorni Marzo
-		unoM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("01/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		dueM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("02/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		treM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("03/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		quattroM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("04/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		cinqueM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("05/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		seiM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("06/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		setteM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("07/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ottoM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("08/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		noveM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("09/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		dieciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("10/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		undiciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("11/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		dodiciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("12/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		trediciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("13/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		quattordiciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("14/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		quindiciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("15/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		sediciM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("16/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		diciassetteM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("17/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		diciottoM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("18/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		diciannoveM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("19/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventiM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("20/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventunoM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("21/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventidueM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("22/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventitreM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("23/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventiquattroM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("24/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		venticinqueM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("25/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventiseiM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("26/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventisetteM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("27/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventottoM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("28/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		ventinoveM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("29/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		trentaM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("30/03/21");
-				Calendario.setVisible(false);
-			}
-		});
-	
-		trentunoM.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FieldData.setText("31/03/21");
-				Calendario.setVisible(false);
-			}
-		});
+		// Info		
+		
+				Info = new JLayeredPane();
+				BodyContainer.add(Info, "name_7222503502800");
+				
+				
+				
+				JPanel BackgroundInfo = new JPanel();
+				BackgroundInfo.setFocusTraversalPolicyProvider(true);
+				BackgroundInfo.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				BackgroundInfo.setBorder(null);
+				BackgroundInfo.setBackground(new Color(208, 215, 232));
+				BackgroundInfo.setBounds(0, 0, 1193, 535);
+				Info.add(BackgroundInfo);
+				BackgroundInfo.setLayout(null);
+				
+				JLabel OmbraHeaderInfo = new JLabel("");
+				OmbraHeaderInfo.setBounds(0, -15, 1199, 63);
+				OmbraHeaderInfo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+				PanelGate.add(OmbraHeaderInfo);
+				
+				JButton PulsanteHomeInfo = new JButton("");
+				
+				// dovrebbe andare nella sezione degli eventi in basso, ma esce errore
+				
+				PulsanteHomeInfo.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Main.setVisible(true);
+						Info.setVisible(false);
+					}
+				});
+				
+				PulsanteHomeInfo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
+				PulsanteHomeInfo.setOpaque(false);
+				PulsanteHomeInfo.setFocusable(false);
+				PulsanteHomeInfo.setContentAreaFilled(false);
+				PulsanteHomeInfo.setBorderPainted(false);
+				PulsanteHomeInfo.setBounds(10, 10, 63, 51);
+				BackgroundInfo.add(PulsanteHomeInfo);
+				
+				OmbraHeaderInfo = new JLabel("");
+				OmbraHeaderInfo.setBounds(0, -15, 1199, 63);
+				OmbraHeaderInfo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+				BackgroundInfo.add(OmbraHeaderInfo);
+				
+				JLabel lblNewLabel_17 = new JLabel("Contattaci");
+				lblNewLabel_17.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_17.setForeground(Color.LIGHT_GRAY);
+				lblNewLabel_17.setFont(new Font("Lucida Bright", Font.BOLD | Font.ITALIC, 15));
+				lblNewLabel_17.setBounds(1009, 252, 115, 28);
+				BackgroundInfo.add(lblNewLabel_17);
+				
+				JButton PulsanteContattaci_1 = new JButton("");
+				PulsanteContattaci_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						//Contattaci.setVisible(true);
+						Info.setVisible(false);
+					}
+				});
+				
+				
+				PulsanteContattaci_1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BackgroundPulsante.png")));
+				PulsanteContattaci_1.setBounds(982, 241, 170, 51);
+				BackgroundInfo.add(PulsanteContattaci_1);
+				PulsanteContattaci_1.setOpaque(false);
+				PulsanteContattaci_1.setFocusable(false);
+				PulsanteContattaci_1.setContentAreaFilled(false);
+				PulsanteContattaci_1.setBorderPainted(false);
+				
+				JTextArea textContattaci = new JTextArea();
+				textContattaci.setForeground(Color.DARK_GRAY);
+				textContattaci.setFont(new Font("Lucida Bright", Font.BOLD, 18));
+				textContattaci.setText("Se hai bisogno di \r\n       ulteriori \r\n   informazioni");
+				textContattaci.setWrapStyleWord(true);
+				textContattaci.setLineWrap(true);
+				textContattaci.setBounds(982, 154, 170, 76);
+				textContattaci.setOpaque(false);
+				textContattaci.setFocusable(false);
+				BackgroundInfo.add(textContattaci);
+				
+				JLabel lblNewLabel_18 = new JLabel("FAQ");
+				lblNewLabel_18.setForeground(Color.DARK_GRAY);
+				lblNewLabel_18.setFont(new Font("Lucida Bright", Font.BOLD, 23));
+				lblNewLabel_18.setBounds(36, 72, 63, 28);
+				BackgroundInfo.add(lblNewLabel_18);
+				
+				JLabel lblNewLabel_19 = new JLabel("Quali documenti occorrono per il viaggio?");
+				lblNewLabel_19.setForeground(Color.DARK_GRAY);
+				lblNewLabel_19.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+				lblNewLabel_19.setBounds(36, 123, 384, 28);
+				BackgroundInfo.add(lblNewLabel_19);
+				
+				JTextArea txtrAlCheckinOccorre = new JTextArea();
+				txtrAlCheckinOccorre.setEditable(false);
+				txtrAlCheckinOccorre.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+				txtrAlCheckinOccorre.setForeground(Color.DARK_GRAY);
+				txtrAlCheckinOccorre.setText("Al check-in occorre presentare il biglietto cartaceo o elettronico ed un documento, passaporto o carta di identit\u00E0, in corso di validit\u00E0. E' inoltre necessario verificare eventuale visto d'ingresso o vaccinazioni particolari richieste dal Paese in cui ci si reca.");
+				txtrAlCheckinOccorre.setWrapStyleWord(true);
+				txtrAlCheckinOccorre.setLineWrap(true);
+				txtrAlCheckinOccorre.setBounds(36, 158, 820, 41);
+				txtrAlCheckinOccorre.setOpaque(false);
+				txtrAlCheckinOccorre.setFocusable(false);
+				BackgroundInfo.add(txtrAlCheckinOccorre);
+				
+				JLabel lblNewLabel_20 = new JLabel("Quali sono gli articoli non ammessi nel bagaglio a mano?");
+				lblNewLabel_20.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+				lblNewLabel_20.setForeground(Color.DARK_GRAY);
+				lblNewLabel_20.setBounds(36, 210, 465, 20);
+				BackgroundInfo.add(lblNewLabel_20);
+				
+				JTextArea txtrInCabinaNon = new JTextArea();
+				txtrInCabinaNon.setForeground(Color.DARK_GRAY);
+				txtrInCabinaNon.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+				txtrInCabinaNon.setLineWrap(true);
+				txtrInCabinaNon.setWrapStyleWord(true);
+				txtrInCabinaNon.setText("In cabina non sono ammessi armi improprie quali forbici, coltelli, oggetti appuntiti, limette etc. n\u00E9 sostanze esplosive, tossiche o corrosive, armi da sparo o da taglio.");
+				txtrInCabinaNon.setBounds(36, 241, 802, 39);
+				txtrInCabinaNon.setOpaque(false);
+				txtrInCabinaNon.setFocusable(false);
+				BackgroundInfo.add(txtrInCabinaNon);
+				
+				JLabel lblNewLabel_21 = new JLabel("Come posso richiedere un'assistenza speciale?");
+				lblNewLabel_21.setForeground(Color.DARK_GRAY);
+				lblNewLabel_21.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+				lblNewLabel_21.setBounds(36, 291, 425, 28);
+				BackgroundInfo.add(lblNewLabel_21);
+				
+				JTextArea txtrAllattoDellaPrenotazione = new JTextArea();
+				txtrAllattoDellaPrenotazione.setForeground(Color.DARK_GRAY);
+				txtrAllattoDellaPrenotazione.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+				txtrAllattoDellaPrenotazione.setWrapStyleWord(true);
+				txtrAllattoDellaPrenotazione.setLineWrap(true);
+				txtrAllattoDellaPrenotazione.setEditable(false);
+				txtrAllattoDellaPrenotazione.setText("All'atto della prenotazione, o almeno 48 ore prima della partenza, puoi richiedere assistenza speciale alla compagnia aerea o al tuo agente di viaggio. E' importante fornire alla compagnia aerea informazioni dettagliate in merito alle tue esigenze. L'assistenza \u00E8 gratuita e sar\u00E0 cura della compagnia aerea inoltrare la richiesta all'aeroporto ed informare tutti gli scali che verranno toccati durante il tuo viaggio.");
+				txtrAllattoDellaPrenotazione.setOpaque(false);
+				txtrAllattoDellaPrenotazione.setFocusable(false);
+				txtrAllattoDellaPrenotazione.setBounds(36, 330, 802, 68);
+				BackgroundInfo.add(txtrAllattoDellaPrenotazione);
+				
+				JLabel lblNewLabel_22 = new JLabel("Se perdo il bagaglio a chi devo rivolgermi?");
+				lblNewLabel_22.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+				lblNewLabel_22.setForeground(Color.DARK_GRAY);
+				lblNewLabel_22.setBounds(36, 409, 425, 20);
+				BackgroundInfo.add(lblNewLabel_22);
+				
+				JTextArea txtrInCasoDi = new JTextArea();
+				txtrInCasoDi.setText("In caso di smarrimento o danneggiamento del bagaglio, prima di lasciare la sala riconsegna bagagli, \u00E8 necessario compilare l'apposito modulo denominato PIR (Property Irregularity Report) presso gli uffici Lost&Found della societ\u00E0 di handling che svolge i servizi di assistenza a terra per conto della compagnia aerea con la quale hai viaggiato. Per la riconsegna del bagaglio smarrito sarai contattato direttamente dall'ufficio Lost&Found di riferimento.");
+				txtrInCasoDi.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+				txtrInCasoDi.setForeground(Color.DARK_GRAY);
+				txtrInCasoDi.setWrapStyleWord(true);
+				txtrInCasoDi.setLineWrap(true);
+				txtrInCasoDi.setEditable(false);
+				txtrInCasoDi.setOpaque(false);
+				txtrInCasoDi.setFocusable(false);
+				txtrInCasoDi.setBounds(36, 433, 802, 76);
+				BackgroundInfo.add(txtrInCasoDi);
+				
+				JPanel panel_2 = new JPanel();
+				panel_2.setBackground(UIManager.getColor("CheckBox.light"));
+				panel_2.setBounds(0, 73, 249, 28);
+				BackgroundInfo.add(panel_2);						
+				
+				Mappa = new JLayeredPane();
+				BodyContainer.add(Mappa, "name_7278817582900");
+				
+				JButton PulsanteHomeMappa = new JButton("");
+				
+				PulsanteHomeMappa.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Main.setVisible(true);
+						Mappa.setVisible(false);
+						
+					}
+				});
+				PulsanteHomeMappa.setSize(63, 51);
+				PulsanteHomeMappa.setLocation(10, 10);
+				PulsanteHomeMappa.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
+				PulsanteHomeMappa.setOpaque(false);
+				PulsanteHomeMappa.setFocusable(false);
+				PulsanteHomeMappa.setContentAreaFilled(false);
+				PulsanteHomeMappa.setBorderPainted(false);
+				PulsanteHomeMappa.setBounds(10, 10, 63, 51);;
+				Mappa.add(PulsanteHomeMappa);
+				
+				JPanel BackgroundMappa = new JPanel();
+				BackgroundMappa.setFocusTraversalPolicyProvider(true);
+				BackgroundMappa.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				BackgroundMappa.setBorder(null);
+				BackgroundMappa.setBackground(new Color(208, 215, 232));
+				BackgroundMappa.setBounds(0, 0, 1193, 535);
+				Mappa.add(BackgroundMappa);
+				BackgroundMappa.setLayout(null);
+			
+				
+				JLabel OmbraHeaderMappa = new JLabel("");
+				OmbraHeaderMappa.setBounds(0, 0, 1199, 63);
+				BackgroundMappa.add(OmbraHeaderMappa);
+				OmbraHeaderMappa.setBounds(0, -15, 1199, 63);
+				OmbraHeaderMappa.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+				
+				JButton FotoMappa = new JButton("");
+				FotoMappa.setIcon(new ImageIcon(AMain.class.getResource("/apResources/MappaUni.png")));
+				FotoMappa.setFocusPainted(false);
+				FotoMappa.setOpaque(false);
+				FotoMappa.setFocusable(false);
+				FotoMappa.setContentAreaFilled(false);
+				FotoMappa.setBorderPainted(false);
+				FotoMappa.setBounds(348, 10, 818, 515);
+				BackgroundMappa.add(FotoMappa);
+				
+				JPanel panel = new JPanel();
+				panel.setBackground(UIManager.getColor("CheckBox.light"));
+				panel.setBounds(10, 84, 316, 162);
+				BackgroundMappa.add(panel);
+				
+				JLabel Mappa_Aeroporto = new JLabel("Mappa Aeroporto");
+				Mappa_Aeroporto.setHorizontalAlignment(SwingConstants.CENTER);
+				Mappa_Aeroporto.setForeground(Color.DARK_GRAY);
+				Mappa_Aeroporto.setFont(new Font("Lucida Bright", Font.BOLD | Font.ITALIC, 30));
+				Mappa_Aeroporto.setBackground(Color.LIGHT_GRAY);
+				
+				JPanel panel_4 = new JPanel();
+				GroupLayout gl_panel = new GroupLayout(panel);
+				gl_panel.setHorizontalGroup(
+					gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(10)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addComponent(Mappa_Aeroporto, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+				);
+				gl_panel.setVerticalGroup(
+					gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(Mappa_Aeroporto, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				
+				JTextArea textAreaMappa = new JTextArea();
+				textAreaMappa.setWrapStyleWord(true);
+				textAreaMappa.setText("Consulta la mappa per muoverti comodamente all'interno dell'aeroporto.");
+				textAreaMappa.setOpaque(false);
+				textAreaMappa.setLineWrap(true);
+				textAreaMappa.setForeground(Color.DARK_GRAY);
+				textAreaMappa.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+				textAreaMappa.setFocusable(false);
+				textAreaMappa.setEditable(false);
+				GroupLayout gl_panel_4 = new GroupLayout(panel_4);
+				gl_panel_4.setHorizontalGroup(
+					gl_panel_4.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, gl_panel_4.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(textAreaMappa, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				);
+				gl_panel_4.setVerticalGroup(
+					gl_panel_4.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(textAreaMappa, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+				);
+				panel_4.setLayout(gl_panel_4);
+				panel.setLayout(gl_panel);
+				
+				Compagnie = new JLayeredPane();
+				BodyContainer.add(Compagnie, "name_7308097032100");
+				
+				JButton PulsanteHomeCompagnie = new JButton("");
+				PulsanteHomeCompagnie.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Main.setVisible(true);
+						Compagnie.setVisible(false);
+					}
+				});
+				PulsanteHomeCompagnie.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
+				PulsanteHomeCompagnie.setOpaque(false);
+				PulsanteHomeCompagnie.setFocusable(false);
+				PulsanteHomeCompagnie.setContentAreaFilled(false);
+				PulsanteHomeCompagnie.setBorderPainted(false);
+				PulsanteHomeCompagnie.setBounds(10, 10, 63, 51);
+				Compagnie.add(PulsanteHomeCompagnie);
+				
+				JPanel BackgroundCompagnie = new JPanel();
+				BackgroundCompagnie.setBackground(new Color(208, 215, 232));
+				BackgroundCompagnie.setBounds(0, 0, 1193, 535);
+				Compagnie.add(BackgroundCompagnie);
+				BackgroundCompagnie.setLayout(null);
+				
+				JLabel OmbraHeaderCompagnie = new JLabel("");
+				OmbraHeaderCompagnie.setBounds(0, -15, 1199, 63);
+				OmbraHeaderCompagnie.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+				BackgroundCompagnie.add(OmbraHeaderCompagnie);
+				
+		// Contattaci
+				
+				
+				JLayeredPane Contattaci = new JLayeredPane();
+				BodyContainer.add(Contattaci, "name_388611001422200");
+				getContentPane().setLayout(groupLayout);
+				
+				JButton PulsanteHomeContattaci = new JButton("");
+				
+				
+				PulsanteHomeContattaci.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					Main.setVisible(true);
+					Contattaci.setVisible(false);
+					
+					}
+				});
+				PulsanteHomeContattaci.setIcon(null);
+				PulsanteHomeContattaci.setOpaque(false);
+				PulsanteHomeContattaci.setFocusable(false);
+				PulsanteHomeContattaci.setContentAreaFilled(false);
+				PulsanteHomeContattaci.setBorderPainted(false);
+				PulsanteHomeContattaci.setBounds(10, 10, 63, 51);
+				Contattaci.add(PulsanteHomeContattaci);
+				
+				JPanel BackgroundContattaci = new JPanel();
+				BackgroundContattaci.setBorder(null);
+				BackgroundContattaci.setBackground(new Color(208, 215, 232));
+				BackgroundContattaci.setBounds(0, 0, 1193, 535);
+				Contattaci.add(BackgroundContattaci);
+				BackgroundContattaci.setLayout(null);
+				
+				
+				
+				OmbraHeaderGate = new JLabel("");
+				OmbraHeaderGate.setBounds(0, -15, 1199, 63);
+				OmbraHeaderGate.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+				BackgroundContattaci.add(OmbraHeaderGate);
+				
+				JLabel lblNewLabel_11 = new JLabel("Dati di contatto");
+				lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 15));
+				lblNewLabel_11.setBounds(65, 151, 146, 24);
+				BackgroundContattaci.add(lblNewLabel_11);
+				
+				JLabel lblNewLabel_2 = new JLabel("Assistenza Passeggeri");
+				lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 22));
+				lblNewLabel_2.setBounds(63, 62, 273, 24);
+				BackgroundContattaci.add(lblNewLabel_2);
+				
+				JLabel lblNewLabel_3 = new JLabel("Per chiedere informazioni \u00E8 possibile contattare il numero 081-2531111 o compilare il seguente form");
+				lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				lblNewLabel_3.setBounds(63, 97, 734, 24);
+				BackgroundContattaci.add(lblNewLabel_3);
+				
+				JLabel lblNewLabel_4 = new JLabel("*");
+				lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+				lblNewLabel_4.setForeground(Color.RED);
+				lblNewLabel_4.setBounds(182, 158, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_4);
+				
+				JLabel lblNewLabel_5 = new JLabel("Nome");
+				lblNewLabel_5.setBounds(65, 212, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_5);
+				
+				JLabel lblNewLabel_6 = new JLabel("Cognome");
+				lblNewLabel_6.setBounds(195, 212, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_6);
+				
+				JLabel lblNewLabel_7 = new JLabel("E-mail");
+				lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 15));
+				lblNewLabel_7.setBounds(65, 251, 94, 20);
+				BackgroundContattaci.add(lblNewLabel_7);
+				
+				JLabel lblNewLabel_8 = new JLabel("*");
+				lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 14));
+				lblNewLabel_8.setForeground(Color.RED);
+				lblNewLabel_8.setBounds(112, 256, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_8);
+				
+				JLabel lblNewLabel_9 = new JLabel("example@example.com");
+				lblNewLabel_9.setBounds(65, 313, 120, 14);
+				BackgroundContattaci.add(lblNewLabel_9);
+				
+				JLabel lblNewLabel_10 = new JLabel("Numero di telefono");
+				lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 15));
+				lblNewLabel_10.setBounds(65, 350, 146, 24);
+				BackgroundContattaci.add(lblNewLabel_10);
+				
+				lblNewLabel_11 = new JLabel("Prefisso");
+				lblNewLabel_11.setBounds(65, 416, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_11);
+				
+				JLabel lblNewLabel_12 = new JLabel("Numero di telefono");
+				lblNewLabel_12.setBounds(152, 416, 94, 14);
+				BackgroundContattaci.add(lblNewLabel_12);
+				
+				JLabel lblNewLabel_13 = new JLabel("Scrivi qui la tua richiesta");
+				lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 15));
+				lblNewLabel_13.setBounds(422, 155, 187, 17);
+				BackgroundContattaci.add(lblNewLabel_13);
+				
+				Component btnNewButton_1 = new JButton("Invia");
+				btnNewButton_1.setBounds(543, 457, 89, 23);
+				BackgroundContattaci.add(btnNewButton_1);
+				
+				JLabel lblNewLabel_14 = new JLabel("-");
+				lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 13));
+				lblNewLabel_14.setBounds(127, 388, 18, 14);
+				BackgroundContattaci.add(lblNewLabel_14);
+				
+				JLabel lblNewLabel_15 = new JLabel("*");
+				lblNewLabel_15.setForeground(Color.RED);
+				lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 14));
+				lblNewLabel_15.setBounds(210, 357, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_15);
+				
+				JLabel lblNewLabel_16 = new JLabel("*");
+				lblNewLabel_16.setForeground(Color.RED);
+				lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 14));
+				lblNewLabel_16.setBounds(608, 158, 46, 14);
+				BackgroundContattaci.add(lblNewLabel_16);
+				
+				JTextArea txtrDaFinireSto = new JTextArea();
+				txtrDaFinireSto.setText("DA FINIRE STO SCLERANDO MALISSIMO NON HO CAPITO COSA FARE PERCH\u00E8 ");
+				txtrDaFinireSto.setWrapStyleWord(true);
+				txtrDaFinireSto.setLineWrap(true);
+				txtrDaFinireSto.setRows(40);
+				txtrDaFinireSto.setBounds(422, 184, 329, 221);
+				BackgroundContattaci.add(txtrDaFinireSto);
+				
+				JTextArea textArea_1 = new JTextArea();
+				textArea_1.setLineWrap(true);
+				textArea_1.setWrapStyleWord(true);
+				textArea_1.setBounds(137, 385, 178, 22);
+				BackgroundContattaci.add(textArea_1);
+				
+				JTextArea textArea_2 = new JTextArea();
+				textArea_2.setLineWrap(true);
+				textArea_2.setWrapStyleWord(true);
+				textArea_2.setBounds(65, 383, 52, 22);
+				BackgroundContattaci.add(textArea_2);
+				
+				
+				JTextArea textArea_3 = new JTextArea();
+				textArea_3.setWrapStyleWord(true);
+				textArea_3.setLineWrap(true);
+				textArea_3.setBounds(65, 280, 250, 22);
+				BackgroundContattaci.add(textArea_3);
+				
+				JTextArea textArea_4 = new JTextArea();
+				textArea_4.setWrapStyleWord(true);
+				textArea_4.setLineWrap(true);
+				textArea_4.setBounds(195, 184, 120, 22);
+				BackgroundContattaci.add(textArea_4);
+				
+				JTextArea textArea_5 = new JTextArea();
+				textArea_5.setColumns(1);
+				textArea_5.setRows(1);
+				textArea_5.setWrapStyleWord(true);
+				textArea_5.setLineWrap(true);
+				textArea_5.setBounds(65, 184, 120, 22);
+				BackgroundContattaci.add(textArea_5);
+				
+				JPanel panel_61 = new JPanel();
+				panel_61.setBackground(UIManager.getColor("CheckBox.light"));
+				panel_61.setBounds(0, 97, 751, 24);
+				BackgroundContattaci.add(panel_61);
+				
+		
 	}
+	
 }
