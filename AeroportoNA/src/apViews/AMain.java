@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import apCommon.*;
 import java.awt.event.ItemListener;
 import java.io.FileInputStream;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.awt.event.ItemEvent;
 
@@ -87,7 +88,7 @@ public class AMain extends JFrame {
 	private JTextField FieldData;
 	private JInternalFrame Calendario;
 	private JButton SelectData;
-	private JComboBox<citt‡> SelectCitt‡;
+	private JComboBox SelectCitt‡;
 	private JLabel ImmAmsterdam;
 	private JLabel[] labelsCitt‡;
 	private JButton unoM;
@@ -128,87 +129,9 @@ public class AMain extends JFrame {
 	private JComboBox<String> BoxPartenza;
 	private JComboBox<String> BoxDestinazione;
 	private Tratta[] Tratte;
-	
-	//Enums
-	public enum citt‡{
-		Amsterdam,
-		Atene,
-		Barcellona,
-		Berlino,
-		Bruxelles,
-		Cagliari,
-		Catania,
-		Cracovia,
-		Dubai,
-		Genova,
-		Liverpool,
-		Londra,
-		Torino,
-		Trieste,
-		Venezia,
-		Verona;
-	};
-	
-	public enum IDTratta{
-		NAMS01,
-		NATE02,
-		NBAR03,
-		NBER04,
-		NBRU05,
-		NCAG06,
-		NCAT07,
-		NCRA08,
-		NDUB09,
-		NGEN10,
-		NLIV11,
-		NLON12,
-		NTOR13,
-		NTRI14,
-		NVEN15,
-		NVER16;
-	};
-	
-	public enum IDAereo{
-		A300F, //Airbus
-		A310F,
-		A320,
-		A330F,
-		A380F,
-		A300_600ST,
-		An_124, //Antonov
-		An_225,
-		B727F, //Boeing
-		B737,
-		B757PF,
-		B767F,
-		B47F,
-		B747, 
-		B777F,
-		DC_3, //Douglas
-		DC_8F,
-		DC_9F,
-		Il_18T, //Ilyushin
-		Il_76,
-		Il_96T,
-		DC_10F, //McDonnell
-		MD_11F,
-		Tu_204F, //Tupolev
-		Tu_204C;
-	};
-	
-	public enum Modello{
-		Airbus,
-		Antonov,
-		Boeing,
-		Douglas,
-		Ilyushin,
-		McDonnell,
-		Tupolev;
-	};
-	
 	Controller theController;
 	
-	public AMain(Controller c) {
+	public AMain(Controller c) throws SQLException {
 		theController = c;
 		
 		try {
@@ -556,19 +479,16 @@ public class AMain extends JFrame {
 		labelsCitt‡ = new JLabel[]{ImmAmsterdam, ImmAtene, ImmBarcellona, ImmBerlino, ImmBruxelles, ImmCagliari, ImmCatania, ImmCracovia,
 											ImmDubai, ImmGenova, ImmLiverpool, ImmLondra, ImmTorino, ImmTrieste, ImmVenezia, ImmVerona};
 		
-		SelectCitt‡ = new JComboBox<citt‡>();
+		SelectCitt‡ = new JComboBox<String>();
 		SelectCitt‡.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 		SelectCitt‡.setBounds(37, 320, 183, 21);
-		SelectCitt‡.setModel(new DefaultComboBoxModel<citt‡>(citt‡.values()));
-		SelectCitt‡.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				int selection = SelectCitt‡.getSelectedIndex();
-				int index=0;
-				for (JLabel label : labelsCitt‡) {
-					if(index==selection)
-			           label.setVisible(true);
-					else label.setVisible(false);
-					index++;
+		theController.setCitt‡Box(SelectCitt‡);
+		SelectCitt‡.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					theController.setImageBox(SelectCitt‡, labelsCitt‡);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -652,7 +572,7 @@ public class AMain extends JFrame {
 		PannelloAggiungi.add(BoxPartenza);
 		
 		BoxDestinazione = new JComboBox<String>();
-		BoxDestinazione.setModel(new DefaultComboBoxModel(citt‡.values()));
+		//BoxDestinazione.setModel(new DefaultComboBoxModel(citt‡.values()));
 		BoxDestinazione.setBounds(550, 28, 152, 26);
 		PannelloAggiungi.add(BoxDestinazione);
 		
@@ -676,11 +596,11 @@ public class AMain extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if ("Napoli".equals(BoxPartenza.getSelectedItem())){
 					BoxDestinazione.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
-					BoxPartenza.setModel(new DefaultComboBoxModel(citt‡.values()));
+					//BoxPartenza.setModel(new DefaultComboBoxModel(citt‡.values()));
 				}
 				else {
 					BoxPartenza.setModel(new DefaultComboBoxModel(new String[] {"Napoli"}));
-					BoxDestinazione.setModel(new DefaultComboBoxModel(citt‡.values()));
+					//BoxDestinazione.setModel(new DefaultComboBoxModel(citt‡.values()));
 				}
 			}
 		});
@@ -692,7 +612,7 @@ public class AMain extends JFrame {
 		PannelloAggiungi.add(LabelIDAereo);
 		
 		JComboBox<String>BoxIDAereo = new JComboBox<String>();
-		BoxIDAereo.setModel(new DefaultComboBoxModel(IDAereo.values()));
+		//BoxIDAereo.setModel(new DefaultComboBoxModel(IDAereo.values()));
 		BoxIDAereo.setBounds(345, 76, 81, 17);
 		PannelloAggiungi.add(BoxIDAereo);
 		

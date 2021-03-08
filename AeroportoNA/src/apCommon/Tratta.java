@@ -1,24 +1,27 @@
 package apCommon;
 
-import apViews.AMain.IDTratta;
-import apViews.AMain.città;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import apCommon.TrattaDao;
 
 public class Tratta {
 	
 	//Attributi
 	private Volo volo;
-	private città città;
-	private IDTratta IDtratta;
+	private String città;
+	//private IDTratta IDtratta;
 	
 	//Costruttore vuoto
 	public Tratta() {
+		
 	}
 	
 	//Costruttore con attributi
-	public Tratta(Volo volo, città città, IDTratta IDtratta) {
+	public Tratta(Volo volo, String città) {
 		this.volo=volo;
 		this.città=città;
-		this.IDtratta = IDtratta;
 	}
 	
 	//Metodi
@@ -30,20 +33,17 @@ public class Tratta {
 		this.volo = volo;
 	}
 
-	public città getCittà() {
+	public String getCittà() {
 		return città;
 	}
 
-	public void setCittà(città città) {
+	public void setCittà(String città) {
 		this.città = città;
 	}
 
-	public IDTratta getIDtratta() {
-		return IDtratta;
+	public interface TrattaDao {
+		public List<String> getAllCittà() throws SQLException;
 	}
-
-	public void setIDtratta(IDTratta iDtratta) {
-		IDtratta = iDtratta;
-	}
+	
 	
 }

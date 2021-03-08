@@ -16,7 +16,7 @@ public class Lavoratore {
 	private String indirizzo;
 	private int numeroIndirizzo;
 	private String password;
-	private String IDLavoratore;
+	//private String IDLavoratore;
 
 	//Costruttore vuoto
 	public Lavoratore(){
@@ -39,7 +39,7 @@ public class Lavoratore {
 		this.indirizzo = indirizzo;
 		this.numeroIndirizzo = numeroIndirizzo;
 		this.password = password;
-		this.IDLavoratore = IDLavoratore;
+		//this.IDLavoratore = IDLavoratore;
 	}
 
 	//Metodi
@@ -147,13 +147,6 @@ public class Lavoratore {
 		this.password = password;
 	}
 
-	public String getIDLavoratore() {
-		return IDLavoratore;
-	}
-
-	public void setIDLavoratore(String iDLavoratore) {
-		IDLavoratore = iDLavoratore;
-	}
 
 	
 	

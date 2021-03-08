@@ -30,7 +30,7 @@ public class Compagnia {
 	}
 
 	public void setWebsite(String website) {
-		website = website;
+		this.website = website;
 	}
 	
 	

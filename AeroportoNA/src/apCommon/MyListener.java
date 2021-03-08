@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
 
+
 public class MyListener implements ActionListener {
     private int buttonNum;
     JTextField textField;
@@ -20,35 +21,35 @@ public class MyListener implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
        switch(buttonNum) {
-       case 1:
+       case 0:
     	   textField.setText("01/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 2:
+       case 1:
     	   textField.setText("02/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 3:
+       case 2:
     	   textField.setText("03/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 4:
+       case 3:
     	   textField.setText("04/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 5:
+       case 4:
     	   textField.setText("05/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 6:
+       case 5:
     	   textField.setText("06/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 7:
+       case 6:
     	   textField.setText("07/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 8:
+       case 8: //TO FIX
     	   textField.setText("08/03/21");
     	   calendario.setVisible(false);
     	   break;
