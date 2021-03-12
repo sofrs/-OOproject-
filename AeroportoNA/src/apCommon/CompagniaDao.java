@@ -8,34 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import apCommon.Connessione;
 
-public class CompagniaDao {
-	private Connection connection;
-	private Statement statement;
-	
-	public CompagniaDao() {
-	
-	}
-	
-	public List<Compagnia> getCompagnie() throws SQLException{
-		String query = "SELECT * FROM compagnie";
-		List<Compagnia> list = new ArrayList<Compagnia>();
-		Compagnia compagnia = null;
-		ResultSet rs = null;
-		try {
-			connection = Connessione.getConnection();
-			statement = connection.createStatement();
-			rs = statement.executeQuery(query);
-			while(rs.next()) {
-				compagnia = new Compagnia();
-				compagnia.setNomeCompagnia(rs.getString("nomeComoagnia"));
-				compagnia.setWebsite(rs.getString("website"));
-				list.add(compagnia);
-			}
-		} finally {
-			Connessione.closeResultSet(rs);
-			Connessione.closeStatement(statement);
-			Connessione.closeConnection(connection);
-		}
-		return list;
-	}
+public interface CompagniaDao {
+	public List<Compagnia> getAllCompagnie() throws SQLException;
+    //public Gate getGate(int numeroGate);
+    //public void updateGate(Gate gate);
+    //public void deleteGate(Gate gate);
 }

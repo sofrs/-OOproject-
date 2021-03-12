@@ -3,31 +3,39 @@ package apCommon;
 public class Gate {
 	
 	//Attributi
-	private int numeroGate;
-	private int terminale;
+	private String numeroGate;
+	private String terminale;
 	private Coda coda;
 	
-	//Costruttore
+	//Costruttore vuoto
 	public Gate() {
-		int numeroGate=1;
-		int terminale=1;
-		Coda coda = new Coda();
+
 	}
 
 	//Metodi
-	public int getNumeroGate() {
+	public String getNumeroGate() {
 		return numeroGate;
 	}
 
-	public void setNumeroGate(int numeroGate) {
+	public void setNumeroGate(String numeroGate) {
 		this.numeroGate = numeroGate;
 	}
 
-	public int getTerminale() {
+	public String getTerminale() {
 		return terminale;
 	}
 
-	public void setTerminale(int terminale) {
+	public void setTerminale(String terminale) {
 		this.terminale = terminale;
-	}	
+	}
+
+	public Coda getCoda() {
+		return coda;
+	}
+
+	public void setCoda(Coda coda) {
+		this.coda = coda;
+	}
+	
+	
 }

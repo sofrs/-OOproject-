@@ -49,99 +49,99 @@ public class MyListener implements ActionListener {
     	   textField.setText("07/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 8: //TO FIX
+       case 7:
     	   textField.setText("08/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 9:
+       case 8:
     	   textField.setText("09/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 10:
+       case 9:
     	   textField.setText("10/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 11:
+       case 10:
     	   textField.setText("11/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 12:
+       case 11:
     	   textField.setText("12/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 13:
+       case 12:
     	   textField.setText("13/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 14:
+       case 13:
     	   textField.setText("14/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 15:
+       case 14:
     	   textField.setText("15/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 16:
+       case 15:
     	   textField.setText("16/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 17:
+       case 16:
     	   textField.setText("17/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 18:
+       case 17:
     	   textField.setText("18/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 19:
+       case 18:
     	   textField.setText("19/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 20:
+       case 19:
     	   textField.setText("20/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 21:
+       case 20:
     	   textField.setText("23/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 22:
+       case 21:
     	   textField.setText("22/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 23:
+       case 22:
     	   textField.setText("23/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 24:
+       case 23:
     	   textField.setText("24/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 25:
+       case 24:
     	   textField.setText("25/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 26:
+       case 25:
     	   textField.setText("26/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 27:
+       case 26:
     	   textField.setText("27/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 28:
+       case 27:
     	   textField.setText("28/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 29:
+       case 28:
     	   textField.setText("29/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 30:
+       case 29:
     	   textField.setText("30/03/21");
     	   calendario.setVisible(false);
     	   break;
-       case 31:
+       case 30:
     	   textField.setText("31/03/21");
     	   calendario.setVisible(false);
     	   break;
