@@ -14,18 +14,23 @@ public class TrattaDaoImpl implements TrattaDao {
 	private Statement statement;
 
 	@Override
-	public List<String> getTratte() throws SQLException {
+	public List<Tratta> getTratte() throws SQLException {
 		String query = "SELECT * FROM tratte";
-		List<String> list = new ArrayList<String>();
+		List<Tratta> list = new ArrayList<Tratta>();
 		ResultSet rs = null;
-		String città = new String();
 		try {
 			connection = Connessione.getConnection();
 			statement = connection.createStatement();
 			rs = statement.executeQuery(query);
 			while(rs.next()) {
-				città= rs.getString("città");
-				list.add(città);
+				Tratta tratta = new Tratta();
+				tratta.setCittà(rs.getString("città"));
+				tratta.setOrarioPartenza(rs.getString("orarioPartenza"));
+				tratta.setOrarioArrivo(rs.getString("orarioArrivo"));
+				tratta.setDataPartenza(rs.getString("dataPartenza"));
+				tratta.setDataArrivo(rs.getString("dataArrivo"));
+				tratta.setNumPrenotazioni(rs.getInt("numPrenotazioni"));
+				list.add(tratta);
 			}
 		} finally {
 			Connessione.closeResultSet(rs);
@@ -38,21 +43,32 @@ public class TrattaDaoImpl implements TrattaDao {
 
 	@Override
 	public boolean insertTratta(Tratta tratta) {
-		ResultSet rs = null;
-		connection = Connessione.getConnection();
+    	ResultSet rs = null;
+		String query = "SELECT * FROM tratte";
 		String ID = new String();
+		
+    	try {
+    		connection = Connessione.getConnection();
+			statement = connection.createStatement();
+		} catch (SQLException e) {
+			return false;
+		}
+    	
 	    try {
-	        PreparedStatement ps = connection.prepareStatement("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?)");
+	        PreparedStatement ps = connection.prepareStatement("INSERT INTO tratte VALUES (?, ?, ?, ?, ?, ?, ?)");
 	        ps.setString(1, tratta.getCittà());
 	        ps.setString(2, tratta.getOrarioPartenza());
 	        ps.setString(3, tratta.getOrarioArrivo());
 	        ps.setString(4, tratta.getDataPartenza());
 	        ps.setString(5, tratta.getDataArrivo());
 	        ps.setInt(6, tratta.getNumPrenotazioni());
-	        ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getDataPartenza().substring(0, 2);
+	        try {
+	        	ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getOrarioPartenza().substring(3, 5)+tratta.getDataPartenza().substring(0, 2);
+	        }catch(StringIndexOutOfBoundsException e) {
+	        	return false;
+	        }
 	        
-	        
-	        rs = statement.executeQuery("SELECT * FROM tratte");
+	        rs = statement.executeQuery(query);
 			while(rs.next()) {
 				if(rs.getString("IDTratta").equals(ID))
 					return false;
@@ -66,18 +82,21 @@ public class TrattaDaoImpl implements TrattaDao {
 	        	return true;
 
 	    } catch (SQLException ex) {
-	        ex.printStackTrace();
-	    }
-
+	        return false;
+	    } finally {
+			Connessione.closeResultSet(rs);
+			Connessione.closeStatement(statement);
+			Connessione.closeConnection(connection);
+		}
+	    
 	    return false;
-		
 	}
 
 	@Override
 	public boolean updateTratta(Tratta tratta) {
 			connection = Connessione.getConnection();
 			String ID = new String();
-			ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getDataPartenza().substring(0, 2);
+			ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getOrarioPartenza().substring(3, 5)+tratta.getDataPartenza().substring(0, 2);
 		    try {
 		        PreparedStatement ps = connection.prepareStatement("UPDATE tratte SET città=?, orarioPartenza=?, orarioArrivo=?, dataPartenza=?,"
 		        													+ "dataArrivo=?, numPrenotazioni=?, WHERE IDTratta=?");
@@ -94,7 +113,7 @@ public class TrattaDaoImpl implements TrattaDao {
 		        	return true;
 
 		    } catch (SQLException ex) {
-		        ex.printStackTrace();
+		    	return false;
 		    }
 
 		    return false;
@@ -105,10 +124,11 @@ public class TrattaDaoImpl implements TrattaDao {
 	public boolean deleteTratta(Tratta tratta) {
 		connection = Connessione.getConnection();
 		String ID = new String();
-		ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getDataPartenza().substring(0, 2);
+		ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getOrarioPartenza().substring(3, 5)+tratta.getDataPartenza().substring(0, 2);
+		System.out.println(ID);
 		    try {
 		        	Statement stmt = connection.createStatement();
-		        	int i = stmt.executeUpdate("DELETE FROM tratte WHERE id=" + ID);
+		        	int i = stmt.executeUpdate("DELETE FROM public.tratte WHERE \"IDTratta\"='" + ID+"'");
 
 		        	if(i == 1)
 		        		return true;

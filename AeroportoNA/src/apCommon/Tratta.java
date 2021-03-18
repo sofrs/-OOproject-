@@ -1,11 +1,5 @@
 package apCommon;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import apCommon.TrattaDao;
-
 public class Tratta {
 	
 	//Attributi
@@ -57,6 +51,15 @@ public class Tratta {
 
 	public String getOrarioArrivo() {
 		return orarioArrivo;
+	}
+
+	public void setOrarioArrivo(String orarioArrivo) {
+		this.orarioArrivo = orarioArrivo;
+	}
+
+
+	public void setDataArrivo(String dataArrivo) {
+		this.dataArrivo = dataArrivo;
 	}
 
 
@@ -139,7 +142,14 @@ public class Tratta {
 
 		oraSom = oraSom + Integer.parseInt(orarioPartenza.substring(0, 2)) + ora;
 		
-		this.orarioArrivo=String.valueOf(oraSom)+":"+String.valueOf(minSom);
+		if (oraSom>24) {
+			oraSom-=24;
+			this.orarioArrivo=String.valueOf(oraSom)+":"+String.valueOf(minSom);
+		}
+		if (oraSom<10) 
+			this.orarioArrivo="0"+String.valueOf(oraSom)+":"+String.valueOf(minSom);
+		else
+			this.orarioArrivo=String.valueOf(oraSom)+":"+String.valueOf(minSom);
 	}
 
 
@@ -159,14 +169,19 @@ public class Tratta {
 
 
 	public void setDataArrivo(String dataPartenza, String orarioPartenza, String orarioArrivo) {
-		//ERRORE - TO FIX
-		if((Integer.parseInt(orarioArrivo.substring(0,2)))+(Integer.parseInt(orarioPartenza.substring(0,2)))>24) {
+		int partenza = Integer.parseInt(orarioPartenza.substring(0,2));
+		int arrivo = Integer.parseInt(orarioArrivo.substring(0,2));
+		if(partenza+arrivo>24) {
 			if(dataPartenza.equals("31/03/21")) {
 				this.dataArrivo = "01/04/21";
 			}
+			else if (partenza<10)
+				this.dataArrivo = "0"+String.valueOf((Integer.parseInt(dataPartenza.substring(0, 2))+1)+(dataPartenza.substring(2, 8)));
 			else
 				this.dataArrivo = String.valueOf((Integer.parseInt(dataPartenza.substring(0, 2))+1)+(dataPartenza.substring(2, 8)));
 		}
+		else
+			this.dataArrivo = dataPartenza;
 	}
 
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface TrattaDao {
 	
 	
-	public List<String> getTratte() throws SQLException;
+	public List<Tratta> getTratte() throws SQLException;
 	public boolean insertTratta(Tratta tratta);
 	public boolean updateTratta(Tratta tratta);
 	public boolean deleteTratta(Tratta tratta);
