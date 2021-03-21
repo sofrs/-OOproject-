@@ -16,6 +16,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,19 +39,18 @@ public class Controller {
 	GateDao gateDao = new GateDaoImpl();
 	
 	
-	/** MAIN
-	 * 
+	/** 
+	 * MAIN
 	 * @param args
 	 * @throws SQLException
 	 */
 	public static void main(String[] args) throws SQLException {
 		 Controller c = new Controller();
-
 	}
 	
 	
-	/**Costruttore che avvia la GUI
-	 * 
+	/**
+	 * Costruttore che avvia la GUI
 	 * @throws SQLException
 	 */
 	public Controller() throws SQLException {
@@ -418,13 +418,17 @@ public class Controller {
 			pannelloTempo.setVisible(true);
 		}
 		
-		for(int index = 0; fieldTrattaChar[index] != '['; index++) {
-			if(prenotazioniChar==null) {
-				prenotazioniChar = Character.toString(fieldTrattaChar[index]);	
-			} else 
-				prenotazioniChar += fieldTrattaChar[index];
+		try {
+			for(int index = 0; fieldTrattaChar[index] != '['; index++) {
+				if(prenotazioniChar==null) {
+					prenotazioniChar = Character.toString(fieldTrattaChar[index]);	
+				} else 
+					prenotazioniChar += fieldTrattaChar[index];
+			}
+			numPrenotazioni = Integer.parseInt(prenotazioniChar);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return;
 		}
-		numPrenotazioni = Integer.parseInt(prenotazioniChar);
 
 		 for (Enumeration<AbstractButton> buttons = groupTempo.getElements(); buttons.hasMoreElements(); indexButtons++) {
 	            AbstractButton button = buttons.nextElement();
@@ -460,61 +464,67 @@ public class Controller {
 		
 	}
 	
-	public void setTratteCompagnie(DefaultListModel<String> listaTratte, JLabel compagnia) {
+	public void fillAreaCompagnie(JTextArea[] areaTratteCompagnie) {
 		List<Tratta> tratte = new ArrayList<Tratta>();
-		
 		try {
 			tratte = trattaDao.getTratte();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		
-		switch (compagnia.getText().toString()) {
-		case "Rynair":
-			for(int i=0; i<tratte.size(); i++) {
-				if(tratte.get(i).getCittà().toString().equals("Amsterdam")||tratte.get(i).getCittà().toString().equals("Berlino")||tratte.get(i).getCittà().toString().equals("Roma")) {
-					listaTratte.addElement(tratte.get(i).getCittà().toString()+"["+tratte.get(i).getNumPrenotazioni()+"] - ["+tratte.get(i).getOrarioPartenza().toString()+" - "
-											+tratte.get(i).getOrarioArrivo().toString()+"] - ["+tratte.get(i).getDataPartenza().toString()+" - "+tratte.get(i).getDataArrivo().toString()+"]");
+		for(int index=0; index<tratte.size(); index++) {
+			for(int indexArea = 0; indexArea<areaTratteCompagnie.length; indexArea++) {
+				switch (indexArea) {
+				case 0:
+						if(tratte.get(index).getCittà().toString().equals("Amsterdam")||tratte.get(index).getCittà().toString().equals("Berlino")
+							||tratte.get(index).getCittà().toString().equals("Roma")||tratte.get(index).getCittà().toString().equals("Londra")) {
+							areaTratteCompagnie[indexArea].setText(areaTratteCompagnie[indexArea].getText()+tratte.get(index).getCittà().toString()+"["+tratte.get(index).getNumPrenotazioni()+"] - ["
+																	+tratte.get(index).getOrarioPartenza().toString()+" - " +tratte.get(index).getOrarioArrivo().toString()+"] - ["
+																	+tratte.get(index).getDataPartenza().toString()+" - "+tratte.get(index).getDataArrivo().toString()+"]"+"\n");
+						}
+				break;
+					
+				case 1:
+					if(tratte.get(index).getCittà().toString().equals("Atene")||tratte.get(index).getCittà().toString().equals("Bruxelles")) {
+						areaTratteCompagnie[indexArea].setText(areaTratteCompagnie[indexArea].getText()+tratte.get(index).getCittà().toString()+"["+tratte.get(index).getNumPrenotazioni()+"] - ["
+																+tratte.get(index).getOrarioPartenza().toString()+" - " +tratte.get(index).getOrarioArrivo().toString()+"] - ["
+																+tratte.get(index).getDataPartenza().toString()+" - "+tratte.get(index).getDataArrivo().toString()+"]"+"\n");
+					}
+				break;	
+				
+				case 2:
+					if(tratte.get(index).getCittà().toString().equals("Barcellona")||tratte.get(index).getCittà().toString().equals("Cagliari")||tratte.get(index).getCittà().toString().equals("Catania")) {
+						areaTratteCompagnie[indexArea].setText(areaTratteCompagnie[indexArea].getText()+tratte.get(index).getCittà().toString()+"["+tratte.get(index).getNumPrenotazioni()+"] - ["
+								+tratte.get(index).getOrarioPartenza().toString()+" - " +tratte.get(index).getOrarioArrivo().toString()+"] - ["
+								+tratte.get(index).getDataPartenza().toString()+" - "+tratte.get(index).getDataArrivo().toString()+"]"+"\n");
+					}
+				break;
+				
+				case 3:
+					if(tratte.get(index).getCittà().toString().equals("Dubai")||tratte.get(index).getCittà().toString().equals("Genova")
+						||tratte.get(index).getCittà().toString().equals("Trieste")||tratte.get(index).getCittà().toString().equals("Venzia")) {
+						areaTratteCompagnie[indexArea].setText(areaTratteCompagnie[indexArea].getText()+tratte.get(index).getCittà().toString()+"["+tratte.get(index).getNumPrenotazioni()+"] - ["
+								+tratte.get(index).getOrarioPartenza().toString()+" - " +tratte.get(index).getOrarioArrivo().toString()+"] - ["
+								+tratte.get(index).getDataPartenza().toString()+" - "+tratte.get(index).getDataArrivo().toString()+"]"+"\n");
+					}
+				break;
+				
+				case 4:
+					if(tratte.get(index).getCittà().toString().equals("Cracovia")||tratte.get(index).getCittà().toString().equals("Milano")) {
+						areaTratteCompagnie[indexArea].setText(areaTratteCompagnie[indexArea].getText()+tratte.get(index).getCittà().toString()+"["+tratte.get(index).getNumPrenotazioni()+"] - ["
+								+tratte.get(index).getOrarioPartenza().toString()+" - " +tratte.get(index).getOrarioArrivo().toString()+"] - ["
+								+tratte.get(index).getDataPartenza().toString()+" - "+tratte.get(index).getDataArrivo().toString()+"]"+"\n");
+					}
+				break;
+				
 				}
 			}
-		break;
-			
-		case "Eurowings":
-			for(int i=0; i<tratte.size(); i++) {
-				if(tratte.get(i).getCittà().toString().equals("Atene")||tratte.get(i).getCittà().toString().equals("Bruxelles")) {
-					listaTratte.addElement(tratte.get(i).getCittà().toString()+"["+tratte.get(i).getNumPrenotazioni()+"] - ["+tratte.get(i).getOrarioPartenza().toString()+" - "
-											+tratte.get(i).getOrarioArrivo().toString()+"] - ["+tratte.get(i).getDataPartenza().toString()+" - "+tratte.get(i).getDataArrivo().toString()+"]");
-				}
-			}
-		break;	
-		
-		case "Volotea":
-			for(int i=0; i<tratte.size(); i++) {
-				if(tratte.get(i).getCittà().toString().equals("Cagliari")||tratte.get(i).getCittà().toString().equals("Bruxelles")) {
-					listaTratte.addElement(tratte.get(i).getCittà().toString()+"["+tratte.get(i).getNumPrenotazioni()+"] - ["+tratte.get(i).getOrarioPartenza().toString()+" - "
-											+tratte.get(i).getOrarioArrivo().toString()+"] - ["+tratte.get(i).getDataPartenza().toString()+" - "+tratte.get(i).getDataArrivo().toString()+"]");
-				}
-			}
-		break;	
-		
-		case "Alitalia":
-			for(int i=0; i<tratte.size(); i++) {
-				if(tratte.get(i).getCittà().toString().equals("Atene")||tratte.get(i).getCittà().toString().equals("Bruxelles")) {
-					listaTratte.addElement(tratte.get(i).getCittà().toString()+"["+tratte.get(i).getNumPrenotazioni()+"] - ["+tratte.get(i).getOrarioPartenza().toString()+" - "
-											+tratte.get(i).getOrarioArrivo().toString()+"] - ["+tratte.get(i).getDataPartenza().toString()+" - "+tratte.get(i).getDataArrivo().toString()+"]");
-				}
-			}
-		break;	
-		
-		case "EasyJet":
-			for(int i=0; i<tratte.size(); i++) {
-				if(tratte.get(i).getCittà().toString().equals("Atene")||tratte.get(i).getCittà().toString().equals("Bruxelles")) {
-					listaTratte.addElement(tratte.get(i).getCittà().toString()+"["+tratte.get(i).getNumPrenotazioni()+"] - ["+tratte.get(i).getOrarioPartenza().toString()+" - "
-											+tratte.get(i).getOrarioArrivo().toString()+"] - ["+tratte.get(i).getDataPartenza().toString()+" - "+tratte.get(i).getDataArrivo().toString()+"]");
-				}
-			}
-		break;	
 		}
+	}
+	
+	
+	public void fillTable(JTable tableRicerca) {
+		
 	}
 	
 }

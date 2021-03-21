@@ -171,7 +171,7 @@ public class Tratta {
 	public void setDataArrivo(String dataPartenza, String orarioPartenza, String orarioArrivo) {
 		int partenza = Integer.parseInt(orarioPartenza.substring(0,2));
 		int arrivo = Integer.parseInt(orarioArrivo.substring(0,2));
-		if(partenza+arrivo>24) {
+		if(arrivo<partenza) {
 			if(dataPartenza.equals("31/03/21")) {
 				this.dataArrivo = "01/04/21";
 			}

@@ -15,6 +15,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.table.TableModel;
 
 public class AMain extends JFrame {
 	private static JLayeredPane Tratte;
@@ -80,7 +81,23 @@ public class AMain extends JFrame {
 	private JCheckBox[][] checksCode;
 	private JLayeredPane GiorniRimuoviTratta;
 	private static JLabel[] warnings;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JPanel pannelloTextFVEU;
+	private JLabel durataGenA;
+	private JPanel pannelloInfoTextVETEA;
+	private JTextArea[] areaTratteCompagnie;
+	private JLayeredPane Ricerca;
+	private JTable table;
 	
+	@SuppressWarnings("serial")
 	public AMain(Controller c) throws SQLException {
 		theController = c;
 		JButton[] pulsantiMesiPartenza = new JButton[31];
@@ -121,8 +138,8 @@ public class AMain extends JFrame {
 		
 		
 		PulsanteInfo = new JButton("");
+		PulsanteInfo.setBounds(659, 112, 85, 90);
 		PulsanteInfo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconInfo.png")));
-		PulsanteInfo.setBounds(659, 176, 85, 90);
 		PulsanteInfo.setOpaque(false);
 		PulsanteInfo.setFocusable(false);
 		PulsanteInfo.setContentAreaFilled(false);
@@ -132,12 +149,70 @@ public class AMain extends JFrame {
 				theController.switchPanel(Main, Info);
 			}
 		});
+		Main.setLayout(null);
+		
+		JComboBox boxGate = new JComboBox();
+		boxGate.setModel(new DefaultComboBoxModel(new String[] {"T1 - A1", "T1 - A2", "T1 - A3", "T1 - A4", "T2 - A1", "T2 - A2", "T2 - A3", "T2 - A4", "T3 - A1", "T3 - A2", "T3 - A3", "T3 - A4", "T4 - A1", "T4 - A2", "T4 - A3", "T4 - A4", "Qualsiasi"}));
+		boxGate.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		boxGate.setBounds(439, 291, 150, 30);
+		Main.add(boxGate);
+		
+		JLabel lblNewLabel_6_1 = new JLabel("Gate");
+		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		lblNewLabel_6_1.setBounds(439, 273, 150, 19);
+		Main.add(lblNewLabel_6_1);
+		
+		JLabel lblCompagnie = new JLabel("Compagnie");
+		lblCompagnie.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCompagnie.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		lblCompagnie.setBounds(618, 273, 150, 19);
+		Main.add(lblCompagnie);
+		
+		JComboBox boxCompagnie = new JComboBox();
+		boxCompagnie.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		boxCompagnie.setModel(new DefaultComboBoxModel(new String[] {"Rynair", "Eurowings", "Volotea", "Easyjet", "Alitalia", "Qualsiasi"}));
+		boxCompagnie.setBounds(618, 291, 150, 30);
+		Main.add(boxCompagnie);
+		
+		JComboBox boxDestinazione = new JComboBox();
+		boxDestinazione.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		boxDestinazione.setModel(new DefaultComboBoxModel(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano", "Qualsiasi"}));
+		boxDestinazione.setBounds(260, 291, 150, 30);
+		Main.add(boxDestinazione);
+		
+		JLabel lblNewLabel = new JLabel("Destinazione");
+		lblNewLabel.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(260, 273, 150, 19);
+		Main.add(lblNewLabel);
+		
+		JLabel testoPulsanteRicerca = new JLabel("Cerca");
+		testoPulsanteRicerca.setBounds(806, 283, 134, 30);
+		testoPulsanteRicerca.setHorizontalAlignment(SwingConstants.CENTER);
+		testoPulsanteRicerca.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		testoPulsanteRicerca.setForeground(Color.WHITE);
+		Main.add(testoPulsanteRicerca);
+		
+		JButton pulsanteRicerca = new JButton("");
+		pulsanteRicerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Main, Ricerca);
+			}
+		});
+		pulsanteRicerca.setBounds(794, 271, 158, 56);
+		pulsanteRicerca.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BackgroundPulsante.png")));
+		pulsanteRicerca.setOpaque(false);
+		pulsanteRicerca.setFocusable(false);
+		pulsanteRicerca.setContentAreaFilled(false);
+		pulsanteRicerca.setBorderPainted(false);
+		Main.add(pulsanteRicerca);
 		Main.add(PulsanteInfo);
 		
 		
 		PulsanteGate = new JButton("");
+		PulsanteGate.setBounds(439, 112, 85, 90);
 		PulsanteGate.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconGate.png")));
-		PulsanteGate.setBounds(439, 176, 85, 90);
 		PulsanteGate.setOpaque(false);
 		PulsanteGate.setFocusable(false);
 		PulsanteGate.setContentAreaFilled(false);
@@ -151,12 +226,12 @@ public class AMain extends JFrame {
 		
 		
 		PulsanteAereo = new JButton("");
+		PulsanteAereo.setBounds(543, 112, 92, 103);
 		PulsanteAereo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconAereo.png")));
 		PulsanteAereo.setOpaque(false);
 		PulsanteAereo.setFocusable(false);
 		PulsanteAereo.setContentAreaFilled(false);
 		PulsanteAereo.setBorderPainted(false);
-		PulsanteAereo.setBounds(543, 176, 92, 103);
 		PulsanteAereo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				theController.switchPanel(Main, Tratte);
@@ -166,31 +241,37 @@ public class AMain extends JFrame {
 		
 		
 		JLabel MainMenù = new JLabel("");
+		MainMenù.setBounds(233, 65, 719, 179);
 		MainMenù.setIcon(new ImageIcon(AMain.class.getResource("/apResources/Men\u00F9Sfere.png")));
 		MainMenù.setHorizontalAlignment(SwingConstants.CENTER);
-		MainMenù.setBounds(233, 129, 719, 179);
 		Main.add(MainMenù);
 		
 		
 		JLabel ScrittaCompagnie = new JLabel("Compagnie Aeree");
+		ScrittaCompagnie.setBounds(1016, 93, 147, 19);
 		ScrittaCompagnie.setFont(new Font("Lucida Bright", Font.BOLD | Font.ITALIC, 15));
 		ScrittaCompagnie.setForeground(Color.DARK_GRAY);
 		ScrittaCompagnie.setHorizontalAlignment(SwingConstants.CENTER);
-		ScrittaCompagnie.setBounds(1016, 157, 147, 19);
 		Main.add(ScrittaCompagnie);
 		
 		
 		JLabel ScrittaMappa = new JLabel("Mappa");
+		ScrittaMappa.setBounds(76, 93, 147, 19);
 		ScrittaMappa.setForeground(Color.DARK_GRAY);
 		ScrittaMappa.setHorizontalAlignment(SwingConstants.CENTER);
 		ScrittaMappa.setFont(new Font("Lucida Bright", Font.BOLD | Font.ITALIC, 15));
-		ScrittaMappa.setBounds(76, 157, 147, 19);
 		Main.add(ScrittaMappa);
 		
 		
 		ShowCompagnie = new JButton("");
+		ShowCompagnie.setBounds(949, 65, 227, 179);
+		ShowCompagnie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Main, Compagnie);
+				theController.fillAreaCompagnie(areaTratteCompagnie);
+			}
+		});
 		ShowCompagnie.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconaCompagnie.png")));
-		ShowCompagnie.setBounds(949, 129, 227, 179);
 		ShowCompagnie.setOpaque(false);
 		ShowCompagnie.setFocusable(false);
 		ShowCompagnie.setContentAreaFilled(false);
@@ -199,8 +280,8 @@ public class AMain extends JFrame {
 		
 		
 		ShowMappa = new JButton("");
+		ShowMappa.setBounds(10, 65, 227, 179);
 		ShowMappa.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconaMappa.png")));
-		ShowMappa.setBounds(10, 129, 227, 179);
 		ShowMappa.setOpaque(false);
 		ShowMappa.setFocusable(false);
 		ShowMappa.setContentAreaFilled(false);
@@ -215,10 +296,10 @@ public class AMain extends JFrame {
 		
 		JLabel InfoUni = new JLabel("Universit\u00E0 degli Studi di Napoli Federico II - Corso Umberto I 40 - 80138 Napoli - Centralino +39 081 2531111 contactcenter@unina.it - "
 										+ "C.F. 00876220633 - PEC ateneo@pec.unina.it");
+		InfoUni.setBounds(-7, 514, 1193, 21);
 		InfoUni.setHorizontalAlignment(SwingConstants.CENTER);
 		InfoUni.setForeground(Color.GRAY);
 		InfoUni.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		InfoUni.setBounds(-7, 514, 1193, 21);
 		Main.add(InfoUni);
 		
 		
@@ -226,6 +307,12 @@ public class AMain extends JFrame {
 		ImmagineFooter.setBounds(-7, 338, 1200, 197);
 		ImmagineFooter.setIcon(new ImageIcon(AMain.class.getResource("/apResources/Footer.png")));
 		Main.add(ImmagineFooter);
+		
+		JLabel iconBarraRicerca = new JLabel("");
+		iconBarraRicerca.setBounds(10, 255, 1166, 90);
+		iconBarraRicerca.setHorizontalAlignment(SwingConstants.CENTER);
+		iconBarraRicerca.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BarraRicerca.png")));
+		Main.add(iconBarraRicerca);
 		
 		Tratte = new JLayeredPane();
 		BodyContainer.add(Tratte);
@@ -914,6 +1001,143 @@ public class AMain extends JFrame {
 		
 		PannelloTempo = new JPanel();
 		PannelloTempo.setVisible(false);
+		
+		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
+		internalFrame.setClosable(true);
+		internalFrame.setBounds(388, 431, 554, 396);
+		PanelGate.add(internalFrame);
+		internalFrame.getContentPane().setLayout(null);
+		
+		JPanel panel_10 = new JPanel();
+		panel_10.setBounds(0, 0, 537, 366);
+		internalFrame.getContentPane().add(panel_10);
+		
+		JPanel panel_12 = new JPanel();
+		panel_12.setBackground(new Color(13, 62, 117));
+		panel_12.setBounds(0, 0, 537, 43);
+		
+		JLabel lblNewLabel_5 = new JLabel("Destinazione: ");
+		lblNewLabel_5.setBounds(10, 54, 180, 17);
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2 = new JLabel("Orario partenza:");
+		lblNewLabel_5_2.setBounds(10, 89, 180, 17);
+		lblNewLabel_5_2.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_3 = new JLabel("Orario d'arrivo previsto: ");
+		lblNewLabel_5_3.setBounds(10, 124, 180, 17);
+		lblNewLabel_5_3.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2_1 = new JLabel("Data partenza:");
+		lblNewLabel_5_2_1.setBounds(10, 160, 180, 17);
+		lblNewLabel_5_2_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2_1_1 = new JLabel("Data d'arrivo prevista: ");
+		lblNewLabel_5_2_1_1.setBounds(10, 195, 180, 17);
+		lblNewLabel_5_2_1_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2_1_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2_1_2 = new JLabel("Prenotazioni: ");
+		lblNewLabel_5_2_1_2.setBounds(10, 230, 180, 17);
+		lblNewLabel_5_2_1_2.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2_1_2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2_1_3 = new JLabel("Compagnia aerea: ");
+		lblNewLabel_5_2_1_3.setBounds(10, 265, 180, 17);
+		lblNewLabel_5_2_1_3.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2_1_3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2_1_3_1 = new JLabel("Code:");
+		lblNewLabel_5_2_1_3_1.setBounds(10, 300, 180, 17);
+		lblNewLabel_5_2_1_3_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2_1_3_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_2_1_4 = new JLabel("Tempo d'imbarco: ");
+		lblNewLabel_5_2_1_4.setBounds(10, 335, 180, 17);
+		lblNewLabel_5_2_1_4.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_5_2_1_4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		JButton btnNewButton_2 = new JButton("Parti");
+		btnNewButton_2.setBounds(462, 327, 65, 25);
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panel_12.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Recap delle informazioni del volo in partenza");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(10, 0, 517, 43);
+		lblNewLabel_2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		panel_12.add(lblNewLabel_2);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setBounds(200, 51, 239, 20);
+		textField.setColumns(10);
+		panel_10.setLayout(null);
+		panel_10.add(panel_12);
+		panel_10.add(lblNewLabel_5_3);
+		panel_10.add(lblNewLabel_5_2_1);
+		panel_10.add(lblNewLabel_5_2_1_1);
+		panel_10.add(lblNewLabel_5_2_1_2);
+		panel_10.add(lblNewLabel_5);
+		panel_10.add(lblNewLabel_5_2);
+		panel_10.add(textField);
+		panel_10.add(lblNewLabel_5_2_1_4);
+		panel_10.add(lblNewLabel_5_2_1_3_1);
+		panel_10.add(lblNewLabel_5_2_1_3);
+		panel_10.add(btnNewButton_2);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setBounds(200, 86, 239, 20);
+		panel_10.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setBounds(200, 121, 239, 20);
+		panel_10.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setEditable(false);
+		textField_3.setBounds(200, 157, 239, 20);
+		panel_10.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setEditable(false);
+		textField_4.setBounds(200, 192, 239, 20);
+		panel_10.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setEditable(false);
+		textField_5.setBounds(200, 227, 239, 20);
+		panel_10.add(textField_5);
+		textField_5.setColumns(10);
+		
+		textField_6 = new JTextField();
+		textField_6.setEditable(false);
+		textField_6.setBounds(200, 262, 239, 20);
+		panel_10.add(textField_6);
+		textField_6.setColumns(10);
+		
+		textField_7 = new JTextField();
+		textField_7.setEditable(false);
+		textField_7.setBounds(200, 297, 239, 20);
+		panel_10.add(textField_7);
+		textField_7.setColumns(10);
+		
+		textField_8 = new JTextField();
+		textField_8.setBounds(200, 332, 239, 20);
+		panel_10.add(textField_8);
+		textField_8.setColumns(10);
+		internalFrame.setVisible(true);
 		PannelloTempo.setBounds(671, 358, 490, 166);
 		PanelGate.add(PannelloTempo);
 		
@@ -1415,14 +1639,6 @@ public class AMain extends JFrame {
 		ButtonModifyT1A1.setBorderPainted(false);
 		ButtonModifyT1A1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconEdit.png")));
 		
-		JComboBox<String> BoxOrari_2 = new JComboBox<String>();
-		BoxOrari_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("boo");
-			}
-		});
-		BoxOrari_2.setModel(new DefaultComboBoxModel<String>(new String[] {"No", "00:10", "00:15", "00:20", "00:25", "00:30", "00:35", "00:40", "00:45", "00:50", "00:55", "01:00"}));
-		
 		ButtonGroup groupTempo = new ButtonGroup();
 		
 		JTextField[][] fieldsTempo = {{FieldTempoStimatoGiorno, FieldTempoStimatoMese, FieldTempoStimatoAnno}, {FieldTempoEffettivoGiorno, FieldTempoEffettivoMese, FieldTempoEffettivoAnno}};
@@ -1436,6 +1652,8 @@ public class AMain extends JFrame {
 			}
 		});
 		groupTempo.add(RadioButtonT1A1);
+		
+		JCheckBox checkCodaPriorityT1A1_1 = new JCheckBox("");
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -1457,25 +1675,25 @@ public class AMain extends JFrame {
 					.addComponent(checkCodaPriorityT1A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
 					.addComponent(RadioButtonT1A1)
-					.addGap(51)
-					.addComponent(BoxOrari_2, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addGap(69)
+					.addComponent(checkCodaPriorityT1A1_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(25))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-						.addComponent(FieldT1A1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(BoxOrari_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(FieldT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
 						.addComponent(RadioButtonT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
 						.addComponent(checkCodaPriorityT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(CodaPriorirtyA1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(checkCodaDisabiliT1A1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(CodaDisabiliA1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(checkCodaFamiglieT1A1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(CodaPriorirtyA1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaDisabiliT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(CodaDisabiliA1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaFamiglieT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
 							.addComponent(ButtonModifyT1A1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-							.addComponent(CodaFamiglieA1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)))
+							.addComponent(CodaFamiglieA1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+						.addComponent(checkCodaPriorityT1A1_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2.setLayout(gl_panel_2);
@@ -1497,7 +1715,7 @@ public class AMain extends JFrame {
 		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("Ritardo");
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("Partenza");
 		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1_1_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		GroupLayout gl_panel_2_2_1 = new GroupLayout(panel_2_2_1);
@@ -1572,11 +1790,10 @@ public class AMain extends JFrame {
 		
 		JCheckBox checkCodaPriorityT1A2 = new JCheckBox("");
 		
-		JComboBox<String> BoxOrari_2_1 = new JComboBox<String>();
-		BoxOrari_2_1.setModel(new DefaultComboBoxModel<String>(new String[] {"No", "00:10", "00:15", "00:20", "00:25", "00:30", "00:35", "00:40", "00:45", "00:50", "00:55", "01:00"}));
-		
 		JRadioButton RadioButtonT1A2 = new JRadioButton("");
 		groupTempo.add(RadioButtonT1A2);
+		
+		JCheckBox checkCodaPriorityT1A1_2 = new JCheckBox("");
 		GroupLayout gl_panel_2_1 = new GroupLayout(panel_2_1);
 		gl_panel_2_1.setHorizontalGroup(
 			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
@@ -1598,8 +1815,9 @@ public class AMain extends JFrame {
 					.addComponent(checkCodaPriorityT1A2)
 					.addGap(38)
 					.addComponent(RadioButtonT1A2)
-					.addGap(52)
-					.addComponent(BoxOrari_2_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(69)
+					.addComponent(checkCodaPriorityT1A1_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(26))
 		);
 		gl_panel_2_1.setVerticalGroup(
 			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
@@ -1611,10 +1829,10 @@ public class AMain extends JFrame {
 						.addComponent(CodaPriorirtyA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(checkCodaPriorityT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(RadioButtonT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(BoxOrari_2_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(CodaFamiglieA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ButtonModifyT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addComponent(FieldT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT1A1_2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2_1.setLayout(gl_panel_2_1);
@@ -1668,11 +1886,10 @@ public class AMain extends JFrame {
 		
 		JCheckBox checkCodaPriorityT1A3 = new JCheckBox("");
 		
-		JComboBox<String> BoxOrari_2_2 = new JComboBox<String>();
-		BoxOrari_2_2.setModel(new DefaultComboBoxModel<String>(new String[] {"No", "00:10", "00:15", "00:20", "00:25", "00:30", "00:35", "00:40", "00:45", "00:50", "00:55", "01:00"}));
-		
 		JRadioButton RadioButtonT1A3 = new JRadioButton("");
 		groupTempo.add(RadioButtonT1A3);
+		
+		JCheckBox checkCodaPriorityT1A1_3 = new JCheckBox("");
 		GroupLayout gl_panel_2_2 = new GroupLayout(panel_2_2);
 		gl_panel_2_2.setHorizontalGroup(
 			gl_panel_2_2.createParallelGroup(Alignment.LEADING)
@@ -1694,8 +1911,9 @@ public class AMain extends JFrame {
 					.addComponent(checkCodaPriorityT1A3)
 					.addGap(38)
 					.addComponent(RadioButtonT1A3)
-					.addGap(52)
-					.addComponent(BoxOrari_2_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(69)
+					.addComponent(checkCodaPriorityT1A1_3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(26))
 		);
 		gl_panel_2_2.setVerticalGroup(
 			gl_panel_2_2.createParallelGroup(Alignment.LEADING)
@@ -1707,10 +1925,10 @@ public class AMain extends JFrame {
 						.addComponent(CodaPriorirtyA3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(checkCodaPriorityT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(RadioButtonT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(BoxOrari_2_2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(CodaFamiglieA3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ButtonModifyT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addComponent(FieldT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT1A1_3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2_2.setLayout(gl_panel_2_2);
@@ -1768,13 +1986,11 @@ public class AMain extends JFrame {
 										 {checkCodaFamiglieT1A2, checkCodaDisabiliT1A2, checkCodaPriorityT1A2},
 										 {checkCodaFamiglieT1A3, checkCodaDisabiliT1A3, checkCodaPriorityT1A3},
 										 {checkCodaFamiglieT1A4, checkCodaDisabiliT1A4, checkCodaPriorityT1A4}};
-									
-		
-		JComboBox<String> BoxOrari_2_3 = new JComboBox<String>();
-		BoxOrari_2_3.setModel(new DefaultComboBoxModel<String>(new String[] {"No", "00:10", "00:15", "00:20", "00:25", "00:30", "00:35", "00:40", "00:45", "00:50", "00:55", "01:00"}));
 		
 		JRadioButton RadioButtonT1A4 = new JRadioButton("");
 		groupTempo.add(RadioButtonT1A4);
+		
+		JCheckBox checkCodaPriorityT1A1_4 = new JCheckBox("");
 		GroupLayout gl_panel_2_3 = new GroupLayout(panel_2_3);
 		gl_panel_2_3.setHorizontalGroup(
 			gl_panel_2_3.createParallelGroup(Alignment.LEADING)
@@ -1796,8 +2012,9 @@ public class AMain extends JFrame {
 					.addComponent(checkCodaPriorityT1A4)
 					.addGap(36)
 					.addComponent(RadioButtonT1A4)
-					.addGap(54)
-					.addComponent(BoxOrari_2_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(71)
+					.addComponent(checkCodaPriorityT1A1_4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(26))
 		);
 		gl_panel_2_3.setVerticalGroup(
 			gl_panel_2_3.createParallelGroup(Alignment.LEADING)
@@ -1809,18 +2026,15 @@ public class AMain extends JFrame {
 						.addComponent(CodaPriorirtyA4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(checkCodaPriorityT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(RadioButtonT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(BoxOrari_2_3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(CodaFamiglieA4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ButtonModifyT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addComponent(FieldT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT1A1_4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2_3.setLayout(gl_panel_2_3);
 		
 		JRadioButton[] radioButtonsTempo= {RadioButtonT1A1, RadioButtonT1A2, RadioButtonT1A3, RadioButtonT1A4};
-		
-		JPanel panel_1 = new JPanel();
-		TerminalPane.addTab("New tab", null, panel_1, null);
 		
 		JPanel PanelTerminale2 = new JPanel();
 		PanelTerminale2.setLayout(null);
@@ -1935,10 +2149,6 @@ public class AMain extends JFrame {
 		GateArea4.setEditable(false);
 		GateArea4.setBounds(10, 49, 247, 131);
 		PanelTerminale4.add(GateArea4);
-		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBounds(20, 76, 860, 223);
-		PanelGate.add(panel_10);
 		
 		JButton PulsanteHomeInfo = new JButton("");
 				
@@ -2271,327 +2481,1325 @@ public class AMain extends JFrame {
 		OmbraHeaderCompagnie.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
 		PanelCompagnie.add(OmbraHeaderCompagnie);
 		
-		JPanel panel_11 = new JPanel();
-		panel_11.setBounds(0, 0, 10, 10);
-		PanelCompagnie.add(panel_11);
+		JTabbedPane tabbedPaneCompagnie = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPaneCompagnie.setBounds(42, 72, 1097, 441);
+		PanelCompagnie.add(tabbedPaneCompagnie);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(new Color(255, 255, 255));
-		panel_7.setBounds(77, 111, 200, 242);
-		PanelCompagnie.add(panel_7);
+		JPanel pannelloR = new JPanel();
+		tabbedPaneCompagnie.addTab("Ryanair", null, pannelloR, null);
+		pannelloR.setLayout(null);
 		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8.setBackground(new Color(220, 220, 220));
+		JPanel pannelloDVR = new JPanel();
+		pannelloDVR.setBackground(Color.WHITE);
+		pannelloDVR.setBounds(240, 11, 200, 339);
+		pannelloR.add(pannelloDVR);
 		
-		JPanel panel_8_1 = new JPanel();
-		panel_8_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_1.setBackground(new Color(245, 245, 245));
-		GroupLayout gl_panel_7 = new GroupLayout(panel_7);
-		gl_panel_7.setHorizontalGroup(
-			gl_panel_7.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_7.createSequentialGroup()
-					.addGroup(gl_panel_7.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_8, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-						.addComponent(panel_8_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		gl_panel_7.setVerticalGroup(
-			gl_panel_7.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_7.createSequentialGroup()
-					.addComponent(panel_8_1, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE))
-		);
-		panel_8.setLayout(new CardLayout(0, 0));
+		JPanel pannelloInfoDVR = new JPanel();
+		pannelloInfoDVR.setBounds(0, 129, 200, 210);
+		pannelloInfoDVR.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoDVR.setBackground(new Color(220, 220, 220));
 		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBackground(new Color(220, 220, 220));
-		panel_9.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8.add(panel_9, "name_330446490763300");
+		JPanel pannelloIconTextDVR = new JPanel();
+		pannelloIconTextDVR.setBounds(0, 0, 200, 123);
+		pannelloIconTextDVR.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextDVR.setBackground(new Color(245, 245, 245));
 		
-		JLabel lblNewLabel_8 = new JLabel("EasyJet");
-		lblNewLabel_8.setForeground(new Color(0, 0, 0));
-		lblNewLabel_8.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
-		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
-		gl_panel_9.setHorizontalGroup(
-			gl_panel_9.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel_8, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_9.setVerticalGroup(
-			gl_panel_9.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addGap(70)
-					.addComponent(lblNewLabel_8, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		panel_9.setLayout(gl_panel_9);
+		JPanel pannelloTextDVR = new JPanel();
+		pannelloTextDVR.setBackground(new Color(13, 62, 117));
 		
-		JPanel panel_8_2 = new JPanel();
-		panel_8_2.setBackground(new Color(13, 62, 117));
-		GroupLayout gl_panel_8_1 = new GroupLayout(panel_8_1);
-		gl_panel_8_1.setHorizontalGroup(
-			gl_panel_8_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_8_2, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-		);
-		gl_panel_8_1.setVerticalGroup(
-			gl_panel_8_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_8_1.createSequentialGroup()
-					.addComponent(panel_8_2, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(66, Short.MAX_VALUE))
-		);
-		
-		JLabel lblNewLabel = new JLabel("Compagnia Aerea");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		GroupLayout gl_panel_8_2 = new GroupLayout(panel_8_2);
-		gl_panel_8_2.setHorizontalGroup(
-			gl_panel_8_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_8_2.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_panel_8_2.setVerticalGroup(
-			gl_panel_8_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_8_2.createSequentialGroup()
-					.addGap(5)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		panel_8_2.setLayout(gl_panel_8_2);
-		panel_8_1.setLayout(gl_panel_8_1);
-		panel_7.setLayout(gl_panel_7);
-		
-		JPanel panel_7_1 = new JPanel();
-		panel_7_1.setBackground(Color.WHITE);
-		panel_7_1.setBounds(628, 111, 200, 339);
-		PanelCompagnie.add(panel_7_1);
-		
-		JPanel panel_8_3 = new JPanel();
-		panel_8_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_3.setBackground(new Color(220, 220, 220));
-		panel_8_3.setLayout(new CardLayout(0, 0));
-		
-		JPanel panel_8_1_1 = new JPanel();
-		panel_8_1_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_1_1.setBackground(new Color(245, 245, 245));
-		
-		JPanel panel_8_2_1 = new JPanel();
-		panel_8_2_1.setBackground(new Color(13, 62, 117));
-		
-		JLabel lblNewLabel_6 = new JLabel("Durata Voli");
-		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setForeground(Color.WHITE);
-		lblNewLabel_6.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
-		GroupLayout gl_panel_8_2_1 = new GroupLayout(panel_8_2_1);
-		gl_panel_8_2_1.setHorizontalGroup(
-			gl_panel_8_2_1.createParallelGroup(Alignment.LEADING)
+		JLabel testoDVR = new JLabel("Durata Voli");
+		testoDVR.setHorizontalAlignment(SwingConstants.CENTER);
+		testoDVR.setForeground(Color.WHITE);
+		testoDVR.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextDVR = new GroupLayout(pannelloTextDVR);
+		gl_pannelloTextDVR.setHorizontalGroup(
+			gl_pannelloTextDVR.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 196, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_2_1.createSequentialGroup()
+				.addGroup(gl_pannelloTextDVR.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addComponent(testoDVR, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_panel_8_2_1.setVerticalGroup(
-			gl_panel_8_2_1.createParallelGroup(Alignment.LEADING)
+		gl_pannelloTextDVR.setVerticalGroup(
+			gl_pannelloTextDVR.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 54, Short.MAX_VALUE)
-				.addGroup(Alignment.TRAILING, gl_panel_8_2_1.createSequentialGroup()
+				.addGroup(gl_pannelloTextDVR.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_6, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(testoDVR, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 					.addContainerGap())
 		);
-		panel_8_2_1.setLayout(gl_panel_8_2_1);
-		GroupLayout gl_panel_8_1_1 = new GroupLayout(panel_8_1_1);
-		gl_panel_8_1_1.setHorizontalGroup(
-			gl_panel_8_1_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 200, Short.MAX_VALUE)
-				.addComponent(panel_8_2_1, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+		pannelloTextDVR.setLayout(gl_pannelloTextDVR);
+		
+		JLabel iconDVR = new JLabel("");
+		iconDVR.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconDurata.png")));
+		iconDVR.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextDVR = new GroupLayout(pannelloIconTextDVR);
+		gl_pannelloIconTextDVR.setHorizontalGroup(
+			gl_pannelloIconTextDVR.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextDVR, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVR.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconDVR, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
 		);
-		gl_panel_8_1_1.setVerticalGroup(
-			gl_panel_8_1_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_1_1.createSequentialGroup()
-					.addComponent(panel_8_2_1, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(54, Short.MAX_VALUE))
-		);
-		panel_8_1_1.setLayout(gl_panel_8_1_1);
-		GroupLayout gl_panel_7_1 = new GroupLayout(panel_7_1);
-		gl_panel_7_1.setHorizontalGroup(
-			gl_panel_7_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_7_1.createSequentialGroup()
-					.addGroup(gl_panel_7_1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_8_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-						.addComponent(panel_8_1_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		gl_panel_7_1.setVerticalGroup(
-			gl_panel_7_1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_7_1.createSequentialGroup()
-					.addComponent(panel_8_1_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		gl_pannelloIconTextDVR.setVerticalGroup(
+			gl_pannelloIconTextDVR.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloIconTextDVR.createSequentialGroup()
+					.addComponent(pannelloTextDVR, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_8_3, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+					.addComponent(iconDVR)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		panel_7_1.setLayout(gl_panel_7_1);
+		pannelloIconTextDVR.setLayout(gl_pannelloIconTextDVR);
+		pannelloDVR.setLayout(null);
+		pannelloInfoDVR.setLayout(null);
 		
-		JPanel panel_7_2 = new JPanel();
-		panel_7_2.setBackground(Color.WHITE);
-		panel_7_2.setBounds(351, 111, 200, 292);
-		PanelCompagnie.add(panel_7_2);
+		JLabel durataAmsR = new JLabel("Ams - 2h 40m");
+		durataAmsR.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataAmsR.setHorizontalAlignment(SwingConstants.CENTER);
+		durataAmsR.setBounds(10, 22, 180, 23);
+		pannelloInfoDVR.add(durataAmsR);
 		
-		JPanel panel_8_4 = new JPanel();
-		panel_8_4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_4.setBackground(new Color(220, 220, 220));
-		panel_8_4.setLayout(new CardLayout(0, 0));
+		JLabel durataBerR = new JLabel("Ber - 2h 20m");
+		durataBerR.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataBerR.setHorizontalAlignment(SwingConstants.CENTER);
+		durataBerR.setBounds(10, 69, 180, 23);
+		pannelloInfoDVR.add(durataBerR);
 		
-		JPanel panel_8_1_2 = new JPanel();
-		panel_8_1_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_1_2.setBackground(new Color(245, 245, 245));
+		JLabel durataRomR = new JLabel("Rom - 1h");
+		durataRomR.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataRomR.setHorizontalAlignment(SwingConstants.CENTER);
+		durataRomR.setBounds(10, 117, 180, 23);
+		pannelloInfoDVR.add(durataRomR);
 		
-		JPanel panel_8_2_2 = new JPanel();
-		panel_8_2_2.setBackground(new Color(13, 62, 117));
+		JLabel durataLonR = new JLabel("Lon - 2h 50m");
+		durataLonR.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataLonR.setHorizontalAlignment(SwingConstants.CENTER);
+		durataLonR.setBounds(10, 162, 180, 23);
+		pannelloInfoDVR.add(durataLonR);
+		pannelloDVR.add(pannelloInfoDVR);
+		pannelloDVR.add(pannelloIconTextDVR);
 		
-		JLabel lblNewLabel_7 = new JLabel("Frequenza Voli");
-		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7.setForeground(Color.WHITE);
-		lblNewLabel_7.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
-		GroupLayout gl_panel_8_2_2 = new GroupLayout(panel_8_2_2);
-		gl_panel_8_2_2.setHorizontalGroup(
-			gl_panel_8_2_2.createParallelGroup(Alignment.LEADING)
+		JPanel pannelloFVR = new JPanel();
+		pannelloFVR.setBackground(Color.WHITE);
+		pannelloFVR.setBounds(10, 11, 200, 272);
+		pannelloR.add(pannelloFVR);
+		
+		JPanel pannelloInfoFVR = new JPanel();
+		pannelloInfoFVR.setBounds(0, 129, 200, 143);
+		pannelloInfoFVR.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoFVR.setBackground(new Color(220, 220, 220));
+		
+		JPanel pannelloIconTextFVR = new JPanel();
+		pannelloIconTextFVR.setBounds(0, 0, 200, 123);
+		pannelloIconTextFVR.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextFVR.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextFVR = new JPanel();
+		pannelloTextFVR.setBackground(new Color(13, 62, 117));
+		
+		JLabel textFVR = new JLabel("Frequenza Voli");
+		textFVR.setHorizontalAlignment(SwingConstants.CENTER);
+		textFVR.setForeground(Color.WHITE);
+		textFVR.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextFVR = new GroupLayout(pannelloTextFVR);
+		gl_pannelloTextFVR.setHorizontalGroup(
+			gl_pannelloTextFVR.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 196, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_2_2.createSequentialGroup()
+				.addGroup(gl_pannelloTextFVR.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel_7, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textFVR, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_panel_8_2_2.setVerticalGroup(
-			gl_panel_8_2_2.createParallelGroup(Alignment.LEADING)
+		gl_pannelloTextFVR.setVerticalGroup(
+			gl_pannelloTextFVR.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 54, Short.MAX_VALUE)
-				.addGroup(Alignment.TRAILING, gl_panel_8_2_2.createSequentialGroup()
+				.addGroup(gl_pannelloTextFVR.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_7, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(textFVR, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 					.addContainerGap())
 		);
-		panel_8_2_2.setLayout(gl_panel_8_2_2);
-		GroupLayout gl_panel_8_1_2 = new GroupLayout(panel_8_1_2);
-		gl_panel_8_1_2.setHorizontalGroup(
-			gl_panel_8_1_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 200, Short.MAX_VALUE)
-				.addComponent(panel_8_2_2, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+		pannelloTextFVR.setLayout(gl_pannelloTextFVR);
+		
+		JLabel iconFVR = new JLabel("");
+		iconFVR.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconFrequenza.png")));
+		iconFVR.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextFVR = new GroupLayout(pannelloIconTextFVR);
+		gl_pannelloIconTextFVR.setHorizontalGroup(
+			gl_pannelloIconTextFVR.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextFVR, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVR.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconFVR, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
 		);
-		gl_panel_8_1_2.setVerticalGroup(
-			gl_panel_8_1_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 112, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_1_2.createSequentialGroup()
-					.addComponent(panel_8_2_2, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(54, Short.MAX_VALUE))
-		);
-		panel_8_1_2.setLayout(gl_panel_8_1_2);
-		GroupLayout gl_panel_7_2 = new GroupLayout(panel_7_2);
-		gl_panel_7_2.setHorizontalGroup(
-			gl_panel_7_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_7_2.createSequentialGroup()
-					.addGroup(gl_panel_7_2.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_8_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-						.addComponent(panel_8_1_2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		gl_panel_7_2.setVerticalGroup(
-			gl_panel_7_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_7_2.createSequentialGroup()
-					.addComponent(panel_8_1_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		gl_pannelloIconTextFVR.setVerticalGroup(
+			gl_pannelloIconTextFVR.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloIconTextFVR.createSequentialGroup()
+					.addComponent(pannelloTextFVR, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_8_4, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+					.addComponent(iconFVR, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+					.addContainerGap())
 		);
-		panel_7_2.setLayout(gl_panel_7_2);
+		pannelloIconTextFVR.setLayout(gl_pannelloIconTextFVR);
+		pannelloFVR.setLayout(null);
+		pannelloInfoFVR.setLayout(null);
 		
-		JPanel panel_7_1_1 = new JPanel();
-		panel_7_1_1.setBackground(Color.WHITE);
-		panel_7_1_1.setBounds(905, 111, 200, 396);
-		PanelCompagnie.add(panel_7_1_1);
+		JLabel infoTextFVR1 = new JLabel("Settimana completa");
+		infoTextFVR1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVR1.setBounds(10, 40, 180, 23);
+		infoTextFVR1.setHorizontalAlignment(SwingConstants.CENTER);
+		pannelloInfoFVR.add(infoTextFVR1);
 		
-		JPanel panel_8_3_1 = new JPanel();
-		panel_8_3_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_3_1.setBackground(new Color(220, 220, 220));
-		panel_8_3_1.setLayout(new CardLayout(0, 0));
+		JLabel infoTextFVR2 = new JLabel("(in base ai voli)");
+		infoTextFVR2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVR2.setBounds(10, 74, 180, 23);
+		infoTextFVR2.setHorizontalAlignment(SwingConstants.CENTER);
+		pannelloInfoFVR.add(infoTextFVR2);
+		pannelloFVR.add(pannelloInfoFVR);
+		pannelloFVR.add(pannelloIconTextFVR);
 		
-		JPanel panel_8_1_1_1 = new JPanel();
-		panel_8_1_1_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_8_1_1_1.setBackground(new Color(245, 245, 245));
+		JPanel pannelloVETR = new JPanel();
+		pannelloVETR.setBackground(Color.WHITE);
+		pannelloVETR.setBounds(470, 11, 612, 396);
+		pannelloR.add(pannelloVETR);
 		
-		JPanel panel_8_2_1_1 = new JPanel();
-		panel_8_2_1_1.setBackground(new Color(13, 62, 117));
+		JPanel pannelloIconTextVETR = new JPanel();
+		pannelloIconTextVETR.setBounds(0, 0, 616, 122);
+		pannelloIconTextVETR.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextVETR.setBackground(new Color(245, 245, 245));
 		
-		JLabel lblNewLabel_6_1 = new JLabel("Voli & Tratte");
-		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6_1.setForeground(Color.WHITE);
-		lblNewLabel_6_1.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
-		GroupLayout gl_panel_8_2_1_1 = new GroupLayout(panel_8_2_1_1);
-		gl_panel_8_2_1_1.setHorizontalGroup(
-			gl_panel_8_2_1_1.createParallelGroup(Alignment.LEADING)
+		JPanel pannelloTextVETR = new JPanel();
+		pannelloTextVETR.setBackground(new Color(13, 62, 117));
+		
+		JLabel textVETR = new JLabel("Voli & Tratte");
+		textVETR.setHorizontalAlignment(SwingConstants.CENTER);
+		textVETR.setForeground(Color.WHITE);
+		textVETR.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextVETR = new GroupLayout(pannelloTextVETR);
+		gl_pannelloTextVETR.setHorizontalGroup(
+			gl_pannelloTextVETR.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloTextVETR.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textVETR, GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloTextVETR.setVerticalGroup(
+			gl_pannelloTextVETR.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_pannelloTextVETR.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textVETR, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextVETR.setLayout(gl_pannelloTextVETR);
+		
+		JLabel iconVETR = new JLabel("");
+		iconVETR.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconVoliETratte.png")));
+		iconVETR.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextVETR = new GroupLayout(pannelloIconTextVETR);
+		gl_pannelloIconTextVETR.setHorizontalGroup(
+			gl_pannelloIconTextVETR.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextVETR, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextVETR.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconVETR, GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloIconTextVETR.setVerticalGroup(
+			gl_pannelloIconTextVETR.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloIconTextVETR.createSequentialGroup()
+					.addComponent(pannelloTextVETR, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(iconVETR, GroupLayout.PREFERRED_SIZE, 42, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloIconTextVETR.setLayout(gl_pannelloIconTextVETR);
+		pannelloVETR.setLayout(null);
+		pannelloVETR.add(pannelloIconTextVETR);
+		
+		JPanel pannelloInfoVETR = new JPanel();
+		pannelloInfoVETR.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoVETR.setBackground(new Color(220, 220, 220));
+		pannelloInfoVETR.setBounds(0, 130, 612, 266);
+		pannelloVETR.add(pannelloInfoVETR);
+		pannelloInfoVETR.setLayout(null);
+		
+		JScrollPane scrollPaneVETR = new JScrollPane();
+		scrollPaneVETR.setBounds(10, 11, 592, 244);
+		pannelloInfoVETR.add(scrollPaneVETR);
+		
+		JTextArea textAreaVETR = new JTextArea();
+		textAreaVETR.setEditable(false);
+		textAreaVETR.setDropMode(DropMode.INSERT);
+		scrollPaneVETR.setViewportView(textAreaVETR);
+		
+		
+		JPanel pannelloEU = new JPanel();
+		pannelloEU.setLayout(null);
+		tabbedPaneCompagnie.addTab("Eurowings", null, pannelloEU, null);
+		
+		JPanel pannelloDVEU = new JPanel();
+		pannelloDVEU.setBackground(Color.WHITE);
+		pannelloDVEU.setBounds(240, 11, 200, 339);
+		pannelloEU.add(pannelloDVEU);
+		
+		JPanel pannelloInfoDVEU = new JPanel();
+		pannelloInfoDVEU.setLayout(null);
+		pannelloInfoDVEU.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoDVEU.setBackground(new Color(220, 220, 220));
+		
+		JLabel durataBruEU = new JLabel("Bru - 2h 25m");
+		durataBruEU.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataBruEU.setHorizontalAlignment(SwingConstants.CENTER);
+		durataBruEU.setBounds(10, 66, 180, 23);
+		pannelloInfoDVEU.add(durataBruEU);
+		
+		JLabel durataAteEU = new JLabel("Ate - 1h 40m");
+		durataAteEU.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataAteEU.setHorizontalAlignment(SwingConstants.CENTER);
+		durataAteEU.setBounds(10, 113, 180, 23);
+		pannelloInfoDVEU.add(durataAteEU);
+		
+		JPanel pannelloIconTextDVEU = new JPanel();
+		pannelloIconTextDVEU.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextDVEU.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextDVEU = new JPanel();
+		pannelloTextDVEU.setBackground(new Color(13, 62, 117));
+		
+		JLabel textDVEU = new JLabel("Durata Voli");
+		textDVEU.setHorizontalAlignment(SwingConstants.CENTER);
+		textDVEU.setForeground(Color.WHITE);
+		textDVEU.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextDVEU = new GroupLayout(pannelloTextDVEU);
+		gl_pannelloTextDVEU.setHorizontalGroup(
+			gl_pannelloTextDVEU.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 196, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_2_1_1.createSequentialGroup()
+				.addGroup(gl_pannelloTextDVEU.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel_6_1, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textDVEU, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_panel_8_2_1_1.setVerticalGroup(
-			gl_panel_8_2_1_1.createParallelGroup(Alignment.TRAILING)
+		gl_pannelloTextDVEU.setVerticalGroup(
+			gl_pannelloTextDVEU.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 54, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_2_1_1.createSequentialGroup()
+				.addGroup(gl_pannelloTextDVEU.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_6_1, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(textDVEU, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 					.addContainerGap())
 		);
-		panel_8_2_1_1.setLayout(gl_panel_8_2_1_1);
-		GroupLayout gl_panel_8_1_1_1 = new GroupLayout(panel_8_1_1_1);
-		gl_panel_8_1_1_1.setHorizontalGroup(
-			gl_panel_8_1_1_1.createParallelGroup(Alignment.LEADING)
+		pannelloTextDVEU.setLayout(gl_pannelloTextDVEU);
+		
+		JLabel iconDVEU = new JLabel("");
+		iconDVEU.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconDurata.png")));
+		iconDVEU.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextDVEU = new GroupLayout(pannelloIconTextDVEU);
+		gl_pannelloIconTextDVEU.setHorizontalGroup(
+			gl_pannelloIconTextDVEU.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 200, Short.MAX_VALUE)
-				.addComponent(panel_8_2_1_1, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addComponent(pannelloTextDVEU, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVEU.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconDVEU, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
 		);
-		gl_panel_8_1_1_1.setVerticalGroup(
-			gl_panel_8_1_1_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 209, Short.MAX_VALUE)
-				.addGroup(gl_panel_8_1_1_1.createSequentialGroup()
-					.addComponent(panel_8_2_1_1, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(151, Short.MAX_VALUE))
+		gl_pannelloIconTextDVEU.setVerticalGroup(
+			gl_pannelloIconTextDVEU.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVEU.createSequentialGroup()
+					.addComponent(pannelloTextDVEU, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconDVEU)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		panel_8_1_1_1.setLayout(gl_panel_8_1_1_1);
-		GroupLayout gl_panel_7_1_1 = new GroupLayout(panel_7_1_1);
-		gl_panel_7_1_1.setHorizontalGroup(
-			gl_panel_7_1_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_7_1_1.createSequentialGroup()
-					.addGroup(gl_panel_7_1_1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_8_3_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-						.addComponent(panel_8_1_1_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
+		pannelloIconTextDVEU.setLayout(gl_pannelloIconTextDVEU);
+		GroupLayout gl_pannelloDVEU = new GroupLayout(pannelloDVEU);
+		gl_pannelloDVEU.setHorizontalGroup(
+			gl_pannelloDVEU.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloDVEU.createSequentialGroup()
+					.addGroup(gl_pannelloDVEU.createParallelGroup(Alignment.TRAILING)
+						.addComponent(pannelloInfoDVEU, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+						.addComponent(pannelloIconTextDVEU, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
-		gl_panel_7_1_1.setVerticalGroup(
-			gl_panel_7_1_1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_7_1_1.createSequentialGroup()
-					.addComponent(panel_8_1_1_1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+		gl_pannelloDVEU.setVerticalGroup(
+			gl_pannelloDVEU.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_pannelloDVEU.createSequentialGroup()
+					.addComponent(pannelloIconTextDVEU, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_8_3_1, GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
+					.addComponent(pannelloInfoDVEU, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		pannelloDVEU.setLayout(gl_pannelloDVEU);
+		
+		JPanel pannelloFVEU = new JPanel();
+		pannelloFVEU.setBackground(Color.WHITE);
+		pannelloFVEU.setBounds(10, 11, 200, 272);
+		pannelloEU.add(pannelloFVEU);
+		
+		JPanel pannelloInfoFVEU = new JPanel();
+		pannelloInfoFVEU.setBounds(0, 129, 200, 143);
+		pannelloInfoFVEU.setLayout(null);
+		pannelloInfoFVEU.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoFVEU.setBackground(new Color(220, 220, 220));
+		
+		JLabel infoTextFVEU1 = new JLabel("Marted\u00EC");
+		infoTextFVEU1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVEU1.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVEU1.setBounds(10, 42, 180, 23);
+		pannelloInfoFVEU.add(infoTextFVEU1);
+		
+		JLabel infoTextFVEU2 = new JLabel("Mercoled\u00EC");
+		infoTextFVEU2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVEU2.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVEU2.setBounds(10, 76, 180, 23);
+		pannelloInfoFVEU.add(infoTextFVEU2);
+		
+		JPanel pannelloIconTextFVEU = new JPanel();
+		pannelloIconTextFVEU.setBounds(0, 0, 200, 123);
+		pannelloIconTextFVEU.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextFVEU.setBackground(new Color(245, 245, 245));
+		
+		pannelloTextFVEU = new JPanel();
+		pannelloTextFVEU.setBackground(new Color(13, 62, 117));
+		
+		JLabel textFVEU = new JLabel("Frequenza Voli");
+		textFVEU.setHorizontalAlignment(SwingConstants.CENTER);
+		textFVEU.setForeground(Color.WHITE);
+		textFVEU.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextFVEU = new GroupLayout(pannelloTextFVEU);
+		gl_pannelloTextFVEU.setHorizontalGroup(
+			gl_pannelloTextFVEU.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVEU.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textFVEU, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextFVEU.setVerticalGroup(
+			gl_pannelloTextFVEU.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVEU.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textFVEU, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextFVEU.setLayout(gl_pannelloTextFVEU);
+		
+		JLabel iconFVEU = new JLabel("");
+		iconFVEU.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconFrequenza.png")));
+		iconFVEU.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextFVEU = new GroupLayout(pannelloIconTextFVEU);
+		gl_pannelloIconTextFVEU.setHorizontalGroup(
+			gl_pannelloIconTextFVEU.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextFVEU, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVEU.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconFVEU, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextFVEU.setVerticalGroup(
+			gl_pannelloIconTextFVEU.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVEU.createSequentialGroup()
+					.addComponent(pannelloTextFVEU, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconFVEU, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloIconTextFVEU.setLayout(gl_pannelloIconTextFVEU);
+		pannelloFVEU.setLayout(null);
+		pannelloFVEU.add(pannelloInfoFVEU);
+		pannelloFVEU.add(pannelloIconTextFVEU);
+		
+		JPanel pannelloVETEU = new JPanel();
+		pannelloVETEU.setBackground(Color.WHITE);
+		pannelloVETEU.setBounds(470, 11, 612, 396);
+		pannelloEU.add(pannelloVETEU);
+		
+		JPanel pannelloInfoVETEU = new JPanel();
+		pannelloInfoVETEU.setLayout(null);
+		pannelloInfoVETEU.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoVETEU.setBackground(new Color(220, 220, 220));
+		
+		JPanel pannelloIconTextVETEU = new JPanel();
+		pannelloIconTextVETEU.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextVETEU.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextVETEU = new JPanel();
+		pannelloTextVETEU.setBackground(new Color(13, 62, 117));
+		
+		JLabel textVETE = new JLabel("Voli & Tratte");
+		textVETE.setHorizontalAlignment(SwingConstants.CENTER);
+		textVETE.setForeground(Color.WHITE);
+		textVETE.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextVETEU = new GroupLayout(pannelloTextVETEU);
+		gl_pannelloTextVETEU.setHorizontalGroup(
+			gl_pannelloTextVETEU.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloTextVETEU.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textVETE, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloTextVETEU.setVerticalGroup(
+			gl_pannelloTextVETEU.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_pannelloTextVETEU.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textVETE, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextVETEU.setLayout(gl_pannelloTextVETEU);
+		GroupLayout gl_pannelloIconTextVETEU = new GroupLayout(pannelloIconTextVETEU);
+		gl_pannelloIconTextVETEU.setHorizontalGroup(
+			gl_pannelloIconTextVETEU.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextVETEU, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+		);
+		gl_pannelloIconTextVETEU.setVerticalGroup(
+			gl_pannelloIconTextVETEU.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloIconTextVETEU.createSequentialGroup()
+					.addComponent(pannelloTextVETEU, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(62, Short.MAX_VALUE))
+		);
+		pannelloIconTextVETEU.setLayout(gl_pannelloIconTextVETEU);
+		GroupLayout gl_pannelloVETEU = new GroupLayout(pannelloVETEU);
+		gl_pannelloVETEU.setHorizontalGroup(
+			gl_pannelloVETEU.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloIconTextVETEU, GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+				.addComponent(pannelloInfoVETEU, GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+		);
+		gl_pannelloVETEU.setVerticalGroup(
+			gl_pannelloVETEU.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloVETEU.createSequentialGroup()
+					.addComponent(pannelloIconTextVETEU, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(pannelloInfoVETEU, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
 		);
 		
-		JScrollPane scrollPane_1 = new JScrollPane((Component) null);
-		panel_8_3_1.add(scrollPane_1, "name_331447022225400");
+		JScrollPane scrollPaneVETEU = new JScrollPane();
+		scrollPaneVETEU.setBounds(10, 11, 592, 248);
+		pannelloInfoVETEU.add(scrollPaneVETEU);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(77, 363, 200, 23);
-		PanelCompagnie.add(btnNewButton);
+		JTextArea textAreaVETEU = new JTextArea();
+		textAreaVETEU.setEditable(false);
+		textAreaVETEU.setDropMode(DropMode.INSERT);
+		scrollPaneVETEU.setViewportView(textAreaVETEU);
+		pannelloVETEU.setLayout(gl_pannelloVETEU);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(351, 414, 200, 23);
-		PanelCompagnie.add(btnNewButton_1);
+		JPanel pannelloV = new JPanel();
+		pannelloV.setLayout(null);
+		tabbedPaneCompagnie.addTab("Volotea", null, pannelloV, null);
+		
+		JPanel pannelloDVV = new JPanel();
+		pannelloDVV.setBackground(Color.WHITE);
+		pannelloDVV.setBounds(240, 11, 200, 339);
+		pannelloV.add(pannelloDVV);
+		
+		JPanel pannelloInfoDVV = new JPanel();
+		pannelloInfoDVV.setBounds(0, 129, 200, 210);
+		pannelloInfoDVV.setLayout(null);
+		pannelloInfoDVV.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoDVV.setBackground(new Color(220, 220, 220));
+		
+		JLabel durataBarV = new JLabel("Bar - 2h 5");
+		durataBarV.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataBarV.setHorizontalAlignment(SwingConstants.CENTER);
+		durataBarV.setBounds(10, 50, 180, 23);
+		pannelloInfoDVV.add(durataBarV);
+		
+		JLabel durataCagV = new JLabel("Cag - 1h 10m");
+		durataCagV.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataCagV.setHorizontalAlignment(SwingConstants.CENTER);
+		durataCagV.setBounds(10, 98, 180, 23);
+		pannelloInfoDVV.add(durataCagV);
+		
+		JLabel durataCatV = new JLabel("Cat - 1h");
+		durataCatV.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataCatV.setHorizontalAlignment(SwingConstants.CENTER);
+		durataCatV.setBounds(10, 143, 180, 23);
+		pannelloInfoDVV.add(durataCatV);
+		
+		JPanel pannelloIconTextDVV = new JPanel();
+		pannelloIconTextDVV.setBounds(0, 0, 200, 123);
+		pannelloIconTextDVV.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextDVV.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextDVV = new JPanel();
+		pannelloTextDVV.setBackground(new Color(13, 62, 117));
+		
+		JLabel textDVV = new JLabel("Durata Voli");
+		textDVV.setHorizontalAlignment(SwingConstants.CENTER);
+		textDVV.setForeground(Color.WHITE);
+		textDVV.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextDVV = new GroupLayout(pannelloTextDVV);
+		gl_pannelloTextDVV.setHorizontalGroup(
+			gl_pannelloTextDVV.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextDVV.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textDVV, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextDVV.setVerticalGroup(
+			gl_pannelloTextDVV.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextDVV.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textDVV, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextDVV.setLayout(gl_pannelloTextDVV);
+		
+		JLabel IconDVV = new JLabel("");
+		IconDVV.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconDurata.png")));
+		IconDVV.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextDVV = new GroupLayout(pannelloIconTextDVV);
+		gl_pannelloIconTextDVV.setHorizontalGroup(
+			gl_pannelloIconTextDVV.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextDVV, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVV.createSequentialGroup()
+					.addGap(10)
+					.addComponent(IconDVV, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextDVV.setVerticalGroup(
+			gl_pannelloIconTextDVV.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVV.createSequentialGroup()
+					.addComponent(pannelloTextDVV, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(IconDVV)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		pannelloIconTextDVV.setLayout(gl_pannelloIconTextDVV);
+		pannelloDVV.setLayout(null);
+		pannelloDVV.add(pannelloInfoDVV);
+		pannelloDVV.add(pannelloIconTextDVV);
+		
+		JPanel pannelloFVV = new JPanel();
+		pannelloFVV.setBackground(Color.WHITE);
+		pannelloFVV.setBounds(10, 11, 200, 272);
+		pannelloV.add(pannelloFVV);
+		
+		JPanel pannelloInfoFVV = new JPanel();
+		pannelloInfoFVV.setBounds(0, 129, 200, 143);
+		pannelloInfoFVV.setLayout(null);
+		pannelloInfoFVV.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoFVV.setBackground(new Color(220, 220, 220));
+		
+		JLabel infoTextFVV2 = new JLabel("Venerd\u00EC");
+		infoTextFVV2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVV2.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVV2.setBounds(10, 55, 180, 23);
+		pannelloInfoFVV.add(infoTextFVV2);
+		
+		JLabel infoTextFVV3 = new JLabel("Domenica");
+		infoTextFVV3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVV3.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVV3.setBounds(10, 90, 180, 23);
+		pannelloInfoFVV.add(infoTextFVV3);
+		
+		JPanel pannelloIconTextFVV = new JPanel();
+		pannelloIconTextFVV.setBounds(0, 0, 200, 123);
+		pannelloIconTextFVV.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextFVV.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextFVV = new JPanel();
+		pannelloTextFVV.setBackground(new Color(13, 62, 117));
+		
+		JLabel textFVV = new JLabel("Frequenza Voli");
+		textFVV.setHorizontalAlignment(SwingConstants.CENTER);
+		textFVV.setForeground(Color.WHITE);
+		textFVV.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextFVV = new GroupLayout(pannelloTextFVV);
+		gl_pannelloTextFVV.setHorizontalGroup(
+			gl_pannelloTextFVV.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVV.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textFVV, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextFVV.setVerticalGroup(
+			gl_pannelloTextFVV.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVV.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textFVV, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextFVV.setLayout(gl_pannelloTextFVV);
+		
+		JLabel iconFVV = new JLabel("");
+		iconFVV.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconFrequenza.png")));
+		iconFVV.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextFVV = new GroupLayout(pannelloIconTextFVV);
+		gl_pannelloIconTextFVV.setHorizontalGroup(
+			gl_pannelloIconTextFVV.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextFVV, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVV.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconFVV, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextFVV.setVerticalGroup(
+			gl_pannelloIconTextFVV.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVV.createSequentialGroup()
+					.addComponent(pannelloTextFVV, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconFVV, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloIconTextFVV.setLayout(gl_pannelloIconTextFVV);
+		pannelloFVV.setLayout(null);
+		
+		JLabel infoTextFVV1 = new JLabel("Mercoled\u00EC");
+		infoTextFVV1.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVV1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVV1.setBounds(10, 21, 180, 23);
+		pannelloInfoFVV.add(infoTextFVV1);
+		pannelloFVV.add(pannelloInfoFVV);
+		pannelloFVV.add(pannelloIconTextFVV);
+		
+		JPanel pannelloVETV = new JPanel();
+		pannelloVETV.setBackground(Color.WHITE);
+		pannelloVETV.setBounds(470, 11, 612, 396);
+		pannelloV.add(pannelloVETV);
+		
+		JPanel pannelloInfoVETV = new JPanel();
+		pannelloInfoVETV.setBounds(0, 126, 612, 270);
+		pannelloInfoVETV.setLayout(null);
+		pannelloInfoVETV.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoVETV.setBackground(new Color(220, 220, 220));
+		
+		JPanel pannelloIconTextVETV = new JPanel();
+		pannelloIconTextVETV.setBounds(0, 0, 612, 120);
+		pannelloIconTextVETV.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextVETV.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextVETV = new JPanel();
+		pannelloTextVETV.setBackground(new Color(13, 62, 117));
+		
+		JLabel textVETV = new JLabel("Voli & Tratte");
+		textVETV.setHorizontalAlignment(SwingConstants.CENTER);
+		textVETV.setForeground(Color.WHITE);
+		textVETV.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextVETV = new GroupLayout(pannelloTextVETV);
+		gl_pannelloTextVETV.setHorizontalGroup(
+			gl_pannelloTextVETV.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloTextVETV.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textVETV, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloTextVETV.setVerticalGroup(
+			gl_pannelloTextVETV.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_pannelloTextVETV.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textVETV, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextVETV.setLayout(gl_pannelloTextVETV);
+		
+		JLabel iconVETV = new JLabel("");
+		iconVETV.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconVoliETratte.png")));
+		iconVETV.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextVETV = new GroupLayout(pannelloIconTextVETV);
+		gl_pannelloIconTextVETV.setHorizontalGroup(
+			gl_pannelloIconTextVETV.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextVETV, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextVETV.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconVETV, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloIconTextVETV.setVerticalGroup(
+			gl_pannelloIconTextVETV.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloIconTextVETV.createSequentialGroup()
+					.addComponent(pannelloTextVETV, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconVETV, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(8))
+		);
+		pannelloIconTextVETV.setLayout(gl_pannelloIconTextVETV);
+		pannelloVETV.setLayout(null);
+		pannelloVETV.add(pannelloInfoVETV);
+		
+		JScrollPane scrollPaneVETV = new JScrollPane();
+		scrollPaneVETV.setBounds(10, 11, 592, 248);
+		pannelloInfoVETV.add(scrollPaneVETV);
+		
+		JTextArea textAreaVETV = new JTextArea();
+		scrollPaneVETV.setViewportView(textAreaVETV);
+		pannelloVETV.add(pannelloIconTextVETV);
+		
+		JPanel pannelloA = new JPanel();
+		pannelloA.setLayout(null);
+		tabbedPaneCompagnie.addTab("Alitalia", null, pannelloA, null);
+		
+		JPanel pannelloDVA = new JPanel();
+		pannelloDVA.setBackground(Color.WHITE);
+		pannelloDVA.setBounds(240, 11, 200, 339);
+		pannelloA.add(pannelloDVA);
+		
+		JPanel pannelloInfoDVA = new JPanel();
+		pannelloInfoDVA.setBounds(0, 129, 200, 210);
+		pannelloInfoDVA.setLayout(null);
+		pannelloInfoDVA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoDVA.setBackground(new Color(220, 220, 220));
+		
+		JLabel durataDubA = new JLabel("Dub - 5h 50m");
+		durataDubA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataDubA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataDubA.setBounds(10, 35, 180, 23);
+		pannelloInfoDVA.add(durataDubA);
+		
+		durataGenA = new JLabel("Gen - 1h 25m");
+		durataGenA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataGenA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataGenA.setBounds(10, 72, 180, 23);
+		pannelloInfoDVA.add(durataGenA);
+		
+		JPanel pannelloIconTextDVA = new JPanel();
+		pannelloIconTextDVA.setBounds(0, 0, 200, 123);
+		pannelloIconTextDVA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextDVA.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextDVA = new JPanel();
+		pannelloTextDVA.setBackground(new Color(13, 62, 117));
+		
+		JLabel textDVA = new JLabel("Durata Voli");
+		textDVA.setHorizontalAlignment(SwingConstants.CENTER);
+		textDVA.setForeground(Color.WHITE);
+		textDVA.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextDVA = new GroupLayout(pannelloTextDVA);
+		gl_pannelloTextDVA.setHorizontalGroup(
+			gl_pannelloTextDVA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextDVA.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textDVA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextDVA.setVerticalGroup(
+			gl_pannelloTextDVA.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextDVA.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textDVA, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextDVA.setLayout(gl_pannelloTextDVA);
+		
+		JLabel iconDVA = new JLabel("");
+		iconDVA.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconDurata.png")));
+		iconDVA.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextDVA = new GroupLayout(pannelloIconTextDVA);
+		gl_pannelloIconTextDVA.setHorizontalGroup(
+			gl_pannelloIconTextDVA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextDVA, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVA.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconDVA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextDVA.setVerticalGroup(
+			gl_pannelloIconTextDVA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVA.createSequentialGroup()
+					.addComponent(pannelloTextDVA, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconDVA)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		pannelloIconTextDVA.setLayout(gl_pannelloIconTextDVA);
+		pannelloDVA.setLayout(null);
+		
+		JLabel durataTriA = new JLabel("Tri - 1h 15m");
+		durataTriA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataTriA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataTriA.setBounds(10, 114, 180, 23);
+		pannelloInfoDVA.add(durataTriA);
+		
+		JLabel durataVenA = new JLabel("Ven - 1h 15m");
+		durataVenA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataVenA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataVenA.setBounds(10, 148, 180, 23);
+		pannelloInfoDVA.add(durataVenA);
+		pannelloDVA.add(pannelloInfoDVA);
+		pannelloDVA.add(pannelloIconTextDVA);
+		
+		JPanel pannelloFVA = new JPanel();
+		pannelloFVA.setBackground(Color.WHITE);
+		pannelloFVA.setBounds(10, 11, 200, 272);
+		pannelloA.add(pannelloFVA);
+		
+		JPanel pannelloInfoFVA = new JPanel();
+		pannelloInfoFVA.setBounds(0, 129, 200, 143);
+		pannelloInfoFVA.setLayout(null);
+		pannelloInfoFVA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoFVA.setBackground(new Color(220, 220, 220));
+		
+		JLabel infoTextFVA1 = new JLabel("Gioved\u00EC");
+		infoTextFVA1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVA1.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVA1.setBounds(10, 25, 180, 23);
+		pannelloInfoFVA.add(infoTextFVA1);
+		
+		JLabel infoTextFVA2 = new JLabel("Venerd\u00EC");
+		infoTextFVA2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVA2.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVA2.setBounds(10, 60, 180, 23);
+		pannelloInfoFVA.add(infoTextFVA2);
+		
+		JLabel infoTextFVA3 = new JLabel("Sabato");
+		infoTextFVA3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVA3.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVA3.setBounds(10, 94, 180, 23);
+		pannelloInfoFVA.add(infoTextFVA3);
+		
+		JPanel pannelloIconTextFVA = new JPanel();
+		pannelloIconTextFVA.setBounds(0, 0, 200, 123);
+		pannelloIconTextFVA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextFVA.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextFVA = new JPanel();
+		pannelloTextFVA.setBackground(new Color(13, 62, 117));
+		
+		JLabel textFVA = new JLabel("Frequenza Voli");
+		textFVA.setHorizontalAlignment(SwingConstants.CENTER);
+		textFVA.setForeground(Color.WHITE);
+		textFVA.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextFVA = new GroupLayout(pannelloTextFVA);
+		gl_pannelloTextFVA.setHorizontalGroup(
+			gl_pannelloTextFVA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVA.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textFVA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextFVA.setVerticalGroup(
+			gl_pannelloTextFVA.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVA.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textFVA, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextFVA.setLayout(gl_pannelloTextFVA);
+		
+		JLabel iconFVA = new JLabel("");
+		iconFVA.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconFrequenza.png")));
+		iconFVA.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextFVA = new GroupLayout(pannelloIconTextFVA);
+		gl_pannelloIconTextFVA.setHorizontalGroup(
+			gl_pannelloIconTextFVA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextFVA, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVA.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconFVA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextFVA.setVerticalGroup(
+			gl_pannelloIconTextFVA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVA.createSequentialGroup()
+					.addComponent(pannelloTextFVA, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconFVA, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloIconTextFVA.setLayout(gl_pannelloIconTextFVA);
+		pannelloFVA.setLayout(null);
+		pannelloFVA.add(pannelloInfoFVA);
+		pannelloFVA.add(pannelloIconTextFVA);
+		
+		JPanel pannelloVETA = new JPanel();
+		pannelloVETA.setBackground(Color.WHITE);
+		pannelloVETA.setBounds(470, 11, 612, 396);
+		pannelloA.add(pannelloVETA);
+		
+		JPanel pannelloInfoVETA = new JPanel();
+		pannelloInfoVETA.setBounds(0, 126, 612, 270);
+		pannelloInfoVETA.setLayout(null);
+		pannelloInfoVETA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoVETA.setBackground(new Color(220, 220, 220));
+		
+		JPanel pannelloIconTextVETA = new JPanel();
+		pannelloIconTextVETA.setBounds(0, 0, 612, 120);
+		pannelloIconTextVETA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextVETA.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextVETA = new JPanel();
+		pannelloTextVETA.setBackground(new Color(13, 62, 117));
+		
+		JLabel textVETA = new JLabel("Voli & Tratte");
+		textVETA.setHorizontalAlignment(SwingConstants.CENTER);
+		textVETA.setForeground(Color.WHITE);
+		textVETA.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextVETA = new GroupLayout(pannelloTextVETA);
+		gl_pannelloTextVETA.setHorizontalGroup(
+			gl_pannelloTextVETA.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloTextVETA.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textVETA, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloTextVETA.setVerticalGroup(
+			gl_pannelloTextVETA.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_pannelloTextVETA.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textVETA, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextVETA.setLayout(gl_pannelloTextVETA);
+		
+		JLabel icomVETA = new JLabel("");
+		icomVETA.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconVoliETratte.png")));
+		icomVETA.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextVETA = new GroupLayout(pannelloIconTextVETA);
+		gl_pannelloIconTextVETA.setHorizontalGroup(
+			gl_pannelloIconTextVETA.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextVETA, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextVETA.createSequentialGroup()
+					.addGap(10)
+					.addComponent(icomVETA, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloIconTextVETA.setVerticalGroup(
+			gl_pannelloIconTextVETA.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloIconTextVETA.createSequentialGroup()
+					.addComponent(pannelloTextVETA, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(icomVETA, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(8))
+		);
+		pannelloIconTextVETA.setLayout(gl_pannelloIconTextVETA);
+		pannelloVETA.setLayout(null);
+		pannelloVETA.add(pannelloInfoVETA);
+		
+		JScrollPane scrollPaneVETA = new JScrollPane();
+		scrollPaneVETA.setBounds(10, 11, 592, 248);
+		pannelloInfoVETA.add(scrollPaneVETA);
+		
+		JTextArea textAreaVETA = new JTextArea();
+		scrollPaneVETA.setViewportView(textAreaVETA);
+		pannelloVETA.add(pannelloIconTextVETA);
+		
+		JPanel pannelloEA = new JPanel();
+		pannelloEA.setLayout(null);
+		tabbedPaneCompagnie.addTab("EasyJet", null, pannelloEA, null);
+		
+		JPanel pannelloDVEA = new JPanel();
+		pannelloDVEA.setBackground(Color.WHITE);
+		pannelloDVEA.setBounds(240, 11, 200, 339);
+		pannelloEA.add(pannelloDVEA);
+		
+		JPanel pannelloInfoDVEA = new JPanel();
+		pannelloInfoDVEA.setBounds(0, 129, 200, 210);
+		pannelloInfoDVEA.setLayout(null);
+		pannelloInfoDVEA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoDVEA.setBackground(new Color(220, 220, 220));
+		
+		JLabel durataCraEA = new JLabel("Cra - 2h");
+		durataCraEA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataCraEA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataCraEA.setBounds(10, 42, 180, 23);
+		pannelloInfoDVEA.add(durataCraEA);
+		
+		JLabel durataTorEA = new JLabel("Tor - 1h 30m");
+		durataTorEA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataTorEA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataTorEA.setBounds(10, 90, 180, 23);
+		pannelloInfoDVEA.add(durataTorEA);
+		
+		JLabel durataMilEA = new JLabel("Mil - 1h 20m");
+		durataMilEA.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		durataMilEA.setHorizontalAlignment(SwingConstants.CENTER);
+		durataMilEA.setBounds(10, 135, 180, 23);
+		pannelloInfoDVEA.add(durataMilEA);
+		
+		JPanel pannelloIconTextDVEA = new JPanel();
+		pannelloIconTextDVEA.setBounds(0, 0, 200, 123);
+		pannelloIconTextDVEA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextDVEA.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextDVEA = new JPanel();
+		pannelloTextDVEA.setBackground(new Color(13, 62, 117));
+		
+		JLabel textDVEA = new JLabel("Durata Voli");
+		textDVEA.setHorizontalAlignment(SwingConstants.CENTER);
+		textDVEA.setForeground(Color.WHITE);
+		textDVEA.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextDVEA = new GroupLayout(pannelloTextDVEA);
+		gl_pannelloTextDVEA.setHorizontalGroup(
+			gl_pannelloTextDVEA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextDVEA.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textDVEA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextDVEA.setVerticalGroup(
+			gl_pannelloTextDVEA.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextDVEA.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textDVEA, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextDVEA.setLayout(gl_pannelloTextDVEA);
+		
+		JLabel iconDVEA = new JLabel("");
+		iconDVEA.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconDurata.png")));
+		iconDVEA.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextDVEA = new GroupLayout(pannelloIconTextDVEA);
+		gl_pannelloIconTextDVEA.setHorizontalGroup(
+			gl_pannelloIconTextDVEA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextDVEA, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVEA.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconDVEA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextDVEA.setVerticalGroup(
+			gl_pannelloIconTextDVEA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextDVEA.createSequentialGroup()
+					.addComponent(pannelloTextDVEA, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconDVEA)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		pannelloIconTextDVEA.setLayout(gl_pannelloIconTextDVEA);
+		pannelloDVEA.setLayout(null);
+		pannelloDVEA.add(pannelloInfoDVEA);
+		pannelloDVEA.add(pannelloIconTextDVEA);
+		
+		JPanel pannelloFVEA = new JPanel();
+		pannelloFVEA.setBackground(Color.WHITE);
+		pannelloFVEA.setBounds(10, 11, 200, 272);
+		pannelloEA.add(pannelloFVEA);
+		
+		JPanel pannelloInfoFVEA = new JPanel();
+		pannelloInfoFVEA.setBounds(0, 129, 200, 143);
+		pannelloInfoFVEA.setLayout(null);
+		pannelloInfoFVEA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoFVEA.setBackground(new Color(220, 220, 220));
+		
+		JLabel infoTextFVEA2 = new JLabel("Mercoled\u00EC");
+		infoTextFVEA2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVEA2.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVEA2.setBounds(10, 57, 180, 23);
+		pannelloInfoFVEA.add(infoTextFVEA2);
+		
+		JLabel infoTextFVEA3 = new JLabel("Sabato");
+		infoTextFVEA3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVEA3.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVEA3.setBounds(10, 92, 180, 23);
+		pannelloInfoFVEA.add(infoTextFVEA3);
+		
+		JPanel pannelloIconTextFVEA = new JPanel();
+		pannelloIconTextFVEA.setBounds(0, 0, 200, 123);
+		pannelloIconTextFVEA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloIconTextFVEA.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextFVEA = new JPanel();
+		pannelloTextFVEA.setBackground(new Color(13, 62, 117));
+		
+		JLabel textFVEA = new JLabel("Frequenza Voli");
+		textFVEA.setHorizontalAlignment(SwingConstants.CENTER);
+		textFVEA.setForeground(Color.WHITE);
+		textFVEA.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextFVEA = new GroupLayout(pannelloTextFVEA);
+		gl_pannelloTextFVEA.setHorizontalGroup(
+			gl_pannelloTextFVEA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVEA.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textFVEA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pannelloTextFVEA.setVerticalGroup(
+			gl_pannelloTextFVEA.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 54, Short.MAX_VALUE)
+				.addGroup(gl_pannelloTextFVEA.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textFVEA, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextFVEA.setLayout(gl_pannelloTextFVEA);
+		
+		JLabel iconFVEA = new JLabel("");
+		iconFVEA.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconFrequenza.png")));
+		iconFVEA.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloIconTextFVEA = new GroupLayout(pannelloIconTextFVEA);
+		gl_pannelloIconTextFVEA.setHorizontalGroup(
+			gl_pannelloIconTextFVEA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 200, Short.MAX_VALUE)
+				.addComponent(pannelloTextFVEA, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVEA.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconFVEA, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+					.addGap(10))
+		);
+		gl_pannelloIconTextFVEA.setVerticalGroup(
+			gl_pannelloIconTextFVEA.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 123, Short.MAX_VALUE)
+				.addGroup(gl_pannelloIconTextFVEA.createSequentialGroup()
+					.addComponent(pannelloTextFVEA, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconFVEA, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloIconTextFVEA.setLayout(gl_pannelloIconTextFVEA);
+		pannelloFVEA.setLayout(null);
+		
+		JLabel infoTextFVEA1 = new JLabel("Luned\u00EC");
+		infoTextFVEA1.setHorizontalAlignment(SwingConstants.CENTER);
+		infoTextFVEA1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		infoTextFVEA1.setBounds(10, 23, 180, 23);
+		pannelloInfoFVEA.add(infoTextFVEA1);
+		pannelloFVEA.add(pannelloInfoFVEA);
+		pannelloFVEA.add(pannelloIconTextFVEA);
+		
+		JPanel pannelloVETEA = new JPanel();
+		pannelloVETEA.setBackground(Color.WHITE);
+		pannelloVETEA.setBounds(470, 11, 612, 396);
+		pannelloEA.add(pannelloVETEA);
+		
+		JPanel pannelloInfoVETEA = new JPanel();
+		pannelloInfoVETEA.setBounds(0, 126, 612, 270);
+		pannelloInfoVETEA.setLayout(null);
+		pannelloInfoVETEA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoVETEA.setBackground(new Color(220, 220, 220));
+		
+		pannelloInfoTextVETEA = new JPanel();
+		pannelloInfoTextVETEA.setBounds(0, 0, 612, 120);
+		pannelloInfoTextVETEA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		pannelloInfoTextVETEA.setBackground(new Color(245, 245, 245));
+		
+		JPanel pannelloTextVETEA = new JPanel();
+		pannelloTextVETEA.setBackground(new Color(13, 62, 117));
+		
+		JLabel textVETEA = new JLabel("Voli & Tratte");
+		textVETEA.setHorizontalAlignment(SwingConstants.CENTER);
+		textVETEA.setForeground(Color.WHITE);
+		textVETEA.setFont(new Font("Lucida Bright", Font.ITALIC, 15));
+		GroupLayout gl_pannelloTextVETEA = new GroupLayout(pannelloTextVETEA);
+		gl_pannelloTextVETEA.setHorizontalGroup(
+			gl_pannelloTextVETEA.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloTextVETEA.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textVETEA, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloTextVETEA.setVerticalGroup(
+			gl_pannelloTextVETEA.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_pannelloTextVETEA.createSequentialGroup()
+					.addGap(5)
+					.addComponent(textVETEA, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloTextVETEA.setLayout(gl_pannelloTextVETEA);
+		
+		JLabel iconVETEA = new JLabel("");
+		iconVETEA.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconVoliETratte.png")));
+		iconVETEA.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_pannelloInfoTextVETEA = new GroupLayout(pannelloInfoTextVETEA);
+		gl_pannelloInfoTextVETEA.setHorizontalGroup(
+			gl_pannelloInfoTextVETEA.createParallelGroup(Alignment.LEADING)
+				.addComponent(pannelloTextVETEA, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+				.addGroup(gl_pannelloInfoTextVETEA.createSequentialGroup()
+					.addGap(10)
+					.addComponent(iconVETEA, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloInfoTextVETEA.setVerticalGroup(
+			gl_pannelloInfoTextVETEA.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloInfoTextVETEA.createSequentialGroup()
+					.addComponent(pannelloTextVETEA, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(iconVETEA, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		pannelloInfoTextVETEA.setLayout(gl_pannelloInfoTextVETEA);
+		pannelloVETEA.setLayout(null);
+		pannelloVETEA.add(pannelloInfoVETEA);
+		
+		JScrollPane scrollPaneVETEA = new JScrollPane();
+		scrollPaneVETEA.setBounds(10, 11, 592, 248);
+		pannelloInfoVETEA.add(scrollPaneVETEA);
+		
+		JTextArea textAreaVETEA = new JTextArea();
+		scrollPaneVETEA.setViewportView(textAreaVETEA);
+		pannelloVETEA.add(pannelloInfoTextVETEA);
+		
+		Ricerca = new JLayeredPane();
+		BodyContainer.add(Ricerca, "name_676683593389700");
+		
+		JPanel pannelloRicerca = new JPanel();
+		pannelloRicerca.setLayout(null);
+		pannelloRicerca.setFocusTraversalPolicyProvider(true);
+		pannelloRicerca.setBorder(null);
+		pannelloRicerca.setBackground(new Color(208, 215, 232));
+		pannelloRicerca.setBounds(0, 0, 1193, 535);
+		Ricerca.add(pannelloRicerca);
+		
+		JButton pulsanteHomeRicerca = new JButton("");
+		pulsanteHomeRicerca.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
+		pulsanteHomeRicerca.setOpaque(false);
+		pulsanteHomeRicerca.setFocusable(false);
+		pulsanteHomeRicerca.setContentAreaFilled(false);
+		pulsanteHomeRicerca.setBorderPainted(false);
+		pulsanteHomeRicerca.setBounds(10, 10, 63, 51);
+		pannelloRicerca.add(pulsanteHomeRicerca);
+		
+		JLabel ombraHeaderInfo_1 = new JLabel("");
+		ombraHeaderInfo_1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
+		ombraHeaderInfo_1.setBounds(0, -15, 1199, 63);
+		pannelloRicerca.add(ombraHeaderInfo_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(20, 72, 1138, 452);
+		pannelloRicerca.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setEnabled(false);
+		panel_1.add(scrollPane_1);
+		
+		DefaultTableModel tableRisultatiRicerca = new DefaultTableModel();
+		table = new JTable(tableRisultatiRicerca);
+		table.getTableHeader().setReorderingAllowed(false);
+		tableRisultatiRicerca.addColumn("Destinazione");
+		tableRisultatiRicerca.addColumn("Prenotazione");
+		tableRisultatiRicerca.addColumn("Orario partenza");
+		tableRisultatiRicerca.addColumn("Orario arrivo");
+		tableRisultatiRicerca.addColumn("Data Partenza");
+		tableRisultatiRicerca.addColumn("Data Arrivo");
+		tableRisultatiRicerca.addColumn("Terminal");
+		tableRisultatiRicerca.addColumn("Gate");
+		tableRisultatiRicerca.addColumn("Compagnia");
+		tableRisultatiRicerca.addColumn("Ritardo");
+		tableRisultatiRicerca.addColumn("Stato");
+		table.setEnabled(false);
+		table.setRowSelectionAllowed(false);
+		scrollPane_1.setViewportView(table);
+		
+		
 		getContentPane().setLayout(groupLayout);
-				
+		
+		tableRisultatiRicerca.insertRow(tableRisultatiRicerca.getRowCount(), new Object[] { "test1", "test2" });
+		
+		areaTratteCompagnie = new JTextArea[] {textAreaVETR, textAreaVETEU, textAreaVETV, textAreaVETA, textAreaVETEA};
 		
 	}
 }

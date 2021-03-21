@@ -125,7 +125,6 @@ public class TrattaDaoImpl implements TrattaDao {
 		connection = Connessione.getConnection();
 		String ID = new String();
 		ID = tratta.getCittà().substring(0,3)+tratta.getOrarioPartenza().substring(0, 2)+tratta.getOrarioPartenza().substring(3, 5)+tratta.getDataPartenza().substring(0, 2);
-		System.out.println(ID);
 		    try {
 		        	Statement stmt = connection.createStatement();
 		        	int i = stmt.executeUpdate("DELETE FROM public.tratte WHERE \"IDTratta\"='" + ID+"'");
