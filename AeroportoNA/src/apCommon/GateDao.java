@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface GateDao {
 	public List<Gate> getAllGates() throws SQLException;
-    public Gate getGate(int numeroGate);
-    public void updateGate(Gate gate);
-    public void deleteGate(Gate gate);
+    public boolean updateGate(Gate gate, Tratta tratta);
+	public Gate getGate(Tratta tratta);
 
 }

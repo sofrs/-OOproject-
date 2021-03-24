@@ -5,7 +5,6 @@ public class Gate {
 	//Attributi
 	private String numeroGate;
 	private String terminale;
-	private Coda coda;
 	
 	//Costruttore vuoto
 	public Gate() {
@@ -27,14 +26,6 @@ public class Gate {
 
 	public void setTerminale(String terminale) {
 		this.terminale = terminale;
-	}
-
-	public Coda getCoda() {
-		return coda;
-	}
-
-	public void setCoda(Coda coda) {
-		this.coda = coda;
 	}
 	
 	

@@ -9,13 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.sql.SQLException;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.table.TableModel;
 
 public class AMain extends JFrame {
 	private static JLayeredPane Tratte;
@@ -35,74 +29,192 @@ public class AMain extends JFrame {
 	private static JButton PulsanteHomeGate;
 	private static JLayeredPane GiorniAggiungiTratta;
 	private static JLayeredPane MarzoHeader;
-	private static JTextField FieldAggiungiData;
+	private static JTextField fieldDataAggiungi;
 	private static JInternalFrame Calendario;
-	private static JButton SelectData;
+	private static JButton selectDataAggiungi;
 	private static JButton[] buttons;
-	private static JCheckBox[] checkBoxes;
+	private static JCheckBox[] checkBoxesTratte;
 	private static JComboBox[] boxes;
 	private static JTextField[] fields;
-	private static JComboBox<String> BoxDestinazione;
+	private static JComboBox<String> boxDestinazioneAggiungi;
 	private static Controller theController;
-	private static JTextField FieldPrenotazioni;
+	private static JTextField fieldPrenotazioniAggiungi;
 	private static JTextField FieldDataPartenza;
 	private static TextArea ListaTratte;
 	private static JTextField FieldDataArrivo;
 	private static JLayeredPane GiorniRicercaDataArrivo;
 	private static JLayeredPane GiorniRicercaDataPartenza;
-	private static JTextField FieldT1A1;
-	private static JTextField CodaFamiglieA1;
-	private static JTextField CodaDisabiliA1;
-	private static JTextField CodaPriorirtyA1;
+	private static JTextField fieldT1A1;
+	private static JTextField codaFamiglieA1;
+	private static JTextField codaDisabiliA1;
+	private static JTextField codaPriorirtyA1;
 	private static JTextField FieldTempoStimatoGiorno;
 	private static JTextField FieldTempoEffettivoGiorno;
+	private static JTextField FieldTempoStimatoSettimana;
+	private static JTextField FieldTempoEffettivoSettimana;
 	private static JTextField FieldTempoStimatoMese;
-	private static JTextField FieldTempoEffettivoMese;
-	private static JTextField FieldTempoStimatoAnno;
 	private static JTextField FieldTempoEffettivoAnno;
-	private static JTextField FieldT1A2;
-	private static JTextField CodaFamiglieA2;
-	private static JTextField CodaDisabiliA2;
-	private static JTextField CodaPriorirtyA2;
-	private static JTextField FieldT1A3;
-	private static JTextField CodaFamiglieA3;
-	private static JTextField CodaDisabiliA3;
-	private static JTextField CodaPriorirtyA3;
-	private static JTextField FieldT1A4;
-	private static JTextField CodaFamiglieA4;
-	private static JTextField CodaDisabiliA4;
-	private static JTextField CodaPriorirtyA4;
-	private static JTextField textField_19;
+	private static JTextField fieldT1A2;
+	private static JTextField codaFamiglieA2;
+	private static JTextField codaDisabiliA2;
+	private static JTextField codaPriorirtyA2;
+	private static JTextField fieldT1A3;
+	private static JTextField codaFamiglieA3;
+	private static JTextField codaDisabiliA3;
+	private static JTextField codaPriorirtyA3;
+	private static JTextField fieldT1A4;
+	private static JTextField codaFamiglieA4;
+	private static JTextField codaDisabiliA4;
+	private static JTextField codaPriorirtyA4;
+	private static JTextField fieldDataRimuovi;
 	private static JPanel PannelloTempo;
 	private static JPanel HeaderT1A1;
 	private static JPanel HeaderT1A2;
 	private static JPanel HeaderT1A3;
 	private static JPanel HeaderT1A4;
-	private JCheckBox[][] checksCode;
-	private JLayeredPane GiorniRimuoviTratta;
+	private static JCheckBox[] checksT1A1;
+	private static JCheckBox[] checksT1A2;
+	private static JCheckBox[] checksT1A3;
+	private static JCheckBox[] checksT1A4;
+	private static JLayeredPane GiorniRimuoviTratta;
 	private static JLabel[] warnings;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JPanel pannelloTextFVEU;
-	private JLabel durataGenA;
-	private JPanel pannelloInfoTextVETEA;
-	private JTextArea[] areaTratteCompagnie;
-	private JLayeredPane Ricerca;
-	private JTable table;
+	private static JTextField fieldDPartenza;
+	private static JTextField fieldOPPartenza;
+	private static JTextField fieldOAPartenza;
+	private static JTextField fieldDPPartenza;
+	private static JTextField fieldDAPartenza;
+	private static JTextField fieldPPartenza;
+	private static JTextField fieldCAPartenza;
+	private static JTextField fieldCPartenza;
+	private static JTextField fieldTPartenza;
+	private static JPanel pannelloTextFVEU;
+	private static JLabel durataGenA;
+	private static JPanel pannelloInfoTextVETEA;
+	private static JTextArea[] areaTratteCompagnie;
+	private static JLayeredPane Ricerca;
+	private static JTable table;
+	private static JTextField[] fieldsTratte;
+	private static JPanel pannelloT1A2;
+	private static JTextField fieldT2A1;
+	private static JTextField codaDisabiliT2A1;
+	private static JTextField codaPriorityT2A1;
+	private static JTextField fieldT2A2;
+	private static JTextField codaDisabiliT2A2;
+	private static JTextField codaPriorityT2A2;
+	private static JTextField fieldT2A3;
+	private static JTextField codaFamiglieT2A3;
+	private static JTextField codaDisabiliT2A3;
+	private static JTextField codaPriorityT2A3;
+	private static JTextField fieldT2A4;
+	private static JTextField codaFamiglieT2A4;
+	private static JTextField codaDisabiliT2A4;
+	private static JTextField codaPriorityT2A4;
+	private static JTextField[] fieldsPartenza;
+	private static JTextField fieldGPartenza;
+	private static JTextField fieldTIpartenza;
+	private static JCheckBox checkCodaFamiglieT1A1;
+	private static JCheckBox checkCodaDisabiliT1A1;
+	private static JCheckBox checkCodaPriorityT1A1;
+	private static JCheckBox checkCodaFamiglieT1A2;
+	private static JCheckBox checkCodaDisabiliT1A2;
+	private static JCheckBox checkCodaPriorityT1A2;
+	private static JCheckBox checkCodaFamiglieT1A3;
+	private static JCheckBox checkCodaDisabiliT1A3;
+	private static JCheckBox checkCodaPriorityT1A3;
+	private static JCheckBox checkCodaFamiglieT1A4;
+	private static JCheckBox checkCodaDisabiliT1A4;
+	private static JCheckBox checkCodaPriorityT1A4;
+	private static JPanel pannelloT2G3;
+	private static JTextField fieldT3A1;
+	private static JTextField codaFamiglieT3A1;
+	private static JTextField codaDisabiliT3A1;
+	private static JTextField codaPriorityT3A1;
+	private static JTextField fieldT3A2;
+	private static JTextField codaFamiglieT3A2;
+	private static JTextField codaDisabiliT3A2;
+	private static JTextField codaPriorityT3A2;
+	private static JTextField fieldT3A3;
+	private static JTextField codaFamiglieT3A3;
+	private static JTextField codaDisabiliT3A3;
+	private static JTextField codaPriorityT3A3;
+	private static JTextField fieldT3A4;
+	private static JTextField codaFamiglieT3A4;
+	private static JTextField codaDisabiliT3A4;
+	private static JTextField codaFamiglieT4A1;
+	private static JTextField codaDisabiliT4A1;
+	private static JTextField codaPriorityT4A1;
+	private static JTextField fieldT4A2;
+	private static JTextField codaFamiglieT4A2;
+	private static JTextField codaDisabiliT4A2;
+	private static JTextField codaPriorityT4A2;
+	private static JTextField fieldT4A3;
+	private static JTextField codaFamiglieT4A3;
+	private static JTextField codaDisabiliT4A3;
+	private static JTextField codaPriorityT4A3;
+	private static JTextField fieldT4A4;
+	private static JTextField codaFamiglieT4A4;
+	private static JTextField codaDisabiliT4A4;
+	private static JTextField codaPriorityT4A4;
+	private static JCheckBox[] checksT2A1;
+	private static JCheckBox[] checksT2A2;
+	private static JCheckBox[] checksT2A3;
+	private static JCheckBox[] checksT2A4;
+	private static JCheckBox[] checksT3A1;
+	private static JCheckBox[] checksT3A2;
+	private static JCheckBox[] checksT3A3;
+	private static JCheckBox[] checksT3A4;
+	private static JCheckBox[] checksT4A1;
+	private static JCheckBox[] checksT4A4;
+	private static JCheckBox[] checksT4A2;
+	private static JCheckBox[] checksT4A3;
+	private static JCheckBox checkCodaFamiglieT2A1;
+	private static JCheckBox checkCodaFamiglieT2A2;
+	private static JCheckBox checkCodaFamiglieT2A3;
+	private static JCheckBox checkCodaFamiglieT2A4;
+	private static JTextField codaFamiglieT2A2;
+	private static JCheckBox checkCodaPriorityT2A1;
+	private static JCheckBox checkCodaDisabiliT2A2;
+	private static JCheckBox checkCodaPriorityT2A2;
+	private static JCheckBox checkCodaPriorityT2A3;
+	private static JCheckBox checkCodaDisabiliT2A4;
+	private static JCheckBox checkCodaPriorityT2A4;
+	private static JCheckBox checkCodaFamiglieT3A1;
+	private static JCheckBox checkCodaDisabiliT3A1;
+	private static JCheckBox checkCodaPriorityT3A1;
+	private static JCheckBox checkCodaFamiglieT3A2;
+	private static JCheckBox checkCodaPriorityT3A2;
+	private static JCheckBox checkCodaFamiglieT3A3;
+	private static JCheckBox checkCodaPriorityT3A3;
+	private static JCheckBox checkCodaFamiglieT3A4;
+	private static JCheckBox checkCodaDisabiliT3A4;
+	private static JCheckBox checkCodaPriorityT3A4;
+	private static JCheckBox checkCodaDisabiliT2A1;
+	private static JCheckBox checkCodaDisabiliT2A3;
+	private static JCheckBox checkCodaDisabiliT3A3;
+	private static JCheckBox checkCodaDisabiliT4A1;
+	private static JCheckBox checkCodaDisabiliT4A2;
+	private static JCheckBox checkCodaDisabiliT4A3;
+	private static JCheckBox checkCodaDisabiliT4A4;
+	private static JCheckBox checkCodaDisabiliT3A2;
+	private static JCheckBox checkCodaFamiglieT4A1;
+	private static JCheckBox checkCodaFamiglieT4A2;
+	private static JCheckBox checkCodaFamiglieT4A3;
+	private static JCheckBox checkCodaFamiglieT4A4;
+	private static JCheckBox checkCodaPriorityT4A1;
+	private static JCheckBox checkCodaPriorityT4A2;
+	private static JCheckBox checkCodaPriorityT4A3;
+	private static JCheckBox checkCodaPriorityT4A4;
+	private static JTextField fieldT4A1;
+	private static JTextField fieldTEPartenza;
 	
 	@SuppressWarnings("serial")
-	public AMain(Controller c) throws SQLException {
+	public AMain(Controller c){
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AMain.class.getResource("/apResources/Icona_NA.png")));
 		theController = c;
 		JButton[] pulsantiMesiPartenza = new JButton[31];
 		JButton[] pulsantiMesiArrivo = new JButton[31];
 		JButton[] pulsantiMesiRimuovi = new JButton[31];
+		DefaultTableModel tableRisultatiRicerca = new DefaultTableModel();
 		
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -151,41 +263,41 @@ public class AMain extends JFrame {
 		});
 		Main.setLayout(null);
 		
-		JComboBox boxGate = new JComboBox();
-		boxGate.setModel(new DefaultComboBoxModel(new String[] {"T1 - A1", "T1 - A2", "T1 - A3", "T1 - A4", "T2 - A1", "T2 - A2", "T2 - A3", "T2 - A4", "T3 - A1", "T3 - A2", "T3 - A3", "T3 - A4", "T4 - A1", "T4 - A2", "T4 - A3", "T4 - A4", "Qualsiasi"}));
+		JComboBox<String> boxGate = new JComboBox<String>();
+		boxGate.setModel(new DefaultComboBoxModel<String>(new String[] {"T1 - A1", "T1 - A2", "T1 - A3", "T1 - A4", "T2 - A1", "T2 - A2", "T2 - A3", "T2 - A4", "T3 - A1", "T3 - A2", "T3 - A3", "T3 - A4", "T4 - A1", "T4 - A2", "T4 - A3", "T4 - A4", "Qualsiasi"}));
 		boxGate.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		boxGate.setBounds(439, 291, 150, 30);
 		Main.add(boxGate);
 		
-		JLabel lblNewLabel_6_1 = new JLabel("Gate");
-		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6_1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		lblNewLabel_6_1.setBounds(439, 273, 150, 19);
-		Main.add(lblNewLabel_6_1);
+		JLabel labelRicercaGate = new JLabel("Gate");
+		labelRicercaGate.setHorizontalAlignment(SwingConstants.CENTER);
+		labelRicercaGate.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		labelRicercaGate.setBounds(439, 273, 150, 19);
+		Main.add(labelRicercaGate);
 		
-		JLabel lblCompagnie = new JLabel("Compagnie");
-		lblCompagnie.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCompagnie.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		lblCompagnie.setBounds(618, 273, 150, 19);
-		Main.add(lblCompagnie);
+		JLabel labelRicercaCompagnie = new JLabel("Compagnie");
+		labelRicercaCompagnie.setHorizontalAlignment(SwingConstants.CENTER);
+		labelRicercaCompagnie.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		labelRicercaCompagnie.setBounds(618, 273, 150, 19);
+		Main.add(labelRicercaCompagnie);
 		
-		JComboBox boxCompagnie = new JComboBox();
+		JComboBox<String> boxCompagnie = new JComboBox<String>();
 		boxCompagnie.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		boxCompagnie.setModel(new DefaultComboBoxModel(new String[] {"Rynair", "Eurowings", "Volotea", "Easyjet", "Alitalia", "Qualsiasi"}));
+		boxCompagnie.setModel(new DefaultComboBoxModel<String>(new String[] {"Ryanair", "Eurowings", "Volotea", "Easyjet", "Alitalia", "Qualsiasi"}));
 		boxCompagnie.setBounds(618, 291, 150, 30);
 		Main.add(boxCompagnie);
 		
-		JComboBox boxDestinazione = new JComboBox();
+		JComboBox<String> boxDestinazione = new JComboBox<String>();
 		boxDestinazione.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		boxDestinazione.setModel(new DefaultComboBoxModel(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano", "Qualsiasi"}));
+		boxDestinazione.setModel(new DefaultComboBoxModel<String>(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano", "Qualsiasi"}));
 		boxDestinazione.setBounds(260, 291, 150, 30);
 		Main.add(boxDestinazione);
 		
-		JLabel lblNewLabel = new JLabel("Destinazione");
-		lblNewLabel.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(260, 273, 150, 19);
-		Main.add(lblNewLabel);
+		JLabel labelRicercaDestinazione = new JLabel("Destinazione");
+		labelRicercaDestinazione.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		labelRicercaDestinazione.setHorizontalAlignment(SwingConstants.CENTER);
+		labelRicercaDestinazione.setBounds(260, 273, 150, 19);
+		Main.add(labelRicercaDestinazione);
 		
 		JLabel testoPulsanteRicerca = new JLabel("Cerca");
 		testoPulsanteRicerca.setBounds(806, 283, 134, 30);
@@ -197,7 +309,10 @@ public class AMain extends JFrame {
 		JButton pulsanteRicerca = new JButton("");
 		pulsanteRicerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Main.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+				theController.fillTable(table, tableRisultatiRicerca, boxDestinazione, boxGate, boxCompagnie);
 				theController.switchPanel(Main, Ricerca);
+				Main.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
 		pulsanteRicerca.setBounds(794, 271, 158, 56);
@@ -322,9 +437,9 @@ public class AMain extends JFrame {
 		PanelTratte.setBackground(new Color(208, 215, 232));
 		PanelTratte.setBounds(0, 0, 1193, 535);
 		Tratte.add(PanelTratte);
-		PanelTratte.setLayout(null);
 		
 		JButton pulsanteCalendarioPartenza = new JButton("");
+		pulsanteCalendarioPartenza.setBounds(30, 127, 47, 40);
 		pulsanteCalendarioPartenza.setEnabled(false);
 		pulsanteCalendarioPartenza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -332,10 +447,11 @@ public class AMain extends JFrame {
 				theController.showCorrectCalendar(GiorniRicercaDataPartenza, GiorniRicercaDataArrivo, GiorniAggiungiTratta, GiorniRimuoviTratta, Calendario);
 			}
 		});
+		PanelTratte.setLayout(null);
 		
 		JInternalFrame Avviso = new JInternalFrame("Avviso");
-		Avviso.setFrameIcon(new ImageIcon(AMain.class.getResource("/apResources/IconWarning.png")));
 		Avviso.setBounds(366, 195, 353, 164);
+		Avviso.setFrameIcon(new ImageIcon(AMain.class.getResource("/apResources/IconWarning.png")));
 		PanelTratte.add(Avviso);
 		Avviso.setClosable(true);
 		Avviso.getContentPane().setBackground(new Color(13, 62, 117));
@@ -514,10 +630,10 @@ public class AMain extends JFrame {
 		pulsanteCalendarioPartenza.setContentAreaFilled(false);
 		pulsanteCalendarioPartenza.setBorderPainted(false);
 		pulsanteCalendarioPartenza.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconCalendario.png")));
-		pulsanteCalendarioPartenza.setBounds(30, 127, 47, 40);
 		PanelTratte.add(pulsanteCalendarioPartenza);
 		
 		JButton PulsanteCalendarioArrivo = new JButton("");
+		PulsanteCalendarioArrivo.setBounds(30, 178, 47, 40);
 		PulsanteCalendarioArrivo.setEnabled(false);
 		PulsanteCalendarioArrivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -530,71 +646,71 @@ public class AMain extends JFrame {
 		PulsanteCalendarioArrivo.setContentAreaFilled(false);
 		PulsanteCalendarioArrivo.setBorderPainted(false);
 		PulsanteCalendarioArrivo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconCalendario.png")));
-		PulsanteCalendarioArrivo.setBounds(30, 178, 47, 40);
 		PanelTratte.add(PulsanteCalendarioArrivo);
 		
 		JCheckBox CheckOrarioPartenza = new JCheckBox("");
+		CheckOrarioPartenza.setBounds(199, 246, 21, 21);
 		CheckOrarioPartenza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.attivaRicerca(checkBoxes, fields, boxes, buttons);
+				theController.attivaRicerca(checkBoxesTratte, fields, boxes, buttons);
 			}
 		});
-		CheckOrarioPartenza.setBounds(199, 246, 21, 21);
 		PanelTratte.add(CheckOrarioPartenza);
 		
 		JCheckBox CheckOrarioArrivo = new JCheckBox("");
+		CheckOrarioArrivo.setBounds(199, 292, 21, 21);
 		CheckOrarioArrivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.attivaRicerca(checkBoxes, fields, boxes, buttons);
+				theController.attivaRicerca(checkBoxesTratte, fields, boxes, buttons);
 			}
 		});
-		CheckOrarioArrivo.setBounds(199, 292, 21, 21);
 		PanelTratte.add(CheckOrarioArrivo);
 		
 		FieldDataPartenza = new JTextField();
+		FieldDataPartenza.setBounds(79, 146, 114, 21);
 		FieldDataPartenza.setEnabled(false);
 		FieldDataPartenza.setHorizontalAlignment(SwingConstants.CENTER);
 		FieldDataPartenza.setEditable(false);
 		FieldDataPartenza.setColumns(10);
-		FieldDataPartenza.setBounds(79, 146, 114, 21);
 		PanelTratte.add(FieldDataPartenza);
 		
 		JLabel TestoDataArrivo = new JLabel("Data arrivo:");
+		TestoDataArrivo.setBounds(79, 180, 114, 19);
 		TestoDataArrivo.setHorizontalAlignment(SwingConstants.CENTER);
 		TestoDataArrivo.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
-		TestoDataArrivo.setBounds(79, 180, 114, 19);
 		PanelTratte.add(TestoDataArrivo);
 		
 		JLabel TestoDataPartenza = new JLabel("Data partenza:");
+		TestoDataPartenza.setBounds(79, 129, 114, 19);
 		TestoDataPartenza.setHorizontalAlignment(SwingConstants.CENTER);
 		TestoDataPartenza.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
-		TestoDataPartenza.setBounds(79, 129, 114, 19);
 		PanelTratte.add(TestoDataPartenza);
 		
 		FieldDataArrivo = new JTextField();
+		FieldDataArrivo.setBounds(79, 195, 114, 23);
 		FieldDataArrivo.setEnabled(false);
 		FieldDataArrivo.setHorizontalAlignment(SwingConstants.CENTER);
 		FieldDataArrivo.setEditable(false);
 		FieldDataArrivo.setColumns(10);
-		FieldDataArrivo.setBounds(79, 195, 114, 23);
 		PanelTratte.add(FieldDataArrivo);
 		
 		JCheckBox CheckDataPartenza = new JCheckBox("");
+		CheckDataPartenza.setBounds(199, 146, 21, 21);
 		CheckDataPartenza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.attivaRicerca(checkBoxes, fields, boxes, buttons);
+				theController.attivaRicerca(checkBoxesTratte, fields, boxes, buttons);
 			}
 		});
-		CheckDataPartenza.setBounds(199, 146, 21, 21);
 		PanelTratte.add(CheckDataPartenza);
 		
 		JLabel TestoOrarioPartenza = new JLabel("Orario partenza:");
+		TestoOrarioPartenza.setBounds(37, 229, 156, 19);
 		TestoOrarioPartenza.setHorizontalAlignment(SwingConstants.CENTER);
 		TestoOrarioPartenza.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
-		TestoOrarioPartenza.setBounds(37, 229, 156, 19);
 		PanelTratte.add(TestoOrarioPartenza);
 		
 		JComboBox<String> BoxOrarioPartenza = new JComboBox<String>();
+		BoxOrarioPartenza.setBounds(37, 246, 156, 21);
 		BoxOrarioPartenza.setEnabled(false);
 		BoxOrarioPartenza.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30",
 																					"03:00", "03:30", "04:00", "04:30", "05:00", "05:30",
@@ -604,16 +720,16 @@ public class AMain extends JFrame {
 																					"15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
 																					"18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
 																					"21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
-		BoxOrarioPartenza.setBounds(37, 246, 156, 21);
 		PanelTratte.add(BoxOrarioPartenza);
 		
 		JLabel TestoOrarioArrivo = new JLabel("Orario arrivo:");
+		TestoOrarioArrivo.setBounds(37, 272, 156, 21);
 		TestoOrarioArrivo.setHorizontalAlignment(SwingConstants.CENTER);
 		TestoOrarioArrivo.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
-		TestoOrarioArrivo.setBounds(37, 272, 156, 21);
 		PanelTratte.add(TestoOrarioArrivo);
 		
 		JComboBox<String> BoxOrarioArrivo = new JComboBox<String>();
+		BoxOrarioArrivo.setBounds(37, 292, 156, 21);
 		BoxOrarioArrivo.setEnabled(false);
 		BoxOrarioArrivo.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30",
 																					"03:00", "03:30", "04:00", "04:30", "05:00", "05:30",
@@ -623,25 +739,24 @@ public class AMain extends JFrame {
 																					"15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
 																					"18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
 																					"21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
-		BoxOrarioArrivo.setBounds(37, 292, 156, 21);
 		PanelTratte.add(BoxOrarioArrivo);
 		
 		JCheckBox CheckCittà = new JCheckBox("");
+		CheckCittà.setBounds(199, 320, 21, 21);
 		CheckCittà.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.attivaRicerca(checkBoxes, fields, boxes, buttons);
+				theController.attivaRicerca(checkBoxesTratte, fields, boxes, buttons);
 			}
 		});
-		CheckCittà.setBounds(199, 320, 21, 21);
 		PanelTratte.add(CheckCittà);
 		
 		JCheckBox CheckDataArrivo = new JCheckBox("");
+		CheckDataArrivo.setBounds(199, 195, 21, 21);
 		CheckDataArrivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.attivaRicerca(checkBoxes, fields, boxes, buttons);
+				theController.attivaRicerca(checkBoxesTratte, fields, boxes, buttons);
 			}
 		});
-		CheckDataArrivo.setBounds(199, 195, 21, 21);
 		PanelTratte.add(CheckDataArrivo);
 		
 		JPanel ImmCittà = new JPanel();
@@ -718,10 +833,10 @@ public class AMain extends JFrame {
 											ImmDubai, ImmGenova, ImmLiverpool, ImmLondra, ImmTorino, ImmTrieste, ImmVenezia, ImmVerona};
 		
 		JComboBox<String> BoxCittà = new JComboBox<String>();
+		BoxCittà.setBounds(37, 320, 156, 21);
 		BoxCittà.setEnabled(false);
 		BoxCittà.setModel(new DefaultComboBoxModel<String>(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano"}));
 		BoxCittà.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		BoxCittà.setBounds(37, 320, 156, 21);
 		BoxCittà.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -734,18 +849,18 @@ public class AMain extends JFrame {
 		PanelTratte.add(BoxCittà);
 		
 		buttons = new JButton[] {PulsanteCalendarioArrivo, pulsanteCalendarioPartenza};
-		checkBoxes = new JCheckBox[]{CheckDataArrivo, CheckDataPartenza, CheckOrarioArrivo, CheckOrarioPartenza, CheckCittà};
+		checkBoxesTratte = new JCheckBox[]{CheckDataArrivo, CheckDataPartenza, CheckOrarioArrivo, CheckOrarioPartenza, CheckCittà};
 		fields = new JTextField[] {FieldDataArrivo, FieldDataPartenza};
 		boxes = new JComboBox[] {BoxOrarioArrivo, BoxOrarioPartenza, BoxCittà};
 		
 		JLabel OmbraHeaderVolo = new JLabel("");
-		OmbraHeaderVolo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
 		OmbraHeaderVolo.setBounds(0, 0, 1193, 34);
+		OmbraHeaderVolo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/OmbraHeader.png")));
 		PanelTratte.add(OmbraHeaderVolo);
 		
 		PulsanteHomeVolo = new JButton("");
-		PulsanteHomeVolo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
 		PulsanteHomeVolo.setBounds(10, 10, 63, 51);
+		PulsanteHomeVolo.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
 		PulsanteHomeVolo.setOpaque(false);
 		PulsanteHomeVolo.setFocusable(false);
 		PulsanteHomeVolo.setContentAreaFilled(false);
@@ -758,30 +873,30 @@ public class AMain extends JFrame {
 		});
 		PanelTratte.add(PulsanteHomeVolo); 
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		tabbedPane.setBounds(366, 45, 482, 142);
-		PanelTratte.add(tabbedPane);
+		JTabbedPane tabbedPaneTratte = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPaneTratte.setBounds(366, 45, 482, 142);
+		tabbedPaneTratte.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		PanelTratte.add(tabbedPaneTratte);
 		
 		JButton[] pulsantiMesiAggiungi = new JButton[32];
 		
-		FieldAggiungiData = new JTextField();
-		FieldAggiungiData.setHorizontalAlignment(SwingConstants.CENTER);
-		FieldAggiungiData.setEditable(false);
-		FieldAggiungiData.setBounds(10, 33, 96, 19);
-		FieldAggiungiData.setColumns(10);
+		fieldDataAggiungi = new JTextField();
+		fieldDataAggiungi.setHorizontalAlignment(SwingConstants.CENTER);
+		fieldDataAggiungi.setEditable(false);
+		fieldDataAggiungi.setBounds(10, 33, 96, 19);
+		fieldDataAggiungi.setColumns(10);
 		
 		JPanel PannelloAggiungi = new JPanel();
-		tabbedPane.addTab("Aggiungi", null, PannelloAggiungi, null);
+		tabbedPaneTratte.addTab("Aggiungi", null, PannelloAggiungi, null);
 		
-		JLabel LabelArrivo = new JLabel("Data e ora d'imbarco");
-		LabelArrivo.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelArrivo.setBounds(10, 11, 195, 16);
-		LabelArrivo.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		JLabel labelArrivoAggiungi = new JLabel("Data e ora d'imbarco");
+		labelArrivoAggiungi.setHorizontalAlignment(SwingConstants.CENTER);
+		labelArrivoAggiungi.setBounds(10, 11, 195, 16);
+		labelArrivoAggiungi.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 		
-		JComboBox<String> BoxOrari = new JComboBox<String>();
-		BoxOrari.setBounds(116, 33, 89, 19);
-		BoxOrari.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30",
+		JComboBox<String> boxOrariAggiungi = new JComboBox<String>();
+		boxOrariAggiungi.setBounds(116, 33, 89, 19);
+		boxOrariAggiungi.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30",
 																			"03:00", "03:30", "04:00", "04:30", "05:00", "05:30",
 																			"06:00", "06:30", "07:00", "07:30", "08:00", "08:30",
 																			"09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
@@ -790,87 +905,87 @@ public class AMain extends JFrame {
 																			"18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
 																			"21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
 		
-		SelectData = new JButton("Sleziona Data");
-		SelectData.setBounds(10, 58, 195, 21);
-		SelectData.addActionListener(new ActionListener() {
+		selectDataAggiungi = new JButton("Sleziona Data");
+		selectDataAggiungi.setBounds(10, 58, 195, 21);
+		selectDataAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.creaPulsantiCalendario(pulsantiMesiAggiungi, GiorniAggiungiTratta, FieldAggiungiData, Calendario);
+				theController.creaPulsantiCalendario(pulsantiMesiAggiungi, GiorniAggiungiTratta, fieldDataAggiungi, Calendario);
 				theController.showCorrectCalendar(GiorniAggiungiTratta, GiorniRicercaDataArrivo, GiorniRicercaDataPartenza, GiorniRimuoviTratta, Calendario);
 			}
 		});
 		
 					
 				PannelloAggiungi.setLayout(null);
-				PannelloAggiungi.add(LabelArrivo);
-				PannelloAggiungi.add(SelectData);
-				PannelloAggiungi.add(FieldAggiungiData);
-				PannelloAggiungi.add(BoxOrari);
+				PannelloAggiungi.add(labelArrivoAggiungi);
+				PannelloAggiungi.add(selectDataAggiungi);
+				PannelloAggiungi.add(fieldDataAggiungi);
+				PannelloAggiungi.add(boxOrariAggiungi);
 				
-				JLabel LabelDestinazione = new JLabel("Destinazione:");
-				LabelDestinazione.setHorizontalAlignment(SwingConstants.CENTER);
-				LabelDestinazione.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
-				LabelDestinazione.setBounds(230, 58, 152, 16);
-				PannelloAggiungi.add(LabelDestinazione);
+				JLabel labelDestinazioneAggiungi = new JLabel("Destinazione:");
+				labelDestinazioneAggiungi.setHorizontalAlignment(SwingConstants.CENTER);
+				labelDestinazioneAggiungi.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+				labelDestinazioneAggiungi.setBounds(230, 58, 152, 16);
+				PannelloAggiungi.add(labelDestinazioneAggiungi);
 				
-				BoxDestinazione = new JComboBox<String>();
-				BoxDestinazione.setModel(new DefaultComboBoxModel<String>(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano"}));
-				BoxDestinazione.setBounds(230, 73, 152, 26);
-				PannelloAggiungi.add(BoxDestinazione);
+				boxDestinazioneAggiungi = new JComboBox<String>();
+				boxDestinazioneAggiungi.setModel(new DefaultComboBoxModel<String>(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano"}));
+				boxDestinazioneAggiungi.setBounds(230, 73, 152, 26);
+				PannelloAggiungi.add(boxDestinazioneAggiungi);
 				
-				JLabel NumPrenotazioni = new JLabel("Prenotazioni:");
-				NumPrenotazioni.setHorizontalAlignment(SwingConstants.CENTER);
-				NumPrenotazioni.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
-				NumPrenotazioni.setBounds(230, 11, 152, 19);
-				PannelloAggiungi.add(NumPrenotazioni);
+				JLabel numPrenotazioniAggiungi = new JLabel("Prenotazioni:");
+				numPrenotazioniAggiungi.setHorizontalAlignment(SwingConstants.CENTER);
+				numPrenotazioniAggiungi.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+				numPrenotazioniAggiungi.setBounds(230, 11, 152, 19);
+				PannelloAggiungi.add(numPrenotazioniAggiungi);
 				
-				FieldPrenotazioni = new JTextField();
-				FieldPrenotazioni.setBounds(230, 28, 152, 26);
-				PannelloAggiungi.add(FieldPrenotazioni);
-				FieldPrenotazioni.setColumns(10);
+				fieldPrenotazioniAggiungi = new JTextField();
+				fieldPrenotazioniAggiungi.setBounds(230, 28, 152, 26);
+				PannelloAggiungi.add(fieldPrenotazioniAggiungi);
+				fieldPrenotazioniAggiungi.setColumns(10);
 				
-				JButton PulsanteConferma = new JButton("Ok");
-				PulsanteConferma.addActionListener(new ActionListener() {
+				JButton pulsanteConfermaAggiungi = new JButton("Ok");
+				pulsanteConfermaAggiungi.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						theController.newTratta(BoxOrari, BoxDestinazione, FieldPrenotazioni, Avviso, FieldAggiungiData, warnings);
+						theController.newTratta(boxOrariAggiungi, boxDestinazioneAggiungi, fieldPrenotazioniAggiungi, Avviso, fieldDataAggiungi, warnings);
 					}
 				});
-				PulsanteConferma.setBounds(410, 66, 53, 40);
-				PannelloAggiungi.add(PulsanteConferma);
+				pulsanteConfermaAggiungi.setBounds(410, 66, 53, 40);
+				PannelloAggiungi.add(pulsanteConfermaAggiungi);
 		
 		PannelloRimuovi = new JPanel();
-		tabbedPane.addTab("Rimuovi", null, PannelloRimuovi, null);
+		tabbedPaneTratte.addTab("Rimuovi", null, PannelloRimuovi, null);
 		
-		JLabel LabelArrivo_1 = new JLabel("Data e ora d'imbarco");
-		LabelArrivo_1.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelArrivo_1.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		JLabel labelArrivoRimuovi = new JLabel("Data e ora d'imbarco");
+		labelArrivoRimuovi.setHorizontalAlignment(SwingConstants.CENTER);
+		labelArrivoRimuovi.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 		
-		textField_19 = new JTextField();
-		textField_19.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_19.setEditable(false);
-		textField_19.setColumns(10);
+		fieldDataRimuovi = new JTextField();
+		fieldDataRimuovi.setHorizontalAlignment(SwingConstants.CENTER);
+		fieldDataRimuovi.setEditable(false);
+		fieldDataRimuovi.setColumns(10);
 		
-		JComboBox<String> BoxOrari_1 = new JComboBox<String>();
-		BoxOrari_1.setModel(new DefaultComboBoxModel(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
+		JComboBox<String> boxOrariRimuovi = new JComboBox<String>();
+		boxOrariRimuovi.setModel(new DefaultComboBoxModel<String>(new String[] {"00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "23:59"}));
 		
-		JButton SelectData_1 = new JButton("Sleziona Data");
-		SelectData_1.addActionListener(new ActionListener() {
+		JButton selectDataRimuovi = new JButton("Sleziona Data");
+		selectDataRimuovi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.creaPulsantiCalendario(pulsantiMesiRimuovi, GiorniRimuoviTratta, textField_19, Calendario);
+				theController.creaPulsantiCalendario(pulsantiMesiRimuovi, GiorniRimuoviTratta, fieldDataRimuovi, Calendario);
 				theController.showCorrectCalendar(GiorniRimuoviTratta, GiorniRicercaDataArrivo, GiorniRicercaDataPartenza, GiorniAggiungiTratta, Calendario);
 			}
 		});
 		
-		JLabel LabelDestinazione_1 = new JLabel("Destinazione:");
-		LabelDestinazione_1.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelDestinazione_1.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
+		JLabel labelDestinazioneRimuovi = new JLabel("Destinazione:");
+		labelDestinazioneRimuovi.setHorizontalAlignment(SwingConstants.CENTER);
+		labelDestinazioneRimuovi.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 		
-		JComboBox<String> BoxDestinazione_1 = new JComboBox<String>();
-		BoxDestinazione_1.setModel(new DefaultComboBoxModel(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano"}));
+		JComboBox<String> boxDestinazioneRimuovi = new JComboBox<String>();
+		boxDestinazioneRimuovi.setModel(new DefaultComboBoxModel<String>(new String[] {"Amsterdam", "Atene", "Barcellona", "Berlino", "Bruxelles", "Cagliari", "Catania", "Cracovia", "Dubai", "Genova", "Roma", "Londra", "Torino", "Trieste", "Venezia", "Milano"}));
 		
-		JButton PulsanteConferma_1 = new JButton("Ok");
-		PulsanteConferma_1.addActionListener(new ActionListener() {
+		JButton pulsanteConfermaRimuovi = new JButton("Ok");
+		pulsanteConfermaRimuovi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.rimuoviTratta(BoxOrari_1, BoxDestinazione_1, Avviso, textField_19, warnings);
+				theController.rimuoviTratta(boxOrariRimuovi, boxDestinazioneRimuovi, Avviso, fieldDataRimuovi, warnings);
 			}
 		});
 		GroupLayout gl_PannelloRimuovi = new GroupLayout(PannelloRimuovi);
@@ -881,20 +996,20 @@ public class AMain extends JFrame {
 					.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_PannelloRimuovi.createSequentialGroup()
 							.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
-								.addComponent(LabelArrivo_1, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
+								.addComponent(labelArrivoRimuovi, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
 								.addGroup(gl_PannelloRimuovi.createSequentialGroup()
-									.addComponent(textField_19, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+									.addComponent(fieldDataRimuovi, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 									.addGap(10)
-									.addComponent(BoxOrari_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(boxOrariRimuovi, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)))
 							.addGap(27)
 							.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
-								.addComponent(LabelDestinazione_1, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-								.addComponent(BoxDestinazione_1, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
+								.addComponent(labelDestinazioneRimuovi, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+								.addComponent(boxDestinazioneRimuovi, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
 							.addGap(93))
 						.addGroup(gl_PannelloRimuovi.createSequentialGroup()
-							.addComponent(SelectData_1, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
+							.addComponent(selectDataRimuovi, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-							.addComponent(PulsanteConferma_1, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addComponent(pulsanteConfermaRimuovi, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 		);
 		gl_PannelloRimuovi.setVerticalGroup(
@@ -902,28 +1017,28 @@ public class AMain extends JFrame {
 				.addGroup(gl_PannelloRimuovi.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
-						.addComponent(LabelDestinazione_1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(labelDestinazioneRimuovi, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_PannelloRimuovi.createSequentialGroup()
-								.addComponent(LabelArrivo_1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+								.addComponent(labelArrivoRimuovi, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 								.addGap(6)
 								.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
-									.addComponent(textField_19, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-									.addComponent(BoxOrari_1, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(fieldDataRimuovi, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+									.addComponent(boxOrariRimuovi, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)))
 							.addGroup(gl_PannelloRimuovi.createSequentialGroup()
 								.addGap(15)
-								.addComponent(BoxDestinazione_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(boxDestinazioneRimuovi, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_PannelloRimuovi.createParallelGroup(Alignment.LEADING)
-						.addComponent(PulsanteConferma_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addComponent(SelectData_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(pulsanteConfermaRimuovi, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(selectDataRimuovi, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(13, Short.MAX_VALUE))
 		);
 		PannelloRimuovi.setLayout(gl_PannelloRimuovi);
 		
 		Panel AreaTratte = new Panel();
-		AreaTratte.setBackground(Color.WHITE);
 		AreaTratte.setBounds(317, 215, 836, 282);
+		AreaTratte.setBackground(Color.WHITE);
 		PanelTratte.add(AreaTratte);
 		
 		JLayeredPane PannelloTratte = new JLayeredPane();
@@ -933,12 +1048,12 @@ public class AMain extends JFrame {
 		PannelloTratte.add(ListaTratte);
 		
 		JButton PulsanteRicerca = new JButton("Effettua ricerca");
+		PulsanteRicerca.setBounds(37, 498, 183, 19);
 		PulsanteRicerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.ricercaTratte(checkBoxes, fields, boxes, ListaTratte);
+				theController.ricercaTratte(checkBoxesTratte, fields, boxes, ListaTratte);
 			}
 		});
-		PulsanteRicerca.setBounds(37, 498, 183, 19);
 		PanelTratte.add(PulsanteRicerca);
 		GroupLayout gl_AreaTratte = new GroupLayout(AreaTratte);
 		gl_AreaTratte.setHorizontalGroup(
@@ -952,9 +1067,9 @@ public class AMain extends JFrame {
 		AreaTratte.setLayout(gl_AreaTratte);
 		
 		JLabel Biglietto = new JLabel("New label");
+		Biglietto.setBounds(0, 59, 274, 486);
 		Biglietto.setIcon(new ImageIcon(AMain.class.getResource("/apResources/BaseBiglietto.png")));
 		Biglietto.setHorizontalAlignment(SwingConstants.CENTER);
-		Biglietto.setBounds(0, 59, 274, 486);
 		PanelTratte.add(Biglietto);
 		
 		
@@ -1002,144 +1117,200 @@ public class AMain extends JFrame {
 		PannelloTempo = new JPanel();
 		PannelloTempo.setVisible(false);
 		
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		internalFrame.setClosable(true);
-		internalFrame.setBounds(388, 431, 554, 396);
-		PanelGate.add(internalFrame);
-		internalFrame.getContentPane().setLayout(null);
+		JInternalFrame intframePartenza = new JInternalFrame("");
+		intframePartenza.setClosable(true);
+		intframePartenza.setFrameIcon(new ImageIcon(AMain.class.getResource("/apResources/IconWarning.png")));
+		intframePartenza.setBounds(340, 22, 554, 491);
+		PanelGate.add(intframePartenza);
+		intframePartenza.getContentPane().setLayout(null);
 		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBounds(0, 0, 537, 366);
-		internalFrame.getContentPane().add(panel_10);
+		JPanel pannelloPartenza = new JPanel();
+		pannelloPartenza.setBounds(0, 0, 537, 483);
+		intframePartenza.getContentPane().add(pannelloPartenza);
 		
-		JPanel panel_12 = new JPanel();
-		panel_12.setBackground(new Color(13, 62, 117));
-		panel_12.setBounds(0, 0, 537, 43);
+		JPanel pannelloPartenzaHeader = new JPanel();
+		pannelloPartenzaHeader.setBackground(new Color(13, 62, 117));
+		pannelloPartenzaHeader.setBounds(0, 0, 537, 43);
 		
-		JLabel lblNewLabel_5 = new JLabel("Destinazione: ");
-		lblNewLabel_5.setBounds(10, 54, 180, 17);
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaD = new JLabel("Destinazione: ");
+		labelPartenzaD.setBounds(10, 54, 180, 17);
+		labelPartenzaD.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaD.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2 = new JLabel("Orario partenza:");
-		lblNewLabel_5_2.setBounds(10, 89, 180, 17);
-		lblNewLabel_5_2.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaOP = new JLabel("Orario partenza:");
+		labelPartenzaOP.setBounds(10, 89, 180, 17);
+		labelPartenzaOP.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaOP.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_3 = new JLabel("Orario d'arrivo previsto: ");
-		lblNewLabel_5_3.setBounds(10, 124, 180, 17);
-		lblNewLabel_5_3.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaOA = new JLabel("Orario d'arrivo previsto: ");
+		labelPartenzaOA.setBounds(10, 124, 180, 17);
+		labelPartenzaOA.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaOA.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2_1 = new JLabel("Data partenza:");
-		lblNewLabel_5_2_1.setBounds(10, 160, 180, 17);
-		lblNewLabel_5_2_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaDP = new JLabel("Data partenza:");
+		labelPartenzaDP.setBounds(10, 160, 180, 17);
+		labelPartenzaDP.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaDP.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2_1_1 = new JLabel("Data d'arrivo prevista: ");
-		lblNewLabel_5_2_1_1.setBounds(10, 195, 180, 17);
-		lblNewLabel_5_2_1_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2_1_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaDA = new JLabel("Data d'arrivo prevista: ");
+		labelPartenzaDA.setBounds(10, 195, 180, 17);
+		labelPartenzaDA.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaDA.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2_1_2 = new JLabel("Prenotazioni: ");
-		lblNewLabel_5_2_1_2.setBounds(10, 230, 180, 17);
-		lblNewLabel_5_2_1_2.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2_1_2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaP = new JLabel("Prenotazioni: ");
+		labelPartenzaP.setBounds(10, 230, 180, 17);
+		labelPartenzaP.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaP.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2_1_3 = new JLabel("Compagnia aerea: ");
-		lblNewLabel_5_2_1_3.setBounds(10, 265, 180, 17);
-		lblNewLabel_5_2_1_3.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2_1_3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaCom = new JLabel("Compagnia aerea: ");
+		labelPartenzaCom.setBounds(10, 265, 180, 17);
+		labelPartenzaCom.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaCom.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2_1_3_1 = new JLabel("Code:");
-		lblNewLabel_5_2_1_3_1.setBounds(10, 300, 180, 17);
-		lblNewLabel_5_2_1_3_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2_1_3_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaCod = new JLabel("Code:");
+		labelPartenzaCod.setBounds(10, 300, 180, 17);
+		labelPartenzaCod.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaCod.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_2_1_4 = new JLabel("Tempo d'imbarco: ");
-		lblNewLabel_5_2_1_4.setBounds(10, 335, 180, 17);
-		lblNewLabel_5_2_1_4.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_2_1_4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelPartenzaT = new JLabel("Terminal:");
+		labelPartenzaT.setBounds(10, 335, 180, 17);
+		labelPartenzaT.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaT.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		pannelloPartenzaHeader.setLayout(null);
 		
-		JButton btnNewButton_2 = new JButton("Parti");
-		btnNewButton_2.setBounds(462, 327, 65, 25);
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panel_12.setLayout(null);
+		JLabel textPartenza = new JLabel("Recap delle informazioni del volo in partenza");
+		textPartenza.setForeground(new Color(255, 255, 255));
+		textPartenza.setHorizontalAlignment(SwingConstants.CENTER);
+		textPartenza.setBounds(10, 0, 517, 43);
+		textPartenza.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		pannelloPartenzaHeader.add(textPartenza);
 		
-		JLabel lblNewLabel_2 = new JLabel("Recap delle informazioni del volo in partenza");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(10, 0, 517, 43);
-		lblNewLabel_2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
-		panel_12.add(lblNewLabel_2);
+		fieldDPartenza = new JTextField();
+		fieldDPartenza.setEditable(false);
+		fieldDPartenza.setBounds(200, 51, 239, 20);
+		fieldDPartenza.setColumns(10);
+		pannelloPartenza.setLayout(null);
+		pannelloPartenza.add(pannelloPartenzaHeader);
+		pannelloPartenza.add(labelPartenzaOA);
+		pannelloPartenza.add(labelPartenzaDP);
+		pannelloPartenza.add(labelPartenzaDA);
+		pannelloPartenza.add(labelPartenzaP);
+		pannelloPartenza.add(labelPartenzaD);
+		pannelloPartenza.add(labelPartenzaOP);
+		pannelloPartenza.add(fieldDPartenza);
+		pannelloPartenza.add(labelPartenzaT);
+		pannelloPartenza.add(labelPartenzaCod);
+		pannelloPartenza.add(labelPartenzaCom);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(200, 51, 239, 20);
-		textField.setColumns(10);
-		panel_10.setLayout(null);
-		panel_10.add(panel_12);
-		panel_10.add(lblNewLabel_5_3);
-		panel_10.add(lblNewLabel_5_2_1);
-		panel_10.add(lblNewLabel_5_2_1_1);
-		panel_10.add(lblNewLabel_5_2_1_2);
-		panel_10.add(lblNewLabel_5);
-		panel_10.add(lblNewLabel_5_2);
-		panel_10.add(textField);
-		panel_10.add(lblNewLabel_5_2_1_4);
-		panel_10.add(lblNewLabel_5_2_1_3_1);
-		panel_10.add(lblNewLabel_5_2_1_3);
-		panel_10.add(btnNewButton_2);
+		fieldOPPartenza = new JTextField();
+		fieldOPPartenza.setEditable(false);
+		fieldOPPartenza.setBounds(200, 86, 239, 20);
+		pannelloPartenza.add(fieldOPPartenza);
+		fieldOPPartenza.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(200, 86, 239, 20);
-		panel_10.add(textField_1);
-		textField_1.setColumns(10);
+		fieldOAPartenza = new JTextField();
+		fieldOAPartenza.setEditable(false);
+		fieldOAPartenza.setBounds(200, 121, 239, 20);
+		pannelloPartenza.add(fieldOAPartenza);
+		fieldOAPartenza.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(200, 121, 239, 20);
-		panel_10.add(textField_2);
-		textField_2.setColumns(10);
+		fieldDPPartenza = new JTextField();
+		fieldDPPartenza.setEditable(false);
+		fieldDPPartenza.setBounds(200, 157, 239, 20);
+		pannelloPartenza.add(fieldDPPartenza);
+		fieldDPPartenza.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBounds(200, 157, 239, 20);
-		panel_10.add(textField_3);
-		textField_3.setColumns(10);
+		fieldDAPartenza = new JTextField();
+		fieldDAPartenza.setEditable(false);
+		fieldDAPartenza.setBounds(200, 192, 239, 20);
+		pannelloPartenza.add(fieldDAPartenza);
+		fieldDAPartenza.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setBounds(200, 192, 239, 20);
-		panel_10.add(textField_4);
-		textField_4.setColumns(10);
+		fieldPPartenza = new JTextField();
+		fieldPPartenza.setEditable(false);
+		fieldPPartenza.setBounds(200, 227, 239, 20);
+		pannelloPartenza.add(fieldPPartenza);
+		fieldPPartenza.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setBounds(200, 227, 239, 20);
-		panel_10.add(textField_5);
-		textField_5.setColumns(10);
+		fieldCAPartenza = new JTextField();
+		fieldCAPartenza.setEditable(false);
+		fieldCAPartenza.setBounds(200, 262, 239, 20);
+		pannelloPartenza.add(fieldCAPartenza);
+		fieldCAPartenza.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setEditable(false);
-		textField_6.setBounds(200, 262, 239, 20);
-		panel_10.add(textField_6);
-		textField_6.setColumns(10);
+		fieldCPartenza = new JTextField();
+		fieldCPartenza.setEditable(false);
+		fieldCPartenza.setBounds(200, 297, 239, 20);
+		pannelloPartenza.add(fieldCPartenza);
+		fieldCPartenza.setColumns(10);
 		
-		textField_7 = new JTextField();
-		textField_7.setEditable(false);
-		textField_7.setBounds(200, 297, 239, 20);
-		panel_10.add(textField_7);
-		textField_7.setColumns(10);
+		fieldTPartenza = new JTextField();
+		fieldTPartenza.setEditable(false);
+		fieldTPartenza.setBounds(200, 332, 239, 20);
+		pannelloPartenza.add(fieldTPartenza);
+		fieldTPartenza.setColumns(10);
 		
-		textField_8 = new JTextField();
-		textField_8.setBounds(200, 332, 239, 20);
-		panel_10.add(textField_8);
-		textField_8.setColumns(10);
-		internalFrame.setVisible(true);
-		PannelloTempo.setBounds(671, 358, 490, 166);
+		JLabel labelPartenzaG = new JLabel("Gate:");
+		labelPartenzaG.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaG.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		labelPartenzaG.setBounds(10, 366, 180, 17);
+		pannelloPartenza.add(labelPartenzaG);
+		
+		fieldGPartenza = new JTextField();
+		fieldGPartenza.setEditable(false);
+		fieldGPartenza.setColumns(10);
+		fieldGPartenza.setBounds(200, 363, 239, 20);
+		pannelloPartenza.add(fieldGPartenza);
+		
+		JLabel labelPartenzaTi = new JLabel("Imbarco stimato:");
+		labelPartenzaTi.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelPartenzaTi.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		labelPartenzaTi.setBounds(10, 397, 180, 17);
+		pannelloPartenza.add(labelPartenzaTi);
+		
+		fieldTIpartenza = new JTextField();
+		fieldTIpartenza.setEditable(false);
+		fieldTIpartenza.setColumns(10);
+		fieldTIpartenza.setBounds(200, 394, 119, 20);
+		pannelloPartenza.add(fieldTIpartenza);
+		
+		JLabel labelPartenzaMinTI = new JLabel(" minuti");
+		labelPartenzaMinTI.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		labelPartenzaMinTI.setBounds(320, 396, 119, 17);
+		pannelloPartenza.add(labelPartenzaMinTI);
+		
+		JButton pulsanteConfermaPartenza = new JButton("Ok");
+		pulsanteConfermaPartenza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Gate.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+				theController.partenza(fieldsPartenza, intframePartenza);
+				Gate.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		pulsanteConfermaPartenza.setBounds(462, 424, 65, 25);
+		pulsanteConfermaPartenza.setFont(new Font("Tahoma", Font.BOLD, 14));
+		pannelloPartenza.add(pulsanteConfermaPartenza);
+		
+		JLabel labelmbarcoEffettivo = new JLabel("Imbarco effettivo:");
+		labelmbarcoEffettivo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelmbarcoEffettivo.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		labelmbarcoEffettivo.setBounds(10, 428, 180, 17);
+		pannelloPartenza.add(labelmbarcoEffettivo);
+		
+		fieldTEPartenza = new JTextField();
+		fieldTEPartenza.setColumns(10);
+		fieldTEPartenza.setBounds(200, 425, 119, 20);
+		pannelloPartenza.add(fieldTEPartenza);
+		
+		JLabel labelPartenzaMinTE = new JLabel(" minuti");
+		labelPartenzaMinTE.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		labelPartenzaMinTE.setBounds(320, 427, 119, 17);
+		pannelloPartenza.add(labelPartenzaMinTE);
+		PannelloTempo.setBounds(365, 358, 490, 166);
 		PanelGate.add(PannelloTempo);
+		
+		fieldsPartenza = new JTextField[] {fieldDPartenza, fieldOPPartenza, fieldOAPartenza, fieldDPPartenza, fieldDAPartenza, fieldPPartenza,
+											fieldCAPartenza, fieldCPartenza, fieldTPartenza, fieldGPartenza, fieldTIpartenza, fieldTEPartenza};
 		
 		JPanel BodyPannelloTempo = new JPanel();
 		BodyPannelloTempo.setBackground(new Color(255, 255, 255));
@@ -1166,47 +1337,59 @@ public class AMain extends JFrame {
 					.addContainerGap())
 		);
 		
-		JLabel lblNewLabel_5_1 = new JLabel("Tempo stimato:");
-		lblNewLabel_5_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelTempoStimato = new JLabel("Tempo stimato:");
+		labelTempoStimato.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelTempoStimato.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_1_1 = new JLabel("Tempo effettivo:");
-		lblNewLabel_5_1_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_5_1_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelTempoEffettivo = new JLabel("Tempo effettivo:");
+		labelTempoEffettivo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelTempoEffettivo.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
 		FieldTempoStimatoGiorno = new JTextField();
+		FieldTempoStimatoGiorno.setHorizontalAlignment(SwingConstants.CENTER);
+		FieldTempoStimatoGiorno.setText("0");
 		FieldTempoStimatoGiorno.setEditable(false);
 		FieldTempoStimatoGiorno.setColumns(10);
 		
 		FieldTempoEffettivoGiorno = new JTextField();
+		FieldTempoEffettivoGiorno.setHorizontalAlignment(SwingConstants.CENTER);
+		FieldTempoEffettivoGiorno.setText("0");
 		FieldTempoEffettivoGiorno.setEditable(false);
 		FieldTempoEffettivoGiorno.setColumns(10);
 		
-		JLabel lblNewLabel_5_1_2 = new JLabel("giorno");
-		lblNewLabel_5_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5_1_2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel labelGiorno = new JLabel("giorno");
+		labelGiorno.setHorizontalAlignment(SwingConstants.CENTER);
+		labelGiorno.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_1_2_1 = new JLabel("mese");
-		lblNewLabel_5_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5_1_2_1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		JLabel fieldMese = new JLabel("settimana");
+		fieldMese.setHorizontalAlignment(SwingConstants.CENTER);
+		fieldMese.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		
+		FieldTempoStimatoSettimana = new JTextField();
+		FieldTempoStimatoSettimana.setHorizontalAlignment(SwingConstants.CENTER);
+		FieldTempoStimatoSettimana.setText("0");
+		FieldTempoStimatoSettimana.setEditable(false);
+		FieldTempoStimatoSettimana.setColumns(10);
+		
+		FieldTempoEffettivoSettimana = new JTextField();
+		FieldTempoEffettivoSettimana.setHorizontalAlignment(SwingConstants.CENTER);
+		FieldTempoEffettivoSettimana.setText("0");
+		FieldTempoEffettivoSettimana.setEditable(false);
+		FieldTempoEffettivoSettimana.setColumns(10);
+		
+		JLabel fieldAnno = new JLabel("mese");
+		fieldAnno.setHorizontalAlignment(SwingConstants.CENTER);
+		fieldAnno.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
 		
 		FieldTempoStimatoMese = new JTextField();
+		FieldTempoStimatoMese.setText("0");
+		FieldTempoStimatoMese.setHorizontalAlignment(SwingConstants.CENTER);
 		FieldTempoStimatoMese.setEditable(false);
 		FieldTempoStimatoMese.setColumns(10);
 		
-		FieldTempoEffettivoMese = new JTextField();
-		FieldTempoEffettivoMese.setEditable(false);
-		FieldTempoEffettivoMese.setColumns(10);
-		
-		JLabel lblNewLabel_5_1_2_2 = new JLabel("anno");
-		lblNewLabel_5_1_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5_1_2_2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		
-		FieldTempoStimatoAnno = new JTextField();
-		FieldTempoStimatoAnno.setEditable(false);
-		FieldTempoStimatoAnno.setColumns(10);
-		
 		FieldTempoEffettivoAnno = new JTextField();
+		FieldTempoEffettivoAnno.setHorizontalAlignment(SwingConstants.CENTER);
+		FieldTempoEffettivoAnno.setText("0");
 		FieldTempoEffettivoAnno.setEditable(false);
 		FieldTempoEffettivoAnno.setColumns(10);
 		GroupLayout gl_BodyPannelloTempo = new GroupLayout(BodyPannelloTempo);
@@ -1215,23 +1398,23 @@ public class AMain extends JFrame {
 				.addGroup(gl_BodyPannelloTempo.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_5_1_1, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+						.addComponent(labelTempoEffettivo, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_BodyPannelloTempo.createSequentialGroup()
-							.addComponent(lblNewLabel_5_1, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+							.addComponent(labelTempoStimato, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblNewLabel_5_1_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(labelGiorno, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(FieldTempoEffettivoGiorno)
 								.addComponent(FieldTempoStimatoGiorno, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))))
 					.addGap(18)
 					.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_5_1_2_1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldTempoStimatoMese, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldTempoEffettivoMese, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+						.addComponent(fieldMese, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+						.addComponent(FieldTempoStimatoSettimana, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+						.addComponent(FieldTempoEffettivoSettimana, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_5_1_2_2, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldTempoStimatoAnno, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldAnno, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+						.addComponent(FieldTempoStimatoMese, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
 						.addComponent(FieldTempoEffettivoAnno, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(39, Short.MAX_VALUE))
 		);
@@ -1241,26 +1424,26 @@ public class AMain extends JFrame {
 					.addContainerGap(15, Short.MAX_VALUE)
 					.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_BodyPannelloTempo.createSequentialGroup()
-							.addComponent(lblNewLabel_5_1_2_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(FieldTempoStimatoAnno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(11)
-							.addComponent(FieldTempoEffettivoAnno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_BodyPannelloTempo.createSequentialGroup()
-							.addComponent(lblNewLabel_5_1_2_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+							.addComponent(fieldAnno, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
 							.addComponent(FieldTempoStimatoMese, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(11)
-							.addComponent(FieldTempoEffettivoMese, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(FieldTempoEffettivoAnno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_BodyPannelloTempo.createSequentialGroup()
-							.addComponent(lblNewLabel_5_1_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+							.addComponent(fieldMese, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(FieldTempoStimatoSettimana, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(FieldTempoEffettivoSettimana, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_BodyPannelloTempo.createSequentialGroup()
+							.addComponent(labelGiorno, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel_5_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+								.addComponent(labelTempoStimato, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 								.addComponent(FieldTempoStimatoGiorno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_BodyPannelloTempo.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel_5_1_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+								.addComponent(labelTempoEffettivo, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 								.addComponent(FieldTempoEffettivoGiorno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
@@ -1372,54 +1555,334 @@ public class AMain extends JFrame {
 							.addContainerGap())
 				);
 				HeaderT1A4.setLayout(gl_HeaderT1A4);
+				
+				JPanel HeaderT2A1 = new JPanel();
+				HeaderT2A1.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT2A1, "name_67107402000200");
+				
+				JLabel T2A1 = new JLabel("[Terminal - T2]          [Gate - A1]");
+				T2A1.setHorizontalTextPosition(SwingConstants.CENTER);
+				T2A1.setHorizontalAlignment(SwingConstants.CENTER);
+				T2A1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT2A1 = new GroupLayout(HeaderT2A1);
+				gl_HeaderT2A1.setHorizontalGroup(
+					gl_HeaderT2A1.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A1.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T2A1, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT2A1.setVerticalGroup(
+					gl_HeaderT2A1.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A1.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T2A1, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT2A1.setLayout(gl_HeaderT2A1);
+				
+				JPanel HeaderT2A2 = new JPanel();
+				HeaderT2A2.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT2A2, "name_67109718129899");
+				
+				JLabel T2A2 = new JLabel("[Terminal - T2]          [Gate - A2]");
+				T2A2.setHorizontalTextPosition(SwingConstants.CENTER);
+				T2A2.setHorizontalAlignment(SwingConstants.CENTER);
+				T2A2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT2A2 = new GroupLayout(HeaderT2A2);
+				gl_HeaderT2A2.setHorizontalGroup(
+					gl_HeaderT2A2.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A2.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T2A2, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT2A2.setVerticalGroup(
+					gl_HeaderT2A2.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A2.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T2A2, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT2A2.setLayout(gl_HeaderT2A2);
+				
+				JPanel HeaderT2A3 = new JPanel();
+				HeaderT2A3.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT2A3, "name_67112120943300");
+				
+				JLabel T2A3 = new JLabel("[Terminal - T2]          [Gate - A3]");
+				T2A3.setHorizontalTextPosition(SwingConstants.CENTER);
+				T2A3.setHorizontalAlignment(SwingConstants.CENTER);
+				T2A3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT2A3 = new GroupLayout(HeaderT2A3);
+				gl_HeaderT2A3.setHorizontalGroup(
+					gl_HeaderT2A3.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A3.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T2A3, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT2A3.setVerticalGroup(
+					gl_HeaderT2A3.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A3.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T2A3, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT2A3.setLayout(gl_HeaderT2A3);
+				
+				JPanel HeaderT2A4 = new JPanel();
+				HeaderT2A4.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT2A4, "name_67114490368900");
+				
+				JLabel T2A4 = new JLabel("[Terminal - T2]          [Gate - A4]");
+				T2A4.setHorizontalTextPosition(SwingConstants.CENTER);
+				T2A4.setHorizontalAlignment(SwingConstants.CENTER);
+				T2A4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT2A4 = new GroupLayout(HeaderT2A4);
+				gl_HeaderT2A4.setHorizontalGroup(
+					gl_HeaderT2A4.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A4.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T2A4, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT2A4.setVerticalGroup(
+					gl_HeaderT2A4.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT2A4.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T2A4, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT2A4.setLayout(gl_HeaderT2A4);
+				
+				JPanel HeaderT3A1 = new JPanel();
+				HeaderT3A1.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT3A1, "name_67126302548900");
+				
+				JLabel T3A1 = new JLabel("[Terminal - T3]          [Gate - A1]");
+				T3A1.setHorizontalTextPosition(SwingConstants.CENTER);
+				T3A1.setHorizontalAlignment(SwingConstants.CENTER);
+				T3A1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT3A1 = new GroupLayout(HeaderT3A1);
+				gl_HeaderT3A1.setHorizontalGroup(
+					gl_HeaderT3A1.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A1.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T3A1, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT3A1.setVerticalGroup(
+					gl_HeaderT3A1.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A1.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T3A1, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT3A1.setLayout(gl_HeaderT3A1);
+				
+				JPanel HeaderT3A2 = new JPanel();
+				HeaderT3A2.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT3A2, "name_67128838461900");
+				
+				JLabel T3A2 = new JLabel("[Terminal - T3]          [Gate - A2]");
+				T3A2.setHorizontalTextPosition(SwingConstants.CENTER);
+				T3A2.setHorizontalAlignment(SwingConstants.CENTER);
+				T3A2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT3A2 = new GroupLayout(HeaderT3A2);
+				gl_HeaderT3A2.setHorizontalGroup(
+					gl_HeaderT3A2.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A2.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T3A2, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT3A2.setVerticalGroup(
+					gl_HeaderT3A2.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A2.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T3A2, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT3A2.setLayout(gl_HeaderT3A2);
+				
+				JPanel HeaderT3A3 = new JPanel();
+				HeaderT3A3.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT3A3, "name_67131400131100");
+				
+				JLabel T3A3 = new JLabel("[Terminal - T3]          [Gate - A3]");
+				T3A3.setHorizontalTextPosition(SwingConstants.CENTER);
+				T3A3.setHorizontalAlignment(SwingConstants.CENTER);
+				T3A3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT3A3 = new GroupLayout(HeaderT3A3);
+				gl_HeaderT3A3.setHorizontalGroup(
+					gl_HeaderT3A3.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A3.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T3A3, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT3A3.setVerticalGroup(
+					gl_HeaderT3A3.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A3.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T3A3, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT3A3.setLayout(gl_HeaderT3A3);
+				
+				JPanel HeaderT3A4 = new JPanel();
+				HeaderT3A4.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT3A4, "name_67133820592400");
+				
+				JLabel T3A4 = new JLabel("[Terminal - T3]          [Gate - A4]");
+				T3A4.setHorizontalTextPosition(SwingConstants.CENTER);
+				T3A4.setHorizontalAlignment(SwingConstants.CENTER);
+				T3A4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT3A4 = new GroupLayout(HeaderT3A4);
+				gl_HeaderT3A4.setHorizontalGroup(
+					gl_HeaderT3A4.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A4.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T3A4, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT3A4.setVerticalGroup(
+					gl_HeaderT3A4.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT3A4.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T3A4, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT3A4.setLayout(gl_HeaderT3A4);
+				
+				JPanel HeaderT4A1 = new JPanel();
+				HeaderT4A1.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT4A1, "name_67145817930499");
+				
+				JLabel T4A1 = new JLabel("[Terminal - T4]          [Gate - A1]");
+				T4A1.setHorizontalTextPosition(SwingConstants.CENTER);
+				T4A1.setHorizontalAlignment(SwingConstants.CENTER);
+				T4A1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT4A1 = new GroupLayout(HeaderT4A1);
+				gl_HeaderT4A1.setHorizontalGroup(
+					gl_HeaderT4A1.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A1.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T4A1, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT4A1.setVerticalGroup(
+					gl_HeaderT4A1.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A1.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T4A1, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT4A1.setLayout(gl_HeaderT4A1);
+				
+				JPanel HeaderT4A2 = new JPanel();
+				HeaderT4A2.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT4A2, "name_67148246877100");
+				
+				JLabel T4A2 = new JLabel("[Terminal - T4]          [Gate - A2]");
+				T4A2.setHorizontalTextPosition(SwingConstants.CENTER);
+				T4A2.setHorizontalAlignment(SwingConstants.CENTER);
+				T4A2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT4A2 = new GroupLayout(HeaderT4A2);
+				gl_HeaderT4A2.setHorizontalGroup(
+					gl_HeaderT4A2.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A2.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T4A2, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT4A2.setVerticalGroup(
+					gl_HeaderT4A2.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A2.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T4A2, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT4A2.setLayout(gl_HeaderT4A2);
+				
+				JPanel HeaderT4A3 = new JPanel();
+				HeaderT4A3.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT4A3, "name_67150729033700");
+				
+				JLabel T4A3 = new JLabel("[Terminal - T4]          [Gate - A3]");
+				T4A3.setHorizontalTextPosition(SwingConstants.CENTER);
+				T4A3.setHorizontalAlignment(SwingConstants.CENTER);
+				T4A3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT4A3 = new GroupLayout(HeaderT4A3);
+				gl_HeaderT4A3.setHorizontalGroup(
+					gl_HeaderT4A3.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A3.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T4A3, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT4A3.setVerticalGroup(
+					gl_HeaderT4A3.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A3.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T4A3, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT4A3.setLayout(gl_HeaderT4A3);
+				
+				JPanel HeaderT4A4 = new JPanel();
+				HeaderT4A4.setBackground(Color.WHITE);
+				HeadersPannelloTempo.add(HeaderT4A4, "name_67153110292300");
+				
+				JLabel T4A4 = new JLabel("[Terminal - T4]          [Gate - A4]");
+				T4A4.setHorizontalTextPosition(SwingConstants.CENTER);
+				T4A4.setHorizontalAlignment(SwingConstants.CENTER);
+				T4A4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+				GroupLayout gl_HeaderT4A4 = new GroupLayout(HeaderT4A4);
+				gl_HeaderT4A4.setHorizontalGroup(
+					gl_HeaderT4A4.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 470, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A4.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(T4A4, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+							.addContainerGap())
+				);
+				gl_HeaderT4A4.setVerticalGroup(
+					gl_HeaderT4A4.createParallelGroup(Alignment.LEADING)
+						.addGap(0, 33, Short.MAX_VALUE)
+						.addGroup(gl_HeaderT4A4.createSequentialGroup()
+							.addGap(5)
+							.addComponent(T4A4, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				HeaderT4A4.setLayout(gl_HeaderT4A4);
 				PannelloTempo.setLayout(gl_PannelloTempo);
-		
-		JInternalFrame SelectTratta = new JInternalFrame("Seleziona una nuova tratta"); 
-		SelectTratta.setBounds(30, 348, 321, 176);
-		PanelGate.add(SelectTratta);
-
-		
-		JPanel panel_6 = new JPanel();
-		GroupLayout groupLayout_3 = new GroupLayout(SelectTratta.getContentPane());
-		groupLayout_3.setHorizontalGroup(
-			groupLayout_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout_3.createSequentialGroup()
-					.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		groupLayout_3.setVerticalGroup(
-			groupLayout_3.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-		);
 		
 		DefaultListModel<String> ListModelTratte = new DefaultListModel<String>();
 		theController.fillJList(ListModelTratte);
-		JList<String> list = new JList<String>(ListModelTratte);
-		
-		JScrollPane scrollPane = new JScrollPane(list);
-		panel_6.add(scrollPane);
-		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
-		gl_panel_6.setHorizontalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_panel_6.setVerticalGroup(
-			gl_panel_6.createParallelGroup(Alignment.TRAILING)
-				.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-		);
-		
-		JButton ConfermaSelezione = new JButton("Conferma");
-		scrollPane.setColumnHeaderView(ConfermaSelezione);
-		ConfermaSelezione.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				theController.selectJList(list, FieldT1A1, SelectTratta);
-			}
-		});
-		panel_6.setLayout(gl_panel_6);
-		SelectTratta.getContentPane().setLayout(groupLayout_3);
-		SelectTratta.setVisible(false);
 		
 		OmbraHeaderGate = new JLabel("");
 		OmbraHeaderGate.setBounds(0, -15, 1199, 63);
@@ -1471,608 +1934,1057 @@ public class AMain extends JFrame {
 		PanelTerminale1.setBackground(new Color(166, 201, 227));
 		TerminalPane.addTab("Terminal 1", null, PanelTerminale1, null);
 		
-		JPanel GatesArrivo = new JPanel();
-		GatesArrivo.setToolTipText("");
-		GatesArrivo.setBounds(10, 11, 146, 211);
-		PanelTerminale1.add(GatesArrivo);
+		JPanel pannelloGatesT1 = new JPanel();
+		pannelloGatesT1.setToolTipText("");
+		pannelloGatesT1.setBounds(10, 11, 146, 211);
+		PanelTerminale1.add(pannelloGatesT1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Gates");
-		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		JLabel labelGatesT1 = new JLabel("Gates");
+		labelGatesT1.setBounds(0, 0, 156, 32);
+		labelGatesT1.setVerticalAlignment(SwingConstants.BOTTOM);
+		labelGatesT1.setHorizontalTextPosition(SwingConstants.CENTER);
+		labelGatesT1.setHorizontalAlignment(SwingConstants.CENTER);
+		labelGatesT1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(255, 255, 255));
+		JPanel pannelloT1G1 = new JPanel();
+		pannelloT1G1.setBounds(0, 43, 156, 32);
+		pannelloT1G1.setBackground(new Color(255, 255, 255));
 		
-		JPanel panel_4_1 = new JPanel();
-		panel_4_1.setBackground(Color.WHITE);
+		JPanel pannelloT1G2 = new JPanel();
+		pannelloT1G2.setBounds(0, 86, 146, 32);
+		pannelloT1G2.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("A2");
-		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		GroupLayout gl_panel_4_1 = new GroupLayout(panel_4_1);
-		gl_panel_4_1.setHorizontalGroup(
-			gl_panel_4_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel_3_1, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-		);
-		gl_panel_4_1.setVerticalGroup(
-			gl_panel_4_1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_4_1.createSequentialGroup()
-					.addComponent(lblNewLabel_3_1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-					.addGap(1))
-		);
-		panel_4_1.setLayout(gl_panel_4_1);
+		JLabel labelT1A2 = new JLabel("A2");
+		labelT1A2.setBounds(0, 0, 146, 31);
+		labelT1A2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT1A2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 		
-		JPanel panel_4_2 = new JPanel();
-		panel_4_2.setBackground(Color.WHITE);
+		JPanel pannelloT1G3 = new JPanel();
+		pannelloT1G3.setBounds(0, 129, 146, 32);
+		pannelloT1G3.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_3_2 = new JLabel("A3");
-		lblNewLabel_3_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		GroupLayout gl_panel_4_2 = new GroupLayout(panel_4_2);
-		gl_panel_4_2.setHorizontalGroup(
-			gl_panel_4_2.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel_3_2, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-		);
-		gl_panel_4_2.setVerticalGroup(
-			gl_panel_4_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_4_2.createSequentialGroup()
-					.addComponent(lblNewLabel_3_2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		panel_4_2.setLayout(gl_panel_4_2);
+		JLabel labelT1A3 = new JLabel("A3");
+		labelT1A3.setBounds(0, 0, 146, 31);
+		labelT1A3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT1A3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 		
-		JPanel panel_4_3 = new JPanel();
-		panel_4_3.setBackground(Color.WHITE);
+		JPanel pannelloT1G4 = new JPanel();
+		pannelloT1G4.setBounds(0, 172, 146, 26);
+		pannelloT1G4.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("A4");
-		lblNewLabel_3_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		GroupLayout gl_panel_4_3 = new GroupLayout(panel_4_3);
-		gl_panel_4_3.setHorizontalGroup(
-			gl_panel_4_3.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel_3_3, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-		);
-		gl_panel_4_3.setVerticalGroup(
-			gl_panel_4_3.createParallelGroup(Alignment.TRAILING)
-				.addComponent(lblNewLabel_3_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-		);
-		panel_4_3.setLayout(gl_panel_4_3);
-		GroupLayout gl_GatesArrivo = new GroupLayout(GatesArrivo);
-		gl_GatesArrivo.setHorizontalGroup(
-			gl_GatesArrivo.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-				.addComponent(panel_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-				.addGroup(gl_GatesArrivo.createSequentialGroup()
-					.addComponent(panel_4_1, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_GatesArrivo.createSequentialGroup()
-					.addComponent(panel_4_2, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_GatesArrivo.createSequentialGroup()
-					.addComponent(panel_4_3, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		gl_GatesArrivo.setVerticalGroup(
-			gl_GatesArrivo.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_GatesArrivo.createSequentialGroup()
-					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_4_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_4_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_4_3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(21, Short.MAX_VALUE))
-		);
+		JLabel labelT1A4 = new JLabel("A4");
+		labelT1A4.setBounds(0, 0, 146, 26);
+		labelT1A4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT1A4.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 		
-		JLabel lblNewLabel_3 = new JLabel("A1");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
-		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
-		gl_panel_4.setHorizontalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup()
-					.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_4.setVerticalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-		);
-		panel_4.setLayout(gl_panel_4);
-		GatesArrivo.setLayout(gl_GatesArrivo);
+		JLabel labelT1A1 = new JLabel("A1");
+		labelT1A1.setBounds(0, 0, 146, 32);
+		labelT1A1.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT1A1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		pannelloGatesT1.setLayout(null);
+		pannelloGatesT1.add(labelGatesT1);
+		pannelloGatesT1.add(pannelloT1G1);
+		pannelloT1G1.setLayout(null);
+		pannelloT1G1.add(labelT1A1);
+		pannelloGatesT1.add(pannelloT1G2);
+		pannelloT1G2.setLayout(null);
+		pannelloT1G2.add(labelT1A2);
+		pannelloGatesT1.add(pannelloT1G3);
+		pannelloT1G3.setLayout(null);
+		pannelloT1G3.add(labelT1A3);
+		pannelloGatesT1.add(pannelloT1G4);
+		pannelloT1G4.setLayout(null);
+		pannelloT1G4.add(labelT1A4);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 255, 255));
-		panel_2.setBounds(166, 55, 960, 31);
-		PanelTerminale1.add(panel_2);
+		JPanel pannelloT1A1 = new JPanel();
+		pannelloT1A1.setBackground(new Color(255, 255, 255));
+		pannelloT1A1.setBounds(166, 55, 960, 31);
+		PanelTerminale1.add(pannelloT1A1);
 		
-		FieldT1A1 = new JTextField();
-		FieldT1A1.setEditable(false);
-		FieldT1A1.setColumns(10);
+		fieldT1A1 = new JTextField();
+		fieldT1A1.setBounds(0, 0, 288, 31);
+		fieldT1A1.setEditable(false);
+		fieldT1A1.setColumns(10);
 		
-		CodaFamiglieA1 = new JTextField();
-		CodaFamiglieA1.setEnabled(false);
-		CodaFamiglieA1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaFamiglieA1.setText("coda famiglie");
-		CodaFamiglieA1.setEditable(false);
-		CodaFamiglieA1.setColumns(10);
+		codaFamiglieA1 = new JTextField();
+		codaFamiglieA1.setBounds(342, 0, 111, 31);
+		codaFamiglieA1.setEnabled(false);
+		codaFamiglieA1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieA1.setText("coda famiglie");
+		codaFamiglieA1.setEditable(false);
+		codaFamiglieA1.setColumns(10);
 		
-		JCheckBox checkCodaFamiglieT1A1 = new JCheckBox("");
+		checkCodaFamiglieT1A1 = new JCheckBox("");
+		checkCodaFamiglieT1A1.setBounds(459, 0, 21, 31);
 		checkCodaFamiglieT1A1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				theController.controllaChecks(checksT1A1, checkCodaFamiglieT1A1);
 			}
 		});
 		checkCodaFamiglieT1A1.setSelected(true);
 		
-		CodaDisabiliA1 = new JTextField();
-		CodaDisabiliA1.setEnabled(false);
-		CodaDisabiliA1.setText("coda disabili");
-		CodaDisabiliA1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaDisabiliA1.setEditable(false);
-		CodaDisabiliA1.setColumns(10);
+		codaDisabiliA1 = new JTextField();
+		codaDisabiliA1.setBounds(494, 0, 111, 31);
+		codaDisabiliA1.setEnabled(false);
+		codaDisabiliA1.setText("coda disabili");
+		codaDisabiliA1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliA1.setEditable(false);
+		codaDisabiliA1.setColumns(10);
 		
-		JCheckBox checkCodaDisabiliT1A1 = new JCheckBox("");
+		codaPriorirtyA1 = new JTextField();
+		codaPriorirtyA1.setBounds(646, 0, 111, 31);
+		codaPriorirtyA1.setText("coda priority");
+		codaPriorirtyA1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorirtyA1.setEnabled(false);
+		codaPriorirtyA1.setEditable(false);
+		codaPriorirtyA1.setColumns(10);
 		
-		CodaPriorirtyA1 = new JTextField();
-		CodaPriorirtyA1.setText("coda priority");
-		CodaPriorirtyA1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaPriorirtyA1.setEnabled(false);
-		CodaPriorirtyA1.setEditable(false);
-		CodaPriorirtyA1.setColumns(10);
 		
-		JCheckBox checkCodaPriorityT1A1 = new JCheckBox("");
 		
-		JButton ButtonModifyT1A1 = new JButton("");
-		ButtonModifyT1A1.addActionListener(new ActionListener() {
+		checkCodaDisabiliT1A1 = new JCheckBox("");
+		checkCodaDisabiliT1A1.setBounds(611, 0, 21, 31);
+		checkCodaDisabiliT1A1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectTratta.setVisible(true);
+				theController.controllaChecks(checksT1A1, checkCodaDisabiliT1A1);
 			}
 		});
-		ButtonModifyT1A1.setOpaque(false);
-		ButtonModifyT1A1.setFocusable(false);
-		ButtonModifyT1A1.setContentAreaFilled(false);
-		ButtonModifyT1A1.setBorderPainted(false);
-		ButtonModifyT1A1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconEdit.png")));
+		
+		checkCodaPriorityT1A1 = new JCheckBox("");
+		checkCodaPriorityT1A1.setBounds(763, 0, 21, 31);
+		checkCodaPriorityT1A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.controllaChecks(checksT1A1, checkCodaPriorityT1A1);
+			}
+		});
 		
 		ButtonGroup groupTempo = new ButtonGroup();
 		
-		JTextField[][] fieldsTempo = {{FieldTempoStimatoGiorno, FieldTempoStimatoMese, FieldTempoStimatoAnno}, {FieldTempoEffettivoGiorno, FieldTempoEffettivoMese, FieldTempoEffettivoAnno}};
-				
-		JPanel[] headersTempo= {HeaderT1A1, HeaderT1A2, HeaderT1A3, HeaderT1A4};
+		JTextField[][] fieldsTempo = {{FieldTempoStimatoGiorno, FieldTempoStimatoSettimana, FieldTempoStimatoMese}, {FieldTempoEffettivoGiorno, FieldTempoEffettivoSettimana, FieldTempoEffettivoAnno}};
 		
-		JRadioButton RadioButtonT1A1 = new JRadioButton("");
-		RadioButtonT1A1.addActionListener(new ActionListener() {
+		checksT1A1 = new JCheckBox[] {checkCodaFamiglieT1A1, checkCodaDisabiliT1A1, checkCodaPriorityT1A1};
+		
+		JPanel[] headersTempo= {HeaderT1A1, HeaderT1A2, HeaderT1A3, HeaderT1A4, HeaderT2A1, HeaderT2A2, HeaderT2A3, HeaderT2A4,
+				HeaderT3A1, HeaderT3A2, HeaderT3A3, HeaderT3A4, HeaderT4A1, HeaderT4A2, HeaderT4A3, HeaderT4A4,};
+		
+		JRadioButton radioButtonT1A1 = new JRadioButton("");
+		radioButtonT1A1.setBounds(824, 0, 21, 31);
+		radioButtonT1A1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theController.showAndSetTempo(PannelloTempo, groupTempo, FieldT1A1, headersTempo, fieldsTempo, checksCode);
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT1A1, headersTempo, fieldsTempo, checksT1A1, "T1A1");
 			}
 		});
-		groupTempo.add(RadioButtonT1A1);
+		groupTempo.add(radioButtonT1A1);
 		
-		JCheckBox checkCodaPriorityT1A1_1 = new JCheckBox("");
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addComponent(FieldT1A1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ButtonModifyT1A1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(CodaFamiglieA1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(checkCodaFamiglieT1A1)
-					.addGap(14)
-					.addComponent(CodaDisabiliA1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(checkCodaDisabiliT1A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(14)
-					.addComponent(CodaPriorirtyA1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(checkCodaPriorityT1A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-					.addComponent(RadioButtonT1A1)
-					.addGap(69)
-					.addComponent(checkCodaPriorityT1A1_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(25))
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(FieldT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(RadioButtonT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(checkCodaPriorityT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(CodaPriorirtyA1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(checkCodaDisabiliT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(CodaDisabiliA1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(checkCodaFamiglieT1A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(ButtonModifyT1A1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-							.addComponent(CodaFamiglieA1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-						.addComponent(checkCodaPriorityT1A1_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		panel_2.setLayout(gl_panel_2);
+	
+		JButton pulsantePartenzaT1A1 = new JButton("");
+		pulsantePartenzaT1A1.setBounds(881, 0, 79, 31);
+		pulsantePartenzaT1A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T1A1", fieldsTratte, fieldsPartenza, checksT1A1, intframePartenza);
+			}
+		});
+		pulsantePartenzaT1A1.setOpaque(false);
+		pulsantePartenzaT1A1.setFocusable(false);
+		pulsantePartenzaT1A1.setContentAreaFilled(false);
+		pulsantePartenzaT1A1.setBorderPainted(false);
+		pulsantePartenzaT1A1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pannelloT1A1.setLayout(null);
+		pannelloT1A1.add(fieldT1A1);
+		pannelloT1A1.add(codaFamiglieA1);
+		pannelloT1A1.add(checkCodaFamiglieT1A1);
+		pannelloT1A1.add(codaDisabiliA1);
+		pannelloT1A1.add(checkCodaDisabiliT1A1);
+		pannelloT1A1.add(codaPriorirtyA1);
+		pannelloT1A1.add(checkCodaPriorityT1A1);
+		pannelloT1A1.add(radioButtonT1A1);
+		pannelloT1A1.add(pulsantePartenzaT1A1);
 		
-		JPanel panel_2_2_1 = new JPanel();
-		panel_2_2_1.setBackground(new Color(240, 240, 240));
-		panel_2_2_1.setBounds(166, 11, 960, 43);
-		PanelTerminale1.add(panel_2_2_1);
+		JPanel headerT1 = new JPanel();
+		headerT1.setBackground(new Color(240, 240, 240));
+		headerT1.setBounds(166, 11, 960, 43);
+		PanelTerminale1.add(headerT1);
 		
-		JLabel lblNewLabel_4 = new JLabel("Tratta");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		JLabel labelTrattaGate = new JLabel("Tratta");
+		labelTrattaGate.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTrattaGate.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel lblNewLabel_4_1 = new JLabel("Code");
-		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		JLabel labelCodaGate = new JLabel("Code");
+		labelCodaGate.setHorizontalAlignment(SwingConstants.CENTER);
+		labelCodaGate.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("Tempo");
-		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		JLabel labelTempoGate = new JLabel("Tempo");
+		labelTempoGate.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTempoGate.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("Partenza");
-		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
-		GroupLayout gl_panel_2_2_1 = new GroupLayout(panel_2_2_1);
-		gl_panel_2_2_1.setHorizontalGroup(
-			gl_panel_2_2_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_2_1.createSequentialGroup()
+		JLabel labelPartenzaGate = new JLabel("Partenza");
+		labelPartenzaGate.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPartenzaGate.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		GroupLayout gl_headerT1 = new GroupLayout(headerT1);
+		gl_headerT1.setHorizontalGroup(
+			gl_headerT1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_headerT1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+					.addComponent(labelTrattaGate, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
 					.addGap(55)
-					.addComponent(lblNewLabel_4_1, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+					.addComponent(labelCodaGate, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNewLabel_4_1_1, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addComponent(labelTempoGate, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNewLabel_4_1_1_1, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
+					.addComponent(labelPartenzaGate, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
 		);
-		gl_panel_2_2_1.setVerticalGroup(
-			gl_panel_2_2_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_2_1.createParallelGroup(Alignment.BASELINE)
-					.addComponent(lblNewLabel_4_1_1_1, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_4_1_1, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
-				.addComponent(lblNewLabel_4_1, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+		gl_headerT1.setVerticalGroup(
+			gl_headerT1.createParallelGroup(Alignment.LEADING)
+				.addComponent(labelTrattaGate, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+				.addGroup(gl_headerT1.createParallelGroup(Alignment.BASELINE)
+					.addComponent(labelPartenzaGate, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+					.addComponent(labelTempoGate, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+				.addComponent(labelCodaGate, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
 		);
-		panel_2_2_1.setLayout(gl_panel_2_2_1);
+		headerT1.setLayout(gl_headerT1);
 		
-		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBackground(Color.WHITE);
-		panel_2_1.setBounds(166, 97, 960, 31);
-		PanelTerminale1.add(panel_2_1);
+		pannelloT1A2 = new JPanel();
+		pannelloT1A2.setBackground(Color.WHITE);
+		pannelloT1A2.setBounds(166, 97, 960, 31);
+		PanelTerminale1.add(pannelloT1A2);
 		
-		FieldT1A2 = new JTextField();
-		FieldT1A2.setEditable(false);
-		FieldT1A2.setColumns(10);
+		fieldT1A2 = new JTextField();
+		fieldT1A2.setEditable(false);
+		fieldT1A2.setColumns(10);
 		
-		JButton ButtonModifyT1A2 = new JButton("");
-		ButtonModifyT1A2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SelectTratta.setVisible(true);
-			}
-		});
-		ButtonModifyT1A2.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconEdit.png")));
-		ButtonModifyT1A2.setOpaque(false);
-		ButtonModifyT1A2.setFocusable(false);
-		ButtonModifyT1A2.setContentAreaFilled(false);
-		ButtonModifyT1A2.setBorderPainted(false);
+		codaFamiglieA2 = new JTextField();
+		codaFamiglieA2.setText("coda famiglie");
+		codaFamiglieA2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieA2.setEnabled(false);
+		codaFamiglieA2.setEditable(false);
+		codaFamiglieA2.setColumns(10);
 		
-		CodaFamiglieA2 = new JTextField();
-		CodaFamiglieA2.setText("coda famiglie");
-		CodaFamiglieA2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaFamiglieA2.setEnabled(false);
-		CodaFamiglieA2.setEditable(false);
-		CodaFamiglieA2.setColumns(10);
-		
-		JCheckBox checkCodaFamiglieT1A2 = new JCheckBox("");
+		checkCodaFamiglieT1A2 = new JCheckBox("");
 		checkCodaFamiglieT1A2.setSelected(true);
 		
-		CodaDisabiliA2 = new JTextField();
-		CodaDisabiliA2.setText("coda disabili");
-		CodaDisabiliA2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaDisabiliA2.setEnabled(false);
-		CodaDisabiliA2.setEditable(false);
-		CodaDisabiliA2.setColumns(10);
+		codaDisabiliA2 = new JTextField();
+		codaDisabiliA2.setText("coda disabili");
+		codaDisabiliA2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliA2.setEnabled(false);
+		codaDisabiliA2.setEditable(false);
+		codaDisabiliA2.setColumns(10);
 		
-		JCheckBox checkCodaDisabiliT1A2 = new JCheckBox("");
+		checkCodaDisabiliT1A2 = new JCheckBox("");
+		checkCodaDisabiliT1A2.setSelected(true);
 		
-		CodaPriorirtyA2 = new JTextField();
-		CodaPriorirtyA2.setText("coda priority");
-		CodaPriorirtyA2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaPriorirtyA2.setEnabled(false);
-		CodaPriorirtyA2.setEditable(false);
-		CodaPriorirtyA2.setColumns(10);
+		codaPriorirtyA2 = new JTextField();
+		codaPriorirtyA2.setText("coda priority");
+		codaPriorirtyA2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorirtyA2.setEnabled(false);
+		codaPriorirtyA2.setEditable(false);
+		codaPriorirtyA2.setColumns(10);
 		
-		JCheckBox checkCodaPriorityT1A2 = new JCheckBox("");
+		checkCodaPriorityT1A2 = new JCheckBox("");
 		
-		JRadioButton RadioButtonT1A2 = new JRadioButton("");
-		groupTempo.add(RadioButtonT1A2);
+		checksT1A2 = new JCheckBox[] {checkCodaFamiglieT1A2, checkCodaDisabiliT1A2, checkCodaPriorityT1A2};
 		
-		JCheckBox checkCodaPriorityT1A1_2 = new JCheckBox("");
-		GroupLayout gl_panel_2_1 = new GroupLayout(panel_2_1);
-		gl_panel_2_1.setHorizontalGroup(
-			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_1.createSequentialGroup()
-					.addComponent(FieldT1A2, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ButtonModifyT1A2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(CodaFamiglieA2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+		JRadioButton radioButtonT1A2 = new JRadioButton("");
+		radioButtonT1A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT1A2, headersTempo, fieldsTempo, checksT1A2, "T1A2");
+			}
+		});
+		groupTempo.add(radioButtonT1A2);
+		
+		JButton pulsantePartenzaT1A2 = new JButton("");
+		pulsantePartenzaT1A2.setBorderPainted(false);pulsantePartenzaT1A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T1A2", fieldsTratte, fieldsPartenza, checksT1A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT1A2.setOpaque(false);
+		pulsantePartenzaT1A2.setFocusable(false);
+		pulsantePartenzaT1A2.setContentAreaFilled(false);
+		pulsantePartenzaT1A2.setBorderPainted(false);
+		pulsantePartenzaT1A2.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		GroupLayout gl_pannelloT1A2 = new GroupLayout(pannelloT1A2);
+		gl_pannelloT1A2.setHorizontalGroup(
+			gl_pannelloT1A2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT1A2.createSequentialGroup()
+					.addComponent(fieldT1A2, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieA2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(checkCodaFamiglieT1A2)
 					.addGap(14)
-					.addComponent(CodaDisabiliA2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addComponent(codaDisabiliA2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 					.addGap(6)
 					.addComponent(checkCodaDisabiliT1A2)
 					.addGap(14)
-					.addComponent(CodaPriorirtyA2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addComponent(codaPriorirtyA2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 					.addGap(6)
 					.addComponent(checkCodaPriorityT1A2)
 					.addGap(38)
-					.addComponent(RadioButtonT1A2)
-					.addGap(69)
-					.addComponent(checkCodaPriorityT1A1_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(26))
+					.addComponent(radioButtonT1A2)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT1A2, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
 		);
-		gl_panel_2_1.setVerticalGroup(
-			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_1.createSequentialGroup()
-					.addGroup(gl_panel_2_1.createParallelGroup(Alignment.LEADING)
+		gl_pannelloT1A2.setVerticalGroup(
+			gl_pannelloT1A2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT1A2.createSequentialGroup()
+					.addGroup(gl_pannelloT1A2.createParallelGroup(Alignment.LEADING)
 						.addComponent(checkCodaFamiglieT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaDisabiliA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(checkCodaDisabiliT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaPriorirtyA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorirtyA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(checkCodaPriorityT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(RadioButtonT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaFamiglieA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ButtonModifyT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaPriorityT1A1_2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addComponent(radioButtonT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieA2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT1A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
-		panel_2_1.setLayout(gl_panel_2_1);
+		pannelloT1A2.setLayout(gl_pannelloT1A2);
 		
-		JPanel panel_2_2 = new JPanel();
-		panel_2_2.setBackground(Color.WHITE);
-		panel_2_2.setBounds(166, 139, 960, 31);
-		PanelTerminale1.add(panel_2_2);
+		JPanel pannelloT1A3 = new JPanel();
+		pannelloT1A3.setBackground(Color.WHITE);
+		pannelloT1A3.setBounds(166, 139, 960, 31);
+		PanelTerminale1.add(pannelloT1A3);
 		
-		FieldT1A3 = new JTextField();
-		FieldT1A3.setEditable(false);
-		FieldT1A3.setColumns(10);
+		fieldT1A3 = new JTextField();
+		fieldT1A3.setBounds(0, 0, 289, 31);
+		fieldT1A3.setEditable(false);
+		fieldT1A3.setColumns(10);
 		
-		JButton ButtonModifyT1A3 = new JButton("");
-		ButtonModifyT1A3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SelectTratta.setVisible(true);
-			}
-		});
-		ButtonModifyT1A3.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconEdit.png")));
-		ButtonModifyT1A3.setOpaque(false);
-		ButtonModifyT1A3.setFocusable(false);
-		ButtonModifyT1A3.setContentAreaFilled(false);
-		ButtonModifyT1A3.setBorderPainted(false);
+		codaFamiglieA3 = new JTextField();
+		codaFamiglieA3.setBounds(343, 0, 111, 31);
+		codaFamiglieA3.setText("coda famiglie");
+		codaFamiglieA3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieA3.setEnabled(false);
+		codaFamiglieA3.setEditable(false);
+		codaFamiglieA3.setColumns(10);
 		
-		CodaFamiglieA3 = new JTextField();
-		CodaFamiglieA3.setText("coda famiglie");
-		CodaFamiglieA3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaFamiglieA3.setEnabled(false);
-		CodaFamiglieA3.setEditable(false);
-		CodaFamiglieA3.setColumns(10);
-		
-		JCheckBox checkCodaFamiglieT1A3 = new JCheckBox("");
+		checkCodaFamiglieT1A3 = new JCheckBox("");
+		checkCodaFamiglieT1A3.setBounds(460, 0, 21, 31);
 		checkCodaFamiglieT1A3.setSelected(true);
 		
-		CodaDisabiliA3 = new JTextField();
-		CodaDisabiliA3.setText("coda disabili");
-		CodaDisabiliA3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaDisabiliA3.setEnabled(false);
-		CodaDisabiliA3.setEditable(false);
-		CodaDisabiliA3.setColumns(10);
+		codaDisabiliA3 = new JTextField();
+		codaDisabiliA3.setBounds(495, 0, 111, 31);
+		codaDisabiliA3.setText("coda disabili");
+		codaDisabiliA3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliA3.setEnabled(false);
+		codaDisabiliA3.setEditable(false);
+		codaDisabiliA3.setColumns(10);
 		
-		JCheckBox checkCodaDisabiliT1A3 = new JCheckBox("");
+		checkCodaDisabiliT1A3 = new JCheckBox("");
+		checkCodaDisabiliT1A3.setBounds(612, 0, 21, 31);
 		
-		CodaPriorirtyA3 = new JTextField();
-		CodaPriorirtyA3.setText("coda priority");
-		CodaPriorirtyA3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaPriorirtyA3.setEnabled(false);
-		CodaPriorirtyA3.setEditable(false);
-		CodaPriorirtyA3.setColumns(10);
+		codaPriorirtyA3 = new JTextField();
+		codaPriorirtyA3.setBounds(647, 0, 111, 31);
+		codaPriorirtyA3.setText("coda priority");
+		codaPriorirtyA3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorirtyA3.setEnabled(false);
+		codaPriorirtyA3.setEditable(false);
+		codaPriorirtyA3.setColumns(10);
 		
-		JCheckBox checkCodaPriorityT1A3 = new JCheckBox("");
+		checkCodaPriorityT1A3 = new JCheckBox("");
+		checkCodaPriorityT1A3.setSelected(true);
+		checkCodaPriorityT1A3.setBounds(764, 0, 21, 31);
 		
-		JRadioButton RadioButtonT1A3 = new JRadioButton("");
-		groupTempo.add(RadioButtonT1A3);
+
+		checksT1A3 = new JCheckBox[] {checkCodaFamiglieT1A3, checkCodaDisabiliT1A3, checkCodaPriorityT1A3};
 		
-		JCheckBox checkCodaPriorityT1A1_3 = new JCheckBox("");
-		GroupLayout gl_panel_2_2 = new GroupLayout(panel_2_2);
-		gl_panel_2_2.setHorizontalGroup(
-			gl_panel_2_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_2.createSequentialGroup()
-					.addComponent(FieldT1A3, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ButtonModifyT1A3, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(CodaFamiglieA3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(checkCodaFamiglieT1A3)
-					.addGap(14)
-					.addComponent(CodaDisabiliA3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(checkCodaDisabiliT1A3)
-					.addGap(14)
-					.addComponent(CodaPriorirtyA3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(checkCodaPriorityT1A3)
-					.addGap(38)
-					.addComponent(RadioButtonT1A3)
-					.addGap(69)
-					.addComponent(checkCodaPriorityT1A1_3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(26))
-		);
-		gl_panel_2_2.setVerticalGroup(
-			gl_panel_2_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_2.createSequentialGroup()
-					.addGroup(gl_panel_2_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(checkCodaFamiglieT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaDisabiliA3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaDisabiliT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaPriorirtyA3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaPriorityT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(RadioButtonT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaFamiglieA3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ButtonModifyT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldT1A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaPriorityT1A1_3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		panel_2_2.setLayout(gl_panel_2_2);
-		
-		JPanel panel_2_3 = new JPanel();
-		panel_2_3.setBackground(Color.WHITE);
-		panel_2_3.setBounds(166, 181, 960, 31);
-		PanelTerminale1.add(panel_2_3);
-		
-		FieldT1A4 = new JTextField();
-		FieldT1A4.setEditable(false);
-		FieldT1A4.setColumns(10);
-		
-		JButton ButtonModifyT1A4 = new JButton("");
-		ButtonModifyT1A4.addActionListener(new ActionListener() {
+		JRadioButton radioButtonT1A3 = new JRadioButton("");
+		radioButtonT1A3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectTratta.setVisible(true);
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT1A3, headersTempo, fieldsTempo, checksT1A3, "T1A3");
 			}
 		});
-		ButtonModifyT1A4.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconEdit.png")));
-		ButtonModifyT1A4.setOpaque(false);
-		ButtonModifyT1A4.setFocusable(false);
-		ButtonModifyT1A4.setContentAreaFilled(false);
-		ButtonModifyT1A4.setBorderPainted(false);
+		radioButtonT1A3.setBounds(823, 0, 21, 31);
+		groupTempo.add(radioButtonT1A3);
 		
-		CodaFamiglieA4 = new JTextField();
-		CodaFamiglieA4.setText("coda famiglie");
-		CodaFamiglieA4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaFamiglieA4.setEnabled(false);
-		CodaFamiglieA4.setEditable(false);
-		CodaFamiglieA4.setColumns(10);
+		JButton pulsantePartenzaT1A3 = new JButton("");
+		pulsantePartenzaT1A3.setBounds(881, 0, 79, 31);
+		pulsantePartenzaT1A3.setBorderPainted(false);
+		pulsantePartenzaT1A3.setContentAreaFilled(false);
+		pulsantePartenzaT1A3.setOpaque(false);
+		pulsantePartenzaT1A3.setFocusable(false);
+		pulsantePartenzaT1A3.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT1A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T1A3", fieldsTratte, fieldsPartenza, checksT1A3, intframePartenza);
+			}
+		});
+		pannelloT1A3.setLayout(null);
+		pannelloT1A3.add(fieldT1A3);
+		pannelloT1A3.add(codaFamiglieA3);
+		pannelloT1A3.add(checkCodaFamiglieT1A3);
+		pannelloT1A3.add(codaDisabiliA3);
+		pannelloT1A3.add(checkCodaDisabiliT1A3);
+		pannelloT1A3.add(codaPriorirtyA3);
+		pannelloT1A3.add(checkCodaPriorityT1A3);
+		pannelloT1A3.add(radioButtonT1A3);
+		pannelloT1A3.add(pulsantePartenzaT1A3);
 		
-		JCheckBox checkCodaFamiglieT1A4 = new JCheckBox("");
-		checkCodaFamiglieT1A4.setSelected(true);
+		JPanel pannelloT1A4 = new JPanel();
+		pannelloT1A4.setBackground(Color.WHITE);
+		pannelloT1A4.setBounds(166, 181, 960, 31);
+		PanelTerminale1.add(pannelloT1A4);
 		
-		CodaDisabiliA4 = new JTextField();
-		CodaDisabiliA4.setText("coda disabili");
-		CodaDisabiliA4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaDisabiliA4.setEnabled(false);
-		CodaDisabiliA4.setEditable(false);
-		CodaDisabiliA4.setColumns(10);
+		fieldT1A4 = new JTextField();
+		fieldT1A4.setBounds(0, 0, 289, 31);
+		fieldT1A4.setEditable(false);
+		fieldT1A4.setColumns(10);
 		
-		JCheckBox checkCodaDisabiliT1A4 = new JCheckBox("");
+		codaFamiglieA4 = new JTextField();
+		codaFamiglieA4.setBounds(343, 0, 111, 31);
+		codaFamiglieA4.setText("coda famiglie");
+		codaFamiglieA4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieA4.setEnabled(false);
+		codaFamiglieA4.setEditable(false);
+		codaFamiglieA4.setColumns(10);
 		
-		CodaPriorirtyA4 = new JTextField();
-		CodaPriorirtyA4.setText("coda priority");
-		CodaPriorirtyA4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
-		CodaPriorirtyA4.setEnabled(false);
-		CodaPriorirtyA4.setEditable(false);
-		CodaPriorirtyA4.setColumns(10);
+		checkCodaFamiglieT1A4 = new JCheckBox("");
+		checkCodaFamiglieT1A4.setBounds(460, 0, 21, 31);
 		
-		JCheckBox checkCodaPriorityT1A4 = new JCheckBox("");
+		codaDisabiliA4 = new JTextField();
+		codaDisabiliA4.setBounds(495, 0, 111, 31);
+		codaDisabiliA4.setText("coda disabili");
+		codaDisabiliA4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliA4.setEnabled(false);
+		codaDisabiliA4.setEditable(false);
+		codaDisabiliA4.setColumns(10);
 		
-		checksCode = new JCheckBox[][] {{checkCodaFamiglieT1A1, checkCodaDisabiliT1A1, checkCodaPriorityT1A1},
-										 {checkCodaFamiglieT1A2, checkCodaDisabiliT1A2, checkCodaPriorityT1A2},
-										 {checkCodaFamiglieT1A3, checkCodaDisabiliT1A3, checkCodaPriorityT1A3},
-										 {checkCodaFamiglieT1A4, checkCodaDisabiliT1A4, checkCodaPriorityT1A4}};
+		checkCodaDisabiliT1A4 = new JCheckBox("");
+		checkCodaDisabiliT1A4.setBounds(612, 0, 21, 31);
 		
-		JRadioButton RadioButtonT1A4 = new JRadioButton("");
-		groupTempo.add(RadioButtonT1A4);
+		codaPriorirtyA4 = new JTextField();
+		codaPriorirtyA4.setBounds(647, 0, 111, 31);
+		codaPriorirtyA4.setText("coda priority");
+		codaPriorirtyA4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorirtyA4.setEnabled(false);
+		codaPriorirtyA4.setEditable(false);
+		codaPriorirtyA4.setColumns(10);
 		
-		JCheckBox checkCodaPriorityT1A1_4 = new JCheckBox("");
-		GroupLayout gl_panel_2_3 = new GroupLayout(panel_2_3);
-		gl_panel_2_3.setHorizontalGroup(
-			gl_panel_2_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_3.createSequentialGroup()
-					.addComponent(FieldT1A4, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ButtonModifyT1A4, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(CodaFamiglieA4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(checkCodaFamiglieT1A4)
-					.addGap(14)
-					.addComponent(CodaDisabiliA4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(checkCodaDisabiliT1A4)
-					.addGap(14)
-					.addComponent(CodaPriorirtyA4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(checkCodaPriorityT1A4)
-					.addGap(36)
-					.addComponent(RadioButtonT1A4)
-					.addGap(71)
-					.addComponent(checkCodaPriorityT1A1_4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(26))
-		);
-		gl_panel_2_3.setVerticalGroup(
-			gl_panel_2_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_3.createSequentialGroup()
-					.addGroup(gl_panel_2_3.createParallelGroup(Alignment.LEADING)
-						.addComponent(checkCodaFamiglieT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaDisabiliA4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaDisabiliT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaPriorirtyA4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaPriorityT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(RadioButtonT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CodaFamiglieA4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ButtonModifyT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(FieldT1A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(checkCodaPriorityT1A1_4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		panel_2_3.setLayout(gl_panel_2_3);
+		checkCodaPriorityT1A4 = new JCheckBox("");
+		checkCodaPriorityT1A4.setSelected(true);
+		checkCodaPriorityT1A4.setBounds(764, 0, 21, 31);
 		
-		JRadioButton[] radioButtonsTempo= {RadioButtonT1A1, RadioButtonT1A2, RadioButtonT1A3, RadioButtonT1A4};
+
+		checksT1A4 = new JCheckBox[] {checkCodaFamiglieT1A4, checkCodaDisabiliT1A4, checkCodaPriorityT1A4};
+		
+		JRadioButton radioButtonT1A4 = new JRadioButton("");
+		radioButtonT1A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT1A4, headersTempo, fieldsTempo, checksT1A4, "T1A4");
+			}
+		});
+		radioButtonT1A4.setBounds(821, 0, 21, 31);
+		groupTempo.add(radioButtonT1A4);
+		
+		JButton pulsantePartenzaT1A4 = new JButton("");
+		pulsantePartenzaT1A4.setBorderPainted(false);
+		pulsantePartenzaT1A4.setContentAreaFilled(false);
+		pulsantePartenzaT1A4.setOpaque(false);
+		pulsantePartenzaT1A4.setFocusable(false);
+		pulsantePartenzaT1A4.setBounds(881, 0, 79, 31);
+		pulsantePartenzaT1A4.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT1A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T1A4", fieldsTratte, fieldsPartenza, checksT1A4, intframePartenza);
+			}
+		});
+		pannelloT1A4.setLayout(null);
+		pannelloT1A4.add(fieldT1A4);
+		pannelloT1A4.add(codaFamiglieA4);
+		pannelloT1A4.add(checkCodaFamiglieT1A4);
+		pannelloT1A4.add(codaDisabiliA4);
+		pannelloT1A4.add(checkCodaDisabiliT1A4);
+		pannelloT1A4.add(codaPriorirtyA4);
+		pannelloT1A4.add(checkCodaPriorityT1A4);
+		pannelloT1A4.add(radioButtonT1A4);
+		pannelloT1A4.add(pulsantePartenzaT1A4);
 		
 		JPanel PanelTerminale2 = new JPanel();
-		PanelTerminale2.setLayout(null);
 		PanelTerminale2.setBorder(new LineBorder(Color.WHITE, 2, true));
 		PanelTerminale2.setBackground(new Color(128, 179, 216));
 		TerminalPane.addTab("Terminal 2", null, PanelTerminale2, null);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setLayout(null);
-		panel_3.setForeground(Color.WHITE);
-		panel_3.setBackground(Color.LIGHT_GRAY);
-		panel_3.setBounds(10, 10, 30, 30);
-		PanelTerminale2.add(panel_3);
+		JPanel pannelloGateT2 = new JPanel();
+		pannelloGateT2.setToolTipText("");
 		
-		JLabel NumeroUno_1 = new JLabel("1");
-		NumeroUno_1.setHorizontalAlignment(SwingConstants.CENTER);
-		NumeroUno_1.setForeground(Color.DARK_GRAY);
-		NumeroUno_1.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		NumeroUno_1.setBounds(0, 0, 30, 30);
-		panel_3.add(NumeroUno_1);
+		JLabel labelGatesT2 = new JLabel("Gates");
+		labelGatesT2.setVerticalAlignment(SwingConstants.BOTTOM);
+		labelGatesT2.setHorizontalTextPosition(SwingConstants.CENTER);
+		labelGatesT2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelGatesT2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel TerminalUno_2 = new JLabel("Terminale 2");
-		TerminalUno_2.setForeground(Color.BLACK);
-		TerminalUno_2.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		TerminalUno_2.setBounds(50, 10, 152, 30);
-		PanelTerminale2.add(TerminalUno_2);
+		JPanel pannelloT2G1 = new JPanel();
+		pannelloT2G1.setBackground(Color.WHITE);
 		
-		JLabel TerminalUno_3 = new JLabel("Terminale 2");
-		TerminalUno_3.setForeground(Color.WHITE);
-		TerminalUno_3.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		TerminalUno_3.setBounds(50, 10, 162, 35);
-		PanelTerminale2.add(TerminalUno_3);
+		JLabel labelT2A1 = new JLabel("A1");
+		labelT2A1.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT2A1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT2G1 = new GroupLayout(pannelloT2G1);
+		gl_pannelloT2G1.setHorizontalGroup(
+			gl_pannelloT2G1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 156, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT2G1.createSequentialGroup()
+					.addComponent(labelT2A1, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloT2G1.setVerticalGroup(
+			gl_pannelloT2G1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addComponent(labelT2A1, GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+		);
+		pannelloT2G1.setLayout(gl_pannelloT2G1);
 		
-		TextArea GateArea2 = new TextArea();
-		GateArea2.setText("f2");
-		GateArea2.setEditable(false);
-		GateArea2.setBounds(10, 49, 247, 131);
-		PanelTerminale2.add(GateArea2);
+		JPanel pannelloT2G2 = new JPanel();
+		pannelloT2G2.setBackground(Color.WHITE);
+		
+		JLabel labelT2A2 = new JLabel("A2");
+		labelT2A2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT2A2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT2G2 = new GroupLayout(pannelloT2G2);
+		gl_pannelloT2G2.setHorizontalGroup(
+			gl_pannelloT2G2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT2A2, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT2G2.setVerticalGroup(
+			gl_pannelloT2G2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT2G2.createSequentialGroup()
+					.addComponent(labelT2A2, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+					.addGap(1))
+		);
+		pannelloT2G2.setLayout(gl_pannelloT2G2);
+		
+		pannelloT2G3 = new JPanel();
+		pannelloT2G3.setBackground(Color.WHITE);
+		
+		JLabel labelT2A3 = new JLabel("A3");
+		labelT2A3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT2A3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT2G3 = new GroupLayout(pannelloT2G3);
+		gl_pannelloT2G3.setHorizontalGroup(
+			gl_pannelloT2G3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT2A3, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT2G3.setVerticalGroup(
+			gl_pannelloT2G3.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT2G3.createSequentialGroup()
+					.addComponent(labelT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		pannelloT2G3.setLayout(gl_pannelloT2G3);
+		
+		JPanel pannelloT2G4 = new JPanel();
+		pannelloT2G4.setBackground(Color.WHITE);
+		
+		JLabel labelT2A4 = new JLabel("A4");
+		labelT2A4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT2A4.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT2G4 = new GroupLayout(pannelloT2G4);
+		gl_pannelloT2G4.setHorizontalGroup(
+			gl_pannelloT2G4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT2A4, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT2G4.setVerticalGroup(
+			gl_pannelloT2G4.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 26, Short.MAX_VALUE)
+				.addComponent(labelT2A4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+		);
+		pannelloT2G4.setLayout(gl_pannelloT2G4);
+		GroupLayout gl_pannelloGateT2 = new GroupLayout(pannelloGateT2);
+		gl_pannelloGateT2.setHorizontalGroup(
+			gl_pannelloGateT2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelGatesT2, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+				.addComponent(pannelloT2G1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+				.addGroup(gl_pannelloGateT2.createSequentialGroup()
+					.addComponent(pannelloT2G2, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_pannelloGateT2.createSequentialGroup()
+					.addComponent(pannelloT2G3, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_pannelloGateT2.createSequentialGroup()
+					.addComponent(pannelloT2G4, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		gl_pannelloGateT2.setVerticalGroup(
+			gl_pannelloGateT2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 211, Short.MAX_VALUE)
+				.addGroup(gl_pannelloGateT2.createSequentialGroup()
+					.addComponent(labelGatesT2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT2G1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT2G2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT2G3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT2G4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(13, Short.MAX_VALUE))
+		);
+		pannelloGateT2.setLayout(gl_pannelloGateT2);
+		
+		JPanel pannelloT2A1 = new JPanel();
+		pannelloT2A1.setBackground(Color.WHITE);
+		
+		fieldT2A1 = new JTextField();
+		fieldT2A1.setEditable(false);
+		fieldT2A1.setColumns(10);
+		
+		JTextField codaFamiglieT2A1 = new JTextField();
+		codaFamiglieT2A1.setText("coda famiglie");
+		codaFamiglieT2A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT2A1.setEnabled(false);
+		codaFamiglieT2A1.setEditable(false);
+		codaFamiglieT2A1.setColumns(10);
+		
+		checkCodaFamiglieT2A1 = new JCheckBox("");
+		checkCodaFamiglieT2A1.setSelected(true);
+		
+		codaDisabiliT2A1 = new JTextField();
+		codaDisabiliT2A1.setText("coda disabili");
+		codaDisabiliT2A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT2A1.setEnabled(false);
+		codaDisabiliT2A1.setEditable(false);
+		codaDisabiliT2A1.setColumns(10);
+		
+		checkCodaDisabiliT2A1 = new JCheckBox("");
+		checkCodaDisabiliT2A1.setSelected(true);
+		
+		codaPriorityT2A1 = new JTextField();
+		codaPriorityT2A1.setText("coda priority");
+		codaPriorityT2A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT2A1.setEnabled(false);
+		codaPriorityT2A1.setEditable(false);
+		codaPriorityT2A1.setColumns(10);
+		
+		checkCodaPriorityT2A1 = new JCheckBox("");
+		
+		checksT2A1 = new JCheckBox[] {checkCodaFamiglieT2A1, checkCodaDisabiliT2A1, checkCodaPriorityT2A1};
+		
+		JRadioButton radioButtonT2A1 = new JRadioButton("");
+		radioButtonT2A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT2A1, headersTempo, fieldsTempo, checksT2A1, "T2A1");
+			}
+		});
+		groupTempo.add(radioButtonT2A1);
+		
+		JButton pulsantePartenzaT2A1 = new JButton("");
+		pulsantePartenzaT2A1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT2A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A1", fieldsTratte, fieldsPartenza, checksT2A1, intframePartenza);
+			}
+		});
+		pulsantePartenzaT2A1.setOpaque(false);
+		pulsantePartenzaT2A1.setFocusable(false);
+		pulsantePartenzaT2A1.setContentAreaFilled(false);
+		pulsantePartenzaT2A1.setBorderPainted(false);
+		GroupLayout gl_pannelloT2A1 = new GroupLayout(pannelloT2A1);
+		gl_pannelloT2A1.setHorizontalGroup(
+			gl_pannelloT2A1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A1.createSequentialGroup()
+					.addComponent(fieldT2A1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT2A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT2A1)
+					.addGap(14)
+					.addComponent(codaDisabiliT2A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaDisabiliT2A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(14)
+					.addComponent(codaPriorityT2A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaPriorityT2A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addComponent(radioButtonT2A1)
+					.addGap(36)
+					.addComponent(pulsantePartenzaT2A1, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT2A1.setVerticalGroup(
+			gl_pannelloT2A1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_pannelloT2A1.createSequentialGroup()
+					.addGroup(gl_pannelloT2A1.createParallelGroup(Alignment.LEADING)
+						.addComponent(fieldT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(radioButtonT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaPriorityT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaPriorityT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaDisabiliT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaDisabiliT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaFamiglieT2A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaFamiglieT2A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT2A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT2A1.setLayout(gl_pannelloT2A1);
+		
+		JPanel headerT2 = new JPanel();
+		headerT2.setBackground(SystemColor.menu);
+		
+		JLabel labelTrattaT2 = new JLabel("Tratta");
+		labelTrattaT2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTrattaT2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelCodeT2 = new JLabel("Code");
+		labelCodeT2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelCodeT2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelTempoT2 = new JLabel("Tempo");
+		labelTempoT2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTempoT2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelPartenzaT2 = new JLabel("Partenza");
+		labelPartenzaT2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPartenzaT2.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		GroupLayout gl_headerT2 = new GroupLayout(headerT2);
+		gl_headerT2.setHorizontalGroup(
+			gl_headerT2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_headerT2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(labelTrattaT2, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+					.addGap(55)
+					.addComponent(labelCodeT2, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(labelTempoT2, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(labelPartenzaT2, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_headerT2.setVerticalGroup(
+			gl_headerT2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 43, Short.MAX_VALUE)
+				.addComponent(labelTrattaT2, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+				.addGroup(gl_headerT2.createParallelGroup(Alignment.BASELINE)
+					.addComponent(labelPartenzaT2, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+					.addComponent(labelTempoT2, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+				.addComponent(labelCodeT2, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+		);
+		headerT2.setLayout(gl_headerT2);
+		
+		JPanel pannelloT2A2 = new JPanel();
+		pannelloT2A2.setBackground(Color.WHITE);
+		
+		fieldT2A2 = new JTextField();
+		fieldT2A2.setEditable(false);
+		fieldT2A2.setColumns(10);
+		
+		codaFamiglieT2A2 = new JTextField();
+		codaFamiglieT2A2.setText("coda famiglie");
+		codaFamiglieT2A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT2A2.setEnabled(false);
+		codaFamiglieT2A2.setEditable(false);
+		codaFamiglieT2A2.setColumns(10);
+		
+		checkCodaFamiglieT2A2 = new JCheckBox("");
+		
+		codaDisabiliT2A2 = new JTextField();
+		codaDisabiliT2A2.setText("coda disabili");
+		codaDisabiliT2A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT2A2.setEnabled(false);
+		codaDisabiliT2A2.setEditable(false);
+		codaDisabiliT2A2.setColumns(10);
+		
+		checkCodaDisabiliT2A2 = new JCheckBox("");
+		
+		codaPriorityT2A2 = new JTextField();
+		codaPriorityT2A2.setText("coda priority");
+		codaPriorityT2A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT2A2.setEnabled(false);
+		codaPriorityT2A2.setEditable(false);
+		codaPriorityT2A2.setColumns(10);
+		
+		checkCodaPriorityT2A2 = new JCheckBox("");
+		checkCodaPriorityT2A2.setSelected(true);
+		
+
+		checksT2A2 = new JCheckBox[] {checkCodaFamiglieT2A2, checkCodaDisabiliT2A2, checkCodaPriorityT2A2};
+		
+		JRadioButton radioButtonT2A2 = new JRadioButton("");
+		radioButtonT2A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT2A2, headersTempo, fieldsTempo, checksT2A2, "T2A2");
+			}
+		});
+		groupTempo.add(radioButtonT2A2);
+		
+		JButton pulsantePartenzaT2A2 = new JButton("");
+		pulsantePartenzaT2A2.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT2A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT2A2.setOpaque(false);
+		pulsantePartenzaT2A2.setFocusable(false);
+		pulsantePartenzaT2A2.setContentAreaFilled(false);
+		pulsantePartenzaT2A2.setBorderPainted(false);
+		GroupLayout gl_pannelloT2A2 = new GroupLayout(pannelloT2A2);
+		gl_pannelloT2A2.setHorizontalGroup(
+			gl_pannelloT2A2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A2.createSequentialGroup()
+					.addComponent(fieldT2A2, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT2A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT2A2)
+					.addGap(14)
+					.addComponent(codaDisabiliT2A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT2A2)
+					.addGap(14)
+					.addComponent(codaPriorityT2A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT2A2)
+					.addGap(38)
+					.addComponent(radioButtonT2A2)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT2A2, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT2A2.setVerticalGroup(
+			gl_pannelloT2A2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A2.createSequentialGroup()
+					.addGroup(gl_pannelloT2A2.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT2A2.setLayout(gl_pannelloT2A2);
+		
+		JPanel pannelloT2A3 = new JPanel();
+		pannelloT2A3.setBackground(Color.WHITE);
+		
+		fieldT2A3 = new JTextField();
+		fieldT2A3.setEditable(false);
+		fieldT2A3.setColumns(10);
+		
+		codaFamiglieT2A3 = new JTextField();
+		codaFamiglieT2A3.setText("coda famiglie");
+		codaFamiglieT2A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT2A3.setEnabled(false);
+		codaFamiglieT2A3.setEditable(false);
+		codaFamiglieT2A3.setColumns(10);
+		
+		checkCodaFamiglieT2A3 = new JCheckBox("");
+		
+		codaDisabiliT2A3 = new JTextField();
+		codaDisabiliT2A3.setText("coda disabili");
+		codaDisabiliT2A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT2A3.setEnabled(false);
+		codaDisabiliT2A3.setEditable(false);
+		codaDisabiliT2A3.setColumns(10);
+		
+		checkCodaDisabiliT2A3 = new JCheckBox("");
+		checkCodaDisabiliT2A3.setSelected(true);
+		
+		codaPriorityT2A3 = new JTextField();
+		codaPriorityT2A3.setText("coda priority");
+		codaPriorityT2A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT2A3.setEnabled(false);
+		codaPriorityT2A3.setEditable(false);
+		codaPriorityT2A3.setColumns(10);
+		
+		checkCodaPriorityT2A3 = new JCheckBox("");
+		checkCodaPriorityT2A3.setSelected(true);
+		
+
+		checksT2A3 = new JCheckBox[] {checkCodaFamiglieT2A3, checkCodaDisabiliT2A3, checkCodaPriorityT2A3};
+		
+		JRadioButton radioButtonT2A3 = new JRadioButton("");
+		radioButtonT2A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT2A3, headersTempo, fieldsTempo, checksT2A3, "T2A3");
+			}
+		});
+		groupTempo.add(radioButtonT2A3);
+		
+		JButton pulsantePartenzaT2A3 = new JButton("");
+		pulsantePartenzaT2A3.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT2A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT2A3.setOpaque(false);
+		pulsantePartenzaT2A3.setFocusable(false);
+		pulsantePartenzaT2A3.setContentAreaFilled(false);
+		pulsantePartenzaT2A3.setBorderPainted(false);
+		GroupLayout gl_pannelloT2A3 = new GroupLayout(pannelloT2A3);
+		gl_pannelloT2A3.setHorizontalGroup(
+			gl_pannelloT2A3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A3.createSequentialGroup()
+					.addComponent(fieldT2A3, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT2A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT2A3)
+					.addGap(14)
+					.addComponent(codaDisabiliT2A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT2A3)
+					.addGap(14)
+					.addComponent(codaPriorityT2A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT2A3)
+					.addGap(38)
+					.addComponent(radioButtonT2A3)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT2A3, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT2A3.setVerticalGroup(
+			gl_pannelloT2A3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A3.createSequentialGroup()
+					.addGroup(gl_pannelloT2A3.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT2A3.setLayout(gl_pannelloT2A3);
+		
+		JPanel pannelloT2A4 = new JPanel();
+		pannelloT2A4.setBackground(Color.WHITE);
+		
+		fieldT2A4 = new JTextField();
+		fieldT2A4.setEditable(false);
+		fieldT2A4.setColumns(10);
+		
+		codaFamiglieT2A4 = new JTextField();
+		codaFamiglieT2A4.setText("coda famiglie");
+		codaFamiglieT2A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT2A4.setEnabled(false);
+		codaFamiglieT2A4.setEditable(false);
+		codaFamiglieT2A4.setColumns(10);
+		
+		checkCodaFamiglieT2A4 = new JCheckBox("");
+		checkCodaFamiglieT2A4.setSelected(true);
+		
+		codaDisabiliT2A4 = new JTextField();
+		codaDisabiliT2A4.setText("coda disabili");
+		codaDisabiliT2A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT2A4.setEnabled(false);
+		codaDisabiliT2A4.setEditable(false);
+		codaDisabiliT2A4.setColumns(10);
+		
+		checkCodaDisabiliT2A4 = new JCheckBox("");
+		
+		codaPriorityT2A4 = new JTextField();
+		codaPriorityT2A4.setText("coda priority");
+		codaPriorityT2A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT2A4.setEnabled(false);
+		codaPriorityT2A4.setEditable(false);
+		codaPriorityT2A4.setColumns(10);
+		
+		checkCodaPriorityT2A4 = new JCheckBox("");
+
+		checksT2A4 = new JCheckBox[] {checkCodaFamiglieT2A4, checkCodaDisabiliT2A4, checkCodaPriorityT2A4};
+		
+		JRadioButton radioButtonT2A4 = new JRadioButton("");
+		radioButtonT2A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT2A4, headersTempo, fieldsTempo, checksT2A4, "T2A4");
+			}
+		});
+		groupTempo.add(radioButtonT2A4);
+		
+		JButton pulsantePartenzaT2A4 = new JButton("");
+		pulsantePartenzaT2A4.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT2A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT2A4.setOpaque(false);
+		pulsantePartenzaT2A4.setFocusable(false);
+		pulsantePartenzaT2A4.setContentAreaFilled(false);
+		pulsantePartenzaT2A4.setBorderPainted(false);
+		GroupLayout gl_pannelloT2A4 = new GroupLayout(pannelloT2A4);
+		gl_pannelloT2A4.setHorizontalGroup(
+			gl_pannelloT2A4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A4.createSequentialGroup()
+					.addComponent(fieldT2A4, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT2A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT2A4)
+					.addGap(14)
+					.addComponent(codaDisabiliT2A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT2A4)
+					.addGap(14)
+					.addComponent(codaPriorityT2A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT2A4)
+					.addGap(36)
+					.addComponent(radioButtonT2A4)
+					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT2A4, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT2A4.setVerticalGroup(
+			gl_pannelloT2A4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pannelloT2A4.createSequentialGroup()
+					.addGroup(gl_pannelloT2A4.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT2A4.setLayout(gl_pannelloT2A4);
+		GroupLayout gl_PanelTerminale2 = new GroupLayout(PanelTerminale2);
+		gl_PanelTerminale2.setHorizontalGroup(
+			gl_PanelTerminale2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_PanelTerminale2.createSequentialGroup()
+					.addGap(8)
+					.addComponent(pannelloGateT2, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addGroup(gl_PanelTerminale2.createParallelGroup(Alignment.LEADING)
+						.addComponent(headerT2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pannelloT2A1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pannelloT2A2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pannelloT2A3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pannelloT2A4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+		);
+		gl_PanelTerminale2.setVerticalGroup(
+			gl_PanelTerminale2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_PanelTerminale2.createSequentialGroup()
+					.addGap(9)
+					.addGroup(gl_PanelTerminale2.createParallelGroup(Alignment.LEADING)
+						.addComponent(pannelloGateT2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_PanelTerminale2.createSequentialGroup()
+							.addComponent(headerT2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(1)
+							.addComponent(pannelloT2A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(pannelloT2A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(pannelloT2A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(pannelloT2A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))))
+		);
+		PanelTerminale2.setLayout(gl_PanelTerminale2);
 		
 		JPanel PanelTerminale3 = new JPanel();
 		PanelTerminale3.setLayout(null);
@@ -2080,37 +2992,574 @@ public class AMain extends JFrame {
 		PanelTerminale3.setBackground(new Color(91, 155, 202));
 		TerminalPane.addTab("Terminal 3", null, PanelTerminale3, null);
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setLayout(null);
-		panel_5.setForeground(Color.WHITE);
-		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(10, 10, 30, 30);
-		PanelTerminale3.add(panel_5);
+		JPanel pannelloGateT3 = new JPanel();
+		pannelloGateT3.setToolTipText("");
+		pannelloGateT3.setBounds(10, 11, 146, 211);
+		PanelTerminale3.add(pannelloGateT3);
 		
-		JLabel NumeroUno_2 = new JLabel("1");
-		NumeroUno_2.setHorizontalAlignment(SwingConstants.CENTER);
-		NumeroUno_2.setForeground(Color.DARK_GRAY);
-		NumeroUno_2.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		NumeroUno_2.setBounds(0, 0, 30, 30);
-		panel_5.add(NumeroUno_2);
+		JLabel labelGatesT3 = new JLabel("Gates");
+		labelGatesT3.setVerticalAlignment(SwingConstants.BOTTOM);
+		labelGatesT3.setHorizontalTextPosition(SwingConstants.CENTER);
+		labelGatesT3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelGatesT3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel TerminalUno_4 = new JLabel("Terminale 3");
-		TerminalUno_4.setForeground(Color.BLACK);
-		TerminalUno_4.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		TerminalUno_4.setBounds(50, 10, 152, 30);
-		PanelTerminale3.add(TerminalUno_4);
+		JPanel pannelloT3G1 = new JPanel();
+		pannelloT3G1.setBackground(Color.WHITE);
 		
-		JLabel TerminalUno_5 = new JLabel("Terminale 3");
-		TerminalUno_5.setForeground(Color.WHITE);
-		TerminalUno_5.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		TerminalUno_5.setBounds(50, 10, 162, 35);
-		PanelTerminale3.add(TerminalUno_5);
+		JLabel labelT3A1 = new JLabel("A1");
+		labelT3A1.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT3A1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT3G1 = new GroupLayout(pannelloT3G1);
+		gl_pannelloT3G1.setHorizontalGroup(
+			gl_pannelloT3G1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 156, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3G1.createSequentialGroup()
+					.addComponent(labelT3A1, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloT3G1.setVerticalGroup(
+			gl_pannelloT3G1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addComponent(labelT3A1, GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+		);
+		pannelloT3G1.setLayout(gl_pannelloT3G1);
 		
-		TextArea GateArea3 = new TextArea();
-		GateArea3.setText("f3");
-		GateArea3.setEditable(false);
-		GateArea3.setBounds(10, 49, 247, 131);
-		PanelTerminale3.add(GateArea3);
+		JPanel pannelloT3G2 = new JPanel();
+		pannelloT3G2.setBackground(Color.WHITE);
+		
+		JLabel labelT3A2 = new JLabel("A2");
+		labelT3A2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT3A2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT3G2 = new GroupLayout(pannelloT3G2);
+		gl_pannelloT3G2.setHorizontalGroup(
+			gl_pannelloT3G2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT3A2, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT3G2.setVerticalGroup(
+			gl_pannelloT3G2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3G2.createSequentialGroup()
+					.addComponent(labelT3A2, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+					.addGap(1))
+		);
+		pannelloT3G2.setLayout(gl_pannelloT3G2);
+		
+		JPanel pannelloT3G3 = new JPanel();
+		pannelloT3G3.setBackground(Color.WHITE);
+		
+		JLabel labelT3A3 = new JLabel("A3");
+		labelT3A3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT3A3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT3G3 = new GroupLayout(pannelloT3G3);
+		gl_pannelloT3G3.setHorizontalGroup(
+			gl_pannelloT3G3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT3A3, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT3G3.setVerticalGroup(
+			gl_pannelloT3G3.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3G3.createSequentialGroup()
+					.addComponent(labelT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		pannelloT3G3.setLayout(gl_pannelloT3G3);
+		
+		JPanel pannelloT3G4 = new JPanel();
+		pannelloT3G4.setBackground(Color.WHITE);
+		
+		JLabel labelT3A4 = new JLabel("A4");
+		labelT3A4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT3A4.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT3G4 = new GroupLayout(pannelloT3G4);
+		gl_pannelloT3G4.setHorizontalGroup(
+			gl_pannelloT3G4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT3A4, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT3G4.setVerticalGroup(
+			gl_pannelloT3G4.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 26, Short.MAX_VALUE)
+				.addComponent(labelT3A4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+		);
+		pannelloT3G4.setLayout(gl_pannelloT3G4);
+		GroupLayout gl_pannelloGateT3 = new GroupLayout(pannelloGateT3);
+		gl_pannelloGateT3.setHorizontalGroup(
+			gl_pannelloGateT3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelGatesT3, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+				.addComponent(pannelloT3G1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+				.addGroup(gl_pannelloGateT3.createSequentialGroup()
+					.addComponent(pannelloT3G2, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_pannelloGateT3.createSequentialGroup()
+					.addComponent(pannelloT3G3, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_pannelloGateT3.createSequentialGroup()
+					.addComponent(pannelloT3G4, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		gl_pannelloGateT3.setVerticalGroup(
+			gl_pannelloGateT3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 211, Short.MAX_VALUE)
+				.addGroup(gl_pannelloGateT3.createSequentialGroup()
+					.addComponent(labelGatesT3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT3G1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT3G2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT3G3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT3G4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(13, Short.MAX_VALUE))
+		);
+		pannelloGateT3.setLayout(gl_pannelloGateT3);
+		
+		JPanel headerT3 = new JPanel();
+		headerT3.setBackground(SystemColor.menu);
+		headerT3.setBounds(166, 11, 960, 43);
+		PanelTerminale3.add(headerT3);
+		
+		JLabel labelTrattaT3 = new JLabel("Tratta");
+		labelTrattaT3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTrattaT3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelCodeT3 = new JLabel("Code");
+		labelCodeT3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelCodeT3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelTempoT3 = new JLabel("Tempo");
+		labelTempoT3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTempoT3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelPartenzaT3 = new JLabel("Partenza");
+		labelPartenzaT3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPartenzaT3.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		GroupLayout gl_headerT3 = new GroupLayout(headerT3);
+		gl_headerT3.setHorizontalGroup(
+			gl_headerT3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_headerT3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(labelTrattaT3, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+					.addGap(55)
+					.addComponent(labelCodeT3, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(labelTempoT3, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(labelPartenzaT3, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_headerT3.setVerticalGroup(
+			gl_headerT3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 43, Short.MAX_VALUE)
+				.addComponent(labelTrattaT3, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+				.addGroup(gl_headerT3.createParallelGroup(Alignment.BASELINE)
+					.addComponent(labelPartenzaT3, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+					.addComponent(labelTempoT3, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+				.addComponent(labelCodeT3, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+		);
+		headerT3.setLayout(gl_headerT3);
+		
+		JPanel pannelloT3A1 = new JPanel();
+		pannelloT3A1.setBackground(Color.WHITE);
+		pannelloT3A1.setBounds(166, 55, 960, 31);
+		PanelTerminale3.add(pannelloT3A1);
+		
+		fieldT3A1 = new JTextField();
+		fieldT3A1.setEditable(false);
+		fieldT3A1.setColumns(10);
+		
+		codaFamiglieT3A1 = new JTextField();
+		codaFamiglieT3A1.setText("coda famiglie");
+		codaFamiglieT3A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT3A1.setEnabled(false);
+		codaFamiglieT3A1.setEditable(false);
+		codaFamiglieT3A1.setColumns(10);
+		
+		checkCodaFamiglieT3A1 = new JCheckBox("");
+		checkCodaFamiglieT3A1.setSelected(true);
+		
+		codaDisabiliT3A1 = new JTextField();
+		codaDisabiliT3A1.setText("coda disabili");
+		codaDisabiliT3A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT3A1.setEnabled(false);
+		codaDisabiliT3A1.setEditable(false);
+		codaDisabiliT3A1.setColumns(10);
+		
+		checkCodaDisabiliT3A1 = new JCheckBox("");
+		
+		codaPriorityT3A1 = new JTextField();
+		codaPriorityT3A1.setText("coda priority");
+		codaPriorityT3A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT3A1.setEnabled(false);
+		codaPriorityT3A1.setEditable(false);
+		codaPriorityT3A1.setColumns(10);
+		
+		checkCodaPriorityT3A1 = new JCheckBox("");
+		checkCodaPriorityT3A1.setSelected(true);
+
+		checksT3A1 = new JCheckBox[] {checkCodaFamiglieT3A1, checkCodaDisabiliT3A1, checkCodaPriorityT3A1};
+		
+		JRadioButton radioButtonT3A1 = new JRadioButton("");
+		radioButtonT3A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT3A1, headersTempo, fieldsTempo, checksT3A1, "T3A1");
+			}
+		});
+		groupTempo.add(radioButtonT3A1);
+		
+		JButton pulsantePartenzaT3A1 = new JButton("");
+		pulsantePartenzaT3A1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT3A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT3A1.setOpaque(false);
+		pulsantePartenzaT3A1.setFocusable(false);
+		pulsantePartenzaT3A1.setContentAreaFilled(false);
+		pulsantePartenzaT3A1.setBorderPainted(false);
+		GroupLayout gl_pannelloT3A1 = new GroupLayout(pannelloT3A1);
+		gl_pannelloT3A1.setHorizontalGroup(
+			gl_pannelloT3A1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A1.createSequentialGroup()
+					.addComponent(fieldT3A1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT3A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT3A1)
+					.addGap(14)
+					.addComponent(codaDisabiliT3A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaDisabiliT3A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(14)
+					.addComponent(codaPriorityT3A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaPriorityT3A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addComponent(radioButtonT3A1)
+					.addGap(36)
+					.addComponent(pulsantePartenzaT3A1, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT3A1.setVerticalGroup(
+			gl_pannelloT3A1.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A1.createSequentialGroup()
+					.addGroup(gl_pannelloT3A1.createParallelGroup(Alignment.LEADING)
+						.addComponent(fieldT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(radioButtonT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaPriorityT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaPriorityT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaDisabiliT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaDisabiliT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaFamiglieT3A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaFamiglieT3A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT3A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT3A1.setLayout(gl_pannelloT3A1);
+		
+		JPanel pannelloT3A2 = new JPanel();
+		pannelloT3A2.setBackground(Color.WHITE);
+		pannelloT3A2.setBounds(166, 97, 960, 31);
+		PanelTerminale3.add(pannelloT3A2);
+		
+		fieldT3A2 = new JTextField();
+		fieldT3A2.setEditable(false);
+		fieldT3A2.setColumns(10);
+		
+		codaFamiglieT3A2 = new JTextField();
+		codaFamiglieT3A2.setText("coda famiglie");
+		codaFamiglieT3A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT3A2.setEnabled(false);
+		codaFamiglieT3A2.setEditable(false);
+		codaFamiglieT3A2.setColumns(10);
+		
+		checkCodaFamiglieT3A2 = new JCheckBox("");
+		
+		codaDisabiliT3A2 = new JTextField();
+		codaDisabiliT3A2.setText("coda disabili");
+		codaDisabiliT3A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT3A2.setEnabled(false);
+		codaDisabiliT3A2.setEditable(false);
+		codaDisabiliT3A2.setColumns(10);
+		
+		checkCodaDisabiliT3A2 = new JCheckBox("");
+		
+		codaPriorityT3A2 = new JTextField();
+		codaPriorityT3A2.setText("coda priority");
+		codaPriorityT3A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT3A2.setEnabled(false);
+		codaPriorityT3A2.setEditable(false);
+		codaPriorityT3A2.setColumns(10);
+		
+		checkCodaPriorityT3A2 = new JCheckBox("");
+		checkCodaPriorityT3A2.setSelected(true);
+
+		checksT3A2 = new JCheckBox[] {checkCodaFamiglieT3A2, checkCodaDisabiliT3A2, checkCodaPriorityT3A2};
+		
+		JRadioButton radioButtonT3A2 = new JRadioButton("");
+		radioButtonT3A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT3A2, headersTempo, fieldsTempo, checksT3A2, "T3A2");
+			}
+		});
+		groupTempo.add(radioButtonT3A2);
+		
+		JButton pulsantePartenzaT3A2 = new JButton("");
+		pulsantePartenzaT3A2.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT3A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT3A2.setOpaque(false);
+		pulsantePartenzaT3A2.setFocusable(false);
+		pulsantePartenzaT3A2.setContentAreaFilled(false);
+		pulsantePartenzaT3A2.setBorderPainted(false);
+		GroupLayout gl_pannelloT3A2 = new GroupLayout(pannelloT3A2);
+		gl_pannelloT3A2.setHorizontalGroup(
+			gl_pannelloT3A2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A2.createSequentialGroup()
+					.addComponent(fieldT3A2, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT3A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT3A2)
+					.addGap(14)
+					.addComponent(codaDisabiliT3A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT3A2)
+					.addGap(14)
+					.addComponent(codaPriorityT3A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT3A2)
+					.addGap(38)
+					.addComponent(radioButtonT3A2)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT3A2, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT3A2.setVerticalGroup(
+			gl_pannelloT3A2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A2.createSequentialGroup()
+					.addGroup(gl_pannelloT3A2.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT3A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT3A2.setLayout(gl_pannelloT3A2);
+		
+		JPanel pannelloT3A3 = new JPanel();
+		pannelloT3A3.setBackground(Color.WHITE);
+		pannelloT3A3.setBounds(166, 139, 960, 31);
+		PanelTerminale3.add(pannelloT3A3);
+		
+		fieldT3A3 = new JTextField();
+		fieldT3A3.setEditable(false);
+		fieldT3A3.setColumns(10);
+		
+		codaFamiglieT3A3 = new JTextField();
+		codaFamiglieT3A3.setText("coda famiglie");
+		codaFamiglieT3A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT3A3.setEnabled(false);
+		codaFamiglieT3A3.setEditable(false);
+		codaFamiglieT3A3.setColumns(10);
+		
+		checkCodaFamiglieT3A3 = new JCheckBox("");
+		checkCodaFamiglieT3A3.setSelected(true);
+		
+		codaDisabiliT3A3 = new JTextField();
+		codaDisabiliT3A3.setText("coda disabili");
+		codaDisabiliT3A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT3A3.setEnabled(false);
+		codaDisabiliT3A3.setEditable(false);
+		codaDisabiliT3A3.setColumns(10);
+		
+		checkCodaDisabiliT3A3 = new JCheckBox("");
+		checkCodaDisabiliT3A3.setSelected(true);
+		
+		codaPriorityT3A3 = new JTextField();
+		codaPriorityT3A3.setText("coda priority");
+		codaPriorityT3A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT3A3.setEnabled(false);
+		codaPriorityT3A3.setEditable(false);
+		codaPriorityT3A3.setColumns(10);
+		
+		checkCodaPriorityT3A3 = new JCheckBox("");
+		checkCodaPriorityT3A3.setSelected(true);
+
+		checksT3A3 = new JCheckBox[] {checkCodaFamiglieT3A3, checkCodaDisabiliT3A3, checkCodaPriorityT3A3};
+		
+		JRadioButton radioButtonT3A3 = new JRadioButton("");
+		radioButtonT3A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT3A3, headersTempo, fieldsTempo, checksT3A3, "T3A3");
+			}
+		});
+		groupTempo.add(radioButtonT3A3);
+		
+		JButton pulsantePartenzaT3A3 = new JButton("");
+		pulsantePartenzaT3A3.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT3A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT3A3.setOpaque(false);
+		pulsantePartenzaT3A3.setFocusable(false);
+		pulsantePartenzaT3A3.setContentAreaFilled(false);
+		pulsantePartenzaT3A3.setBorderPainted(false);
+		GroupLayout gl_pannelloT3A3 = new GroupLayout(pannelloT3A3);
+		gl_pannelloT3A3.setHorizontalGroup(
+			gl_pannelloT3A3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A3.createSequentialGroup()
+					.addComponent(fieldT3A3, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT3A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT3A3)
+					.addGap(14)
+					.addComponent(codaDisabiliT3A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT3A3)
+					.addGap(14)
+					.addComponent(codaPriorityT3A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT3A3)
+					.addGap(38)
+					.addComponent(radioButtonT3A3)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT3A3, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT3A3.setVerticalGroup(
+			gl_pannelloT3A3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A3.createSequentialGroup()
+					.addGroup(gl_pannelloT3A3.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT3A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT3A3.setLayout(gl_pannelloT3A3);
+		
+		JPanel pannelloT3A4 = new JPanel();
+		pannelloT3A4.setBackground(Color.WHITE);
+		pannelloT3A4.setBounds(166, 181, 960, 31);
+		PanelTerminale3.add(pannelloT3A4);
+		
+		fieldT3A4 = new JTextField();
+		fieldT3A4.setEditable(false);
+		fieldT3A4.setColumns(10);
+		
+		codaFamiglieT3A4 = new JTextField();
+		codaFamiglieT3A4.setText("coda famiglie");
+		codaFamiglieT3A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT3A4.setEnabled(false);
+		codaFamiglieT3A4.setEditable(false);
+		codaFamiglieT3A4.setColumns(10);
+		
+		checkCodaFamiglieT3A4 = new JCheckBox("");
+		checkCodaFamiglieT3A4.setSelected(true);
+		
+		codaDisabiliT3A4 = new JTextField();
+		codaDisabiliT3A4.setText("coda disabili");
+		codaDisabiliT3A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT3A4.setEnabled(false);
+		codaDisabiliT3A4.setEditable(false);
+		codaDisabiliT3A4.setColumns(10);
+		
+		checkCodaDisabiliT3A4 = new JCheckBox("");
+		
+		JTextField codaPriorityT3A4 = new JTextField();
+		codaPriorityT3A4.setText("coda priority");
+		codaPriorityT3A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT3A4.setEnabled(false);
+		codaPriorityT3A4.setEditable(false);
+		codaPriorityT3A4.setColumns(10);
+		
+		checkCodaPriorityT3A4 = new JCheckBox("");
+		
+		checksT3A4 = new JCheckBox[] {checkCodaFamiglieT3A4, checkCodaDisabiliT3A4, checkCodaPriorityT3A4};
+		
+		JRadioButton radioButtonT3A4 = new JRadioButton("");
+		radioButtonT3A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT3A4, headersTempo, fieldsTempo, checksT3A4, "T3A4");
+			}
+		});
+		groupTempo.add(radioButtonT3A4);
+		
+		JButton pulsantePartenzaT3A4 = new JButton("");
+		pulsantePartenzaT3A4.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT3A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT3A4.setOpaque(false);
+		pulsantePartenzaT3A4.setFocusable(false);
+		pulsantePartenzaT3A4.setContentAreaFilled(false);
+		pulsantePartenzaT3A4.setBorderPainted(false);
+		GroupLayout gl_pannelloT3A4 = new GroupLayout(pannelloT3A4);
+		gl_pannelloT3A4.setHorizontalGroup(
+			gl_pannelloT3A4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A4.createSequentialGroup()
+					.addComponent(fieldT3A4, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT3A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT3A4)
+					.addGap(14)
+					.addComponent(codaDisabiliT3A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT3A4)
+					.addGap(14)
+					.addComponent(codaPriorityT3A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT3A4)
+					.addGap(36)
+					.addComponent(radioButtonT3A4)
+					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT3A4, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT3A4.setVerticalGroup(
+			gl_pannelloT3A4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT3A4.createSequentialGroup()
+					.addGroup(gl_pannelloT3A4.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT3A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT3A4.setLayout(gl_pannelloT3A4);
 		
 		JPanel PanelTerminale4 = new JPanel();
 		PanelTerminale4.setLayout(null);
@@ -2118,37 +3567,594 @@ public class AMain extends JFrame {
 		PanelTerminale4.setBackground(new Color(60, 113, 154));
 		TerminalPane.addTab("Terminal 4", null, PanelTerminale4, null);
 		
-		JPanel panel_5_1 = new JPanel();
-		panel_5_1.setLayout(null);
-		panel_5_1.setForeground(Color.WHITE);
-		panel_5_1.setBackground(Color.LIGHT_GRAY);
-		panel_5_1.setBounds(10, 10, 30, 30);
-		PanelTerminale4.add(panel_5_1);
+		JPanel pannelloGateT4 = new JPanel();
+		pannelloGateT4.setToolTipText("");
+		pannelloGateT4.setBounds(10, 11, 146, 211);
+		PanelTerminale4.add(pannelloGateT4);
 		
-		JLabel NumeroUno_2_1 = new JLabel("1");
-		NumeroUno_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		NumeroUno_2_1.setForeground(Color.DARK_GRAY);
-		NumeroUno_2_1.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		NumeroUno_2_1.setBounds(0, 0, 30, 30);
-		panel_5_1.add(NumeroUno_2_1);
+		JLabel labelGatesT4 = new JLabel("Gates");
+		labelGatesT4.setVerticalAlignment(SwingConstants.BOTTOM);
+		labelGatesT4.setHorizontalTextPosition(SwingConstants.CENTER);
+		labelGatesT4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelGatesT4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		
-		JLabel TerminalUno_4_1 = new JLabel("Terminale 4");
-		TerminalUno_4_1.setForeground(Color.BLACK);
-		TerminalUno_4_1.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		TerminalUno_4_1.setBounds(50, 10, 152, 30);
-		PanelTerminale4.add(TerminalUno_4_1);
+		JPanel pannelloT4G1 = new JPanel();
+		pannelloT4G1.setBackground(Color.WHITE);
 		
-		JLabel TerminalUno_5_1 = new JLabel("Terminale 4");
-		TerminalUno_5_1.setForeground(Color.WHITE);
-		TerminalUno_5_1.setFont(new Font("Lucida Bright", Font.PLAIN, 20));
-		TerminalUno_5_1.setBounds(50, 10, 162, 35);
-		PanelTerminale4.add(TerminalUno_5_1);
+		JLabel labelT4A1 = new JLabel("A1");
+		labelT4A1.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT4A1.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT4G1 = new GroupLayout(pannelloT4G1);
+		gl_pannelloT4G1.setHorizontalGroup(
+			gl_pannelloT4G1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 156, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4G1.createSequentialGroup()
+					.addComponent(labelT4A1, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_pannelloT4G1.setVerticalGroup(
+			gl_pannelloT4G1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addComponent(labelT4A1, GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+		);
+		pannelloT4G1.setLayout(gl_pannelloT4G1);
 		
-		TextArea GateArea4 = new TextArea();
-		GateArea4.setText("f4");
-		GateArea4.setEditable(false);
-		GateArea4.setBounds(10, 49, 247, 131);
-		PanelTerminale4.add(GateArea4);
+		JPanel pannelloT4G2 = new JPanel();
+		pannelloT4G2.setBackground(Color.WHITE);
+		
+		JLabel labelT4A2 = new JLabel("A2");
+		labelT4A2.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT4A2.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT4G2 = new GroupLayout(pannelloT4G2);
+		gl_pannelloT4G2.setHorizontalGroup(
+			gl_pannelloT4G2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT4A2, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT4G2.setVerticalGroup(
+			gl_pannelloT4G2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4G2.createSequentialGroup()
+					.addComponent(labelT4A2, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+					.addGap(1))
+		);
+		pannelloT4G2.setLayout(gl_pannelloT4G2);
+		
+		JPanel pannelloT4G3 = new JPanel();
+		pannelloT4G3.setBackground(Color.WHITE);
+		
+		JLabel labelT4A3 = new JLabel("A3");
+		labelT4A3.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT4A3.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT4G3 = new GroupLayout(pannelloT4G3);
+		gl_pannelloT4G3.setHorizontalGroup(
+			gl_pannelloT4G3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT4A3, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT4G3.setVerticalGroup(
+			gl_pannelloT4G3.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 32, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4G3.createSequentialGroup()
+					.addComponent(labelT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		pannelloT4G3.setLayout(gl_pannelloT4G3);
+		
+		JPanel pannelloT4G4 = new JPanel();
+		pannelloT4G4.setBackground(Color.WHITE);
+		
+		JLabel labelT4A4 = new JLabel("A4");
+		labelT4A4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelT4A4.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		GroupLayout gl_pannelloT4G4 = new GroupLayout(pannelloT4G4);
+		gl_pannelloT4G4.setHorizontalGroup(
+			gl_pannelloT4G4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelT4A4, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+		);
+		gl_pannelloT4G4.setVerticalGroup(
+			gl_pannelloT4G4.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 26, Short.MAX_VALUE)
+				.addComponent(labelT4A4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+		);
+		pannelloT4G4.setLayout(gl_pannelloT4G4);
+		GroupLayout gl_pannelloGateT4 = new GroupLayout(pannelloGateT4);
+		gl_pannelloGateT4.setHorizontalGroup(
+			gl_pannelloGateT4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addComponent(labelGatesT4, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+				.addComponent(pannelloT4G1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+				.addGroup(gl_pannelloGateT4.createSequentialGroup()
+					.addComponent(pannelloT4G2, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_pannelloGateT4.createSequentialGroup()
+					.addComponent(pannelloT4G3, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_pannelloGateT4.createSequentialGroup()
+					.addComponent(pannelloT4G4, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		gl_pannelloGateT4.setVerticalGroup(
+			gl_pannelloGateT4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 211, Short.MAX_VALUE)
+				.addGroup(gl_pannelloGateT4.createSequentialGroup()
+					.addComponent(labelGatesT4, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT4G1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT4G2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT4G3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(pannelloT4G4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(13, Short.MAX_VALUE))
+		);
+		pannelloGateT4.setLayout(gl_pannelloGateT4);
+		
+		JPanel headerT4 = new JPanel();
+		headerT4.setBackground(SystemColor.menu);
+		headerT4.setBounds(166, 11, 960, 43);
+		PanelTerminale4.add(headerT4);
+		
+		JLabel labelTrattaT4 = new JLabel("Tratta");
+		labelTrattaT4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTrattaT4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelCodeT4 = new JLabel("Code");
+		labelCodeT4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelCodeT4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelTempoT4 = new JLabel("Tempo");
+		labelTempoT4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTempoT4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		
+		JLabel labelPartenzaT4 = new JLabel("Partenza");
+		labelPartenzaT4.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPartenzaT4.setFont(new Font("Lucida Bright", Font.BOLD, 15));
+		GroupLayout gl_headerT4 = new GroupLayout(headerT4);
+		gl_headerT4.setHorizontalGroup(
+			gl_headerT4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_headerT4.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(labelTrattaT4, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+					.addGap(55)
+					.addComponent(labelCodeT4, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(labelTempoT4, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(labelPartenzaT4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_headerT4.setVerticalGroup(
+			gl_headerT4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 43, Short.MAX_VALUE)
+				.addComponent(labelTrattaT4, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+				.addGroup(gl_headerT4.createParallelGroup(Alignment.BASELINE)
+					.addComponent(labelPartenzaT4, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+					.addComponent(labelTempoT4, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+				.addComponent(labelCodeT4, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+		);
+		headerT4.setLayout(gl_headerT4);
+		
+		JPanel pannelloT4A1 = new JPanel();
+		pannelloT4A1.setBackground(Color.WHITE);
+		pannelloT4A1.setBounds(166, 55, 960, 31);
+		PanelTerminale4.add(pannelloT4A1);
+		
+		fieldT4A1 = new JTextField();
+		fieldT4A1.setEditable(false);
+		fieldT4A1.setColumns(10);
+		
+		codaFamiglieT4A1 = new JTextField();
+		codaFamiglieT4A1.setText("coda famiglie");
+		codaFamiglieT4A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT4A1.setEnabled(false);
+		codaFamiglieT4A1.setEditable(false);
+		codaFamiglieT4A1.setColumns(10);
+		
+		checkCodaFamiglieT4A1 = new JCheckBox("");
+		checkCodaFamiglieT4A1.setSelected(true);
+		
+		codaDisabiliT4A1 = new JTextField();
+		codaDisabiliT4A1.setText("coda disabili");
+		codaDisabiliT4A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT4A1.setEnabled(false);
+		codaDisabiliT4A1.setEditable(false);
+		codaDisabiliT4A1.setColumns(10);
+		
+		checkCodaDisabiliT4A1 = new JCheckBox("");
+		checkCodaDisabiliT4A1.setSelected(true);
+		
+		codaPriorityT4A1 = new JTextField();
+		codaPriorityT4A1.setText("coda priority");
+		codaPriorityT4A1.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT4A1.setEnabled(false);
+		codaPriorityT4A1.setEditable(false);
+		codaPriorityT4A1.setColumns(10);
+		
+		checkCodaPriorityT4A1 = new JCheckBox("");
+
+		checksT4A1 = new JCheckBox[] {checkCodaFamiglieT4A1, checkCodaDisabiliT4A1, checkCodaPriorityT4A1};
+		
+		JRadioButton radioButtonT4A1 = new JRadioButton("");
+		radioButtonT4A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT4A1, headersTempo, fieldsTempo, checksT4A1, "T4A1");
+			}
+		});
+		groupTempo.add(radioButtonT4A1);
+		
+		JButton pulsantePartenzaT4A1 = new JButton("");
+		pulsantePartenzaT4A1.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT4A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT4A1.setOpaque(false);
+		pulsantePartenzaT4A1.setFocusable(false);
+		pulsantePartenzaT4A1.setContentAreaFilled(false);
+		pulsantePartenzaT4A1.setBorderPainted(false);
+		GroupLayout gl_pannelloT4A1 = new GroupLayout(pannelloT4A1);
+		gl_pannelloT4A1.setHorizontalGroup(
+			gl_pannelloT4A1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A1.createSequentialGroup()
+					.addComponent(fieldT4A1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT4A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT4A1)
+					.addGap(14)
+					.addComponent(codaDisabiliT4A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaDisabiliT4A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(14)
+					.addComponent(codaPriorityT4A1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaPriorityT4A1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addComponent(radioButtonT4A1)
+					.addGap(36)
+					.addComponent(pulsantePartenzaT4A1, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT4A1.setVerticalGroup(
+			gl_pannelloT4A1.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A1.createSequentialGroup()
+					.addGroup(gl_pannelloT4A1.createParallelGroup(Alignment.LEADING)
+						.addComponent(fieldT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(radioButtonT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaPriorityT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaPriorityT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaDisabiliT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaDisabiliT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(checkCodaFamiglieT4A1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(codaFamiglieT4A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT4A1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT4A1.setLayout(gl_pannelloT4A1);
+		
+		JPanel pannelloT4A2 = new JPanel();
+		pannelloT4A2.setBackground(Color.WHITE);
+		pannelloT4A2.setBounds(166, 97, 960, 31);
+		PanelTerminale4.add(pannelloT4A2);
+		
+		fieldT4A2 = new JTextField();
+		fieldT4A2.setEditable(false);
+		fieldT4A2.setColumns(10);
+		
+		codaFamiglieT4A2 = new JTextField();
+		codaFamiglieT4A2.setText("coda famiglie");
+		codaFamiglieT4A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT4A2.setEnabled(false);
+		codaFamiglieT4A2.setEditable(false);
+		codaFamiglieT4A2.setColumns(10);
+		
+		checkCodaFamiglieT4A2 = new JCheckBox("");
+		checkCodaFamiglieT4A2.setSelected(true);
+		
+		codaDisabiliT4A2 = new JTextField();
+		codaDisabiliT4A2.setText("coda disabili");
+		codaDisabiliT4A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT4A2.setEnabled(false);
+		codaDisabiliT4A2.setEditable(false);
+		codaDisabiliT4A2.setColumns(10);
+		
+		checkCodaDisabiliT4A2 = new JCheckBox("");
+		
+		codaPriorityT4A2 = new JTextField();
+		codaPriorityT4A2.setText("coda priority");
+		codaPriorityT4A2.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT4A2.setEnabled(false);
+		codaPriorityT4A2.setEditable(false);
+		codaPriorityT4A2.setColumns(10);
+		
+		checkCodaPriorityT4A2 = new JCheckBox("");
+		checkCodaPriorityT4A2.setSelected(true);
+		
+		checksT4A2 = new JCheckBox[] {checkCodaFamiglieT4A2, checkCodaDisabiliT4A2, checkCodaPriorityT4A2};
+		
+		JRadioButton radioButtonT4A2 = new JRadioButton("");
+		radioButtonT4A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT4A2, headersTempo, fieldsTempo, checksT4A2, "T4A2");
+			}
+		});
+		groupTempo.add(radioButtonT4A2);
+		
+		JButton pulsantePartenzaT4A2 = new JButton("");
+		pulsantePartenzaT4A2.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT4A2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT4A2.setOpaque(false);
+		pulsantePartenzaT4A2.setFocusable(false);
+		pulsantePartenzaT4A2.setContentAreaFilled(false);
+		pulsantePartenzaT4A2.setBorderPainted(false);
+		GroupLayout gl_pannelloT4A2 = new GroupLayout(pannelloT4A2);
+		gl_pannelloT4A2.setHorizontalGroup(
+			gl_pannelloT4A2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A2.createSequentialGroup()
+					.addComponent(fieldT4A2, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT4A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT4A2)
+					.addGap(14)
+					.addComponent(codaDisabiliT4A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT4A2)
+					.addGap(14)
+					.addComponent(codaPriorityT4A2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT4A2)
+					.addGap(38)
+					.addComponent(radioButtonT4A2)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT4A2, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT4A2.setVerticalGroup(
+			gl_pannelloT4A2.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A2.createSequentialGroup()
+					.addGroup(gl_pannelloT4A2.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT4A2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT4A2.setLayout(gl_pannelloT4A2);
+		
+		JPanel pannelloT4A3 = new JPanel();
+		pannelloT4A3.setBackground(Color.WHITE);
+		pannelloT4A3.setBounds(166, 139, 960, 31);
+		PanelTerminale4.add(pannelloT4A3);
+		
+		fieldT4A3 = new JTextField();
+		fieldT4A3.setEditable(false);
+		fieldT4A3.setColumns(10);
+		
+		codaFamiglieT4A3 = new JTextField();
+		codaFamiglieT4A3.setText("coda famiglie");
+		codaFamiglieT4A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT4A3.setEnabled(false);
+		codaFamiglieT4A3.setEditable(false);
+		codaFamiglieT4A3.setColumns(10);
+		
+		checkCodaFamiglieT4A3 = new JCheckBox("");
+		checkCodaFamiglieT4A3.setSelected(true);
+		
+		codaDisabiliT4A3 = new JTextField();
+		codaDisabiliT4A3.setText("coda disabili");
+		codaDisabiliT4A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT4A3.setEnabled(false);
+		codaDisabiliT4A3.setEditable(false);
+		codaDisabiliT4A3.setColumns(10);
+		
+		checkCodaDisabiliT4A3 = new JCheckBox("");
+		
+		codaPriorityT4A3 = new JTextField();
+		codaPriorityT4A3.setText("coda priority");
+		codaPriorityT4A3.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT4A3.setEnabled(false);
+		codaPriorityT4A3.setEditable(false);
+		codaPriorityT4A3.setColumns(10);
+		
+		checkCodaPriorityT4A3 = new JCheckBox("");
+		
+		checksT4A3 = new JCheckBox[] {checkCodaFamiglieT4A3, checkCodaDisabiliT4A3, checkCodaPriorityT4A3};
+		
+		JRadioButton radioButtonT4A3 = new JRadioButton("");
+		radioButtonT4A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT4A3, headersTempo, fieldsTempo, checksT4A3, "T4A3");
+			}
+		});
+		groupTempo.add(radioButtonT4A3);
+		
+		JButton pulsantePartenzaT4A3 = new JButton("");
+		pulsantePartenzaT4A3.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT4A3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT4A3.setOpaque(false);
+		pulsantePartenzaT4A3.setFocusable(false);
+		pulsantePartenzaT4A3.setContentAreaFilled(false);
+		pulsantePartenzaT4A3.setBorderPainted(false);
+		GroupLayout gl_pannelloT4A3 = new GroupLayout(pannelloT4A3);
+		gl_pannelloT4A3.setHorizontalGroup(
+			gl_pannelloT4A3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A3.createSequentialGroup()
+					.addComponent(fieldT4A3, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT4A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT4A3)
+					.addGap(14)
+					.addComponent(codaDisabiliT4A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT4A3)
+					.addGap(14)
+					.addComponent(codaPriorityT4A3, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT4A3)
+					.addGap(38)
+					.addComponent(radioButtonT4A3)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT4A3, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT4A3.setVerticalGroup(
+			gl_pannelloT4A3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A3.createSequentialGroup()
+					.addGroup(gl_pannelloT4A3.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT4A3, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT4A3.setLayout(gl_pannelloT4A3);
+		
+		JPanel pannelloT4A4 = new JPanel();
+		pannelloT4A4.setBackground(Color.WHITE);
+		pannelloT4A4.setBounds(166, 181, 960, 31);
+		PanelTerminale4.add(pannelloT4A4);
+		
+		fieldT4A4 = new JTextField();
+		fieldT4A4.setEditable(false);
+		fieldT4A4.setColumns(10);
+		
+		codaFamiglieT4A4 = new JTextField();
+		codaFamiglieT4A4.setText("coda famiglie");
+		codaFamiglieT4A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaFamiglieT4A4.setEnabled(false);
+		codaFamiglieT4A4.setEditable(false);
+		codaFamiglieT4A4.setColumns(10);
+		
+		checkCodaFamiglieT4A4 = new JCheckBox("");
+		checkCodaFamiglieT4A4.setSelected(true);
+		
+		codaDisabiliT4A4 = new JTextField();
+		codaDisabiliT4A4.setText("coda disabili");
+		codaDisabiliT4A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaDisabiliT4A4.setEnabled(false);
+		codaDisabiliT4A4.setEditable(false);
+		codaDisabiliT4A4.setColumns(10);
+		
+		checkCodaDisabiliT4A4 = new JCheckBox("");
+		checkCodaDisabiliT4A4.setSelected(true);
+		
+		codaPriorityT4A4 = new JTextField();
+		codaPriorityT4A4.setText("coda priority");
+		codaPriorityT4A4.setFont(new Font("Lucida Bright", Font.PLAIN, 14));
+		codaPriorityT4A4.setEnabled(false);
+		codaPriorityT4A4.setEditable(false);
+		codaPriorityT4A4.setColumns(10);
+		
+		checkCodaPriorityT4A4 = new JCheckBox("");
+		checkCodaPriorityT4A4.setSelected(true);
+		
+		checksT4A4 = new JCheckBox[] {checkCodaFamiglieT4A4, checkCodaDisabiliT4A4, checkCodaPriorityT4A4};
+		
+		JRadioButton radioButtonT4A4 = new JRadioButton("");
+		radioButtonT4A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.showAndSetTempo(PannelloTempo, groupTempo, fieldT4A4, headersTempo, fieldsTempo, checksT4A4, "T4A4");
+			}
+		});
+		groupTempo.add(radioButtonT4A4);
+		
+		JButton pulsantePartenzaT4A4 = new JButton("");
+		pulsantePartenzaT4A4.setIcon(new ImageIcon(AMain.class.getResource("/apResources/iconPartenza.png")));
+		pulsantePartenzaT4A4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.initPartenza("T2A2", fieldsTratte, fieldsPartenza, checksT2A2, intframePartenza);
+			}
+		});
+		pulsantePartenzaT4A4.setOpaque(false);
+		pulsantePartenzaT4A4.setFocusable(false);
+		pulsantePartenzaT4A4.setContentAreaFilled(false);
+		pulsantePartenzaT4A4.setBorderPainted(false);
+		GroupLayout gl_pannelloT4A4 = new GroupLayout(pannelloT4A4);
+		gl_pannelloT4A4.setHorizontalGroup(
+			gl_pannelloT4A4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 960, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A4.createSequentialGroup()
+					.addComponent(fieldT4A4, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(codaFamiglieT4A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(checkCodaFamiglieT4A4)
+					.addGap(14)
+					.addComponent(codaDisabiliT4A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaDisabiliT4A4)
+					.addGap(14)
+					.addComponent(codaPriorityT4A4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(checkCodaPriorityT4A4)
+					.addGap(36)
+					.addComponent(radioButtonT4A4)
+					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+					.addComponent(pulsantePartenzaT4A4, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pannelloT4A4.setVerticalGroup(
+			gl_pannelloT4A4.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 31, Short.MAX_VALUE)
+				.addGroup(gl_pannelloT4A4.createSequentialGroup()
+					.addGroup(gl_pannelloT4A4.createParallelGroup(Alignment.LEADING)
+						.addComponent(checkCodaFamiglieT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaDisabiliT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaDisabiliT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaPriorityT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkCodaPriorityT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(radioButtonT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(codaFamiglieT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pulsantePartenzaT4A4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		pannelloT4A4.setLayout(gl_pannelloT4A4);
+		
+		JButton pulsanteReload = new JButton("");
+		pulsanteReload.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Gate.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+				theController.setGates(fieldsTratte);
+				Gate.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		pulsanteReload.setOpaque(false);
+		pulsanteReload.setFocusable(false);
+		pulsanteReload.setContentAreaFilled(false);
+		pulsanteReload.setBorderPainted(false);
+		pulsanteReload.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconReload.png")));
+		pulsanteReload.setBounds(1098, 10, 63, 51);
+		PanelGate.add(pulsanteReload);
+		
+		fieldsTratte = new JTextField[] {fieldT1A1, fieldT1A2, fieldT1A3, fieldT1A4, fieldT2A1, fieldT2A2, fieldT2A3, fieldT2A4, fieldT3A1, fieldT3A2, fieldT3A3, fieldT3A4, fieldT4A1, fieldT4A2, fieldT4A3, fieldT4A4};
+		theController.setGates(fieldsTratte);
 		
 		JButton PulsanteHomeInfo = new JButton("");
 				
@@ -3754,6 +5760,11 @@ public class AMain extends JFrame {
 		Ricerca.add(pannelloRicerca);
 		
 		JButton pulsanteHomeRicerca = new JButton("");
+		pulsanteHomeRicerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theController.switchPanel(Ricerca, Main);
+			}
+		});
 		pulsanteHomeRicerca.setIcon(new ImageIcon(AMain.class.getResource("/apResources/IconHome.png")));
 		pulsanteHomeRicerca.setOpaque(false);
 		pulsanteHomeRicerca.setFocusable(false);
@@ -3776,11 +5787,10 @@ public class AMain extends JFrame {
 		scrollPane_1.setEnabled(false);
 		panel_1.add(scrollPane_1);
 		
-		DefaultTableModel tableRisultatiRicerca = new DefaultTableModel();
 		table = new JTable(tableRisultatiRicerca);
 		table.getTableHeader().setReorderingAllowed(false);
 		tableRisultatiRicerca.addColumn("Destinazione");
-		tableRisultatiRicerca.addColumn("Prenotazione");
+		tableRisultatiRicerca.addColumn("Prenotazioni");
 		tableRisultatiRicerca.addColumn("Orario partenza");
 		tableRisultatiRicerca.addColumn("Orario arrivo");
 		tableRisultatiRicerca.addColumn("Data Partenza");
@@ -3796,8 +5806,6 @@ public class AMain extends JFrame {
 		
 		
 		getContentPane().setLayout(groupLayout);
-		
-		tableRisultatiRicerca.insertRow(tableRisultatiRicerca.getRowCount(), new Object[] { "test1", "test2" });
 		
 		areaTratteCompagnie = new JTextArea[] {textAreaVETR, textAreaVETEU, textAreaVETV, textAreaVETA, textAreaVETEA};
 		
